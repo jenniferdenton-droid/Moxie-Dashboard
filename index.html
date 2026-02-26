@@ -1,5 +1,3 @@
-html
-Copy
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,18 +5,16 @@ Copy
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moxie Dashboard</title>
   <style>
-    /* ── Reset & Base ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #F7F9FA;
-      color: #1a1a2e;
-      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7f8;
+      color: #333;
     }
 
-    /* ── Header ── */
-    .header {
+    /* HEADER */
+    header {
       background: #fff;
       border-bottom: 2px solid #EBBA95;
       padding: 16px 32px;
@@ -34,113 +30,113 @@ Copy
     .header-left {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     .moxie-logo {
-      font-size: 28px;
-      font-weight: 800;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
       color: #4E8D99;
-      letter-spacing: -1px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
 
-    .moxie-logo span {
-      color: #6D445E;
-    }
-
-    .dashboard-title {
-      font-size: 15px;
-      color: #6D445E;
-      font-weight: 500;
-      border-left: 2px solid #EBBA95;
-      padding-left: 16px;
-    }
-
+    /* SEARCH */
     .search-bar {
       flex: 1;
       max-width: 400px;
-      margin: 0 32px;
-      padding: 10px 18px;
-      border: 1.5px solid #e0e0e0;
-      border-radius: 50px;
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.2s;
-      background: #F7F9FA;
+      margin: 0 24px;
     }
 
-    .search-bar:focus { border-color: #4E8D99; }
+    .search-bar input {
+      width: 100%;
+      padding: 10px 16px;
+      border: 1.5px solid #ddd;
+      border-radius: 24px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border 0.2s;
+    }
 
+    .search-bar input:focus {
+      border-color: #4E8D99;
+    }
+
+    /* ADD BUTTON */
     .add-btn {
       background: #4E8D99;
-      color: #fff;
+      color: white;
       border: none;
-      padding: 10px 22px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-size: 0.95rem;
       cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+      white-space: nowrap;
     }
 
-    .add-btn:hover { background: #6D445E; transform: translateY(-1px); }
+    .add-btn:hover {
+      background: #6D445E;
+    }
 
-    /* ── Main Content ── */
-    .main { padding: 32px; max-width: 1400px; margin: 0 auto; }
+    /* MAIN CONTENT */
+    main {
+      padding: 32px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
 
-    /* ── Category Section ── */
-    .category-section { margin-bottom: 40px; }
+    /* CATEGORY SECTION */
+    .category {
+      margin-bottom: 40px;
+    }
 
     .category-header {
       display: flex;
       align-items: center;
       gap: 10px;
       margin-bottom: 16px;
-      padding-bottom: 8px;
       border-bottom: 2px solid #EBBA95;
+      padding-bottom: 8px;
     }
 
-    .category-icon { font-size: 20px; }
-
-    .category-title {
-      font-size: 16px;
-      font-weight: 700;
+    .category-header h2 {
+      font-size: 1.1rem;
       color: #6D445E;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
     }
 
-    .category-count {
-      background: #EBBA95;
-      color: #6D445E;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 50px;
+    .category-header .emoji {
+      font-size: 1.2rem;
     }
 
-    /* ── App Grid ── */
+    /* APP GRID */
     .app-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 16px;
     }
 
-    /* ── App Card ── */
+    /* APP CARD */
     .app-card {
       background: #fff;
-      border: 1.5px solid #eee;
-      border-radius: 16px;
+      border: 1.5px solid #e8e8e8;
+      border-radius: 14px;
       padding: 20px 12px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      cursor: pointer;
-      transition: all 0.2s;
       position: relative;
       text-decoration: none;
       color: inherit;
@@ -148,257 +144,215 @@ Copy
 
     .app-card:hover {
       border-color: #4E8D99;
-      box-shadow: 0 4px 20px rgba(78,141,153,0.15);
-      transform: translateY(-3px);
+      box-shadow: 0 4px 16px rgba(78,141,153,0.15);
+      transform: translateY(-2px);
     }
 
-    .app-card-icon {
+    .app-card img {
       width: 52px;
       height: 52px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: #F7F9FA;
-    }
-
-    .app-card-icon img {
-      width: 100%;
-      height: 100%;
       object-fit: contain;
+      border-radius: 10px;
     }
 
-    .app-card-icon .emoji-icon {
-      font-size: 30px;
-      line-height: 1;
-    }
-
-    .app-card-name {
-      font-size: 12px;
+    .app-card .app-name {
+      font-size: 0.82rem;
       font-weight: 600;
-      text-align: center;
-      color: #333;
+      color: #444;
       line-height: 1.3;
     }
 
-    /* Delete button on card */
-    .delete-btn {
+    /* DELETE BUTTON on card */
+    .app-card .delete-btn {
       position: absolute;
       top: 6px;
       right: 8px;
       background: none;
       border: none;
+      font-size: 0.75rem;
       color: #ccc;
-      font-size: 14px;
       cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.2s, color 0.2s;
-      padding: 2px 4px;
+      display: none;
+      line-height: 1;
     }
 
-    .app-card:hover .delete-btn { opacity: 1; }
-    .delete-btn:hover { color: #e74c3c; }
+    .app-card:hover .delete-btn {
+      display: block;
+    }
 
-    /* ── Modal Overlay ── */
+    .app-card .delete-btn:hover {
+      color: #e05;
+    }
+
+    /* MODAL OVERLAY */
     .modal-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.4);
-      z-index: 1000;
-      align-items: center;
+      background: rgba(0,0,0,0.35);
+      z-index: 200;
       justify-content: center;
+      align-items: center;
     }
 
-    .modal-overlay.active { display: flex; }
+    .modal-overlay.active {
+      display: flex;
+    }
 
     .modal {
       background: #fff;
-      border-radius: 20px;
+      border-radius: 16px;
       padding: 32px;
-      width: 90%;
+      width: 100%;
       max-width: 460px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-      animation: slideUp 0.25s ease;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
     }
 
-    @keyframes slideUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to   { transform: translateY(0);    opacity: 1; }
+    .modal h2 {
+      color: #4E8D99;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
     }
 
-    .modal-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: #6D445E;
-      margin-bottom: 24px;
-    }
-
-    .form-group { margin-bottom: 16px; }
-
-    .form-group label {
+    .modal label {
       display: block;
-      font-size: 13px;
+      font-size: 0.88rem;
+      color: #666;
+      margin-bottom: 4px;
       font-weight: 600;
-      color: #555;
-      margin-bottom: 6px;
     }
 
-    .form-group input,
-    .form-group select {
+    .modal input,
+    .modal select {
       width: 100%;
       padding: 10px 14px;
-      border: 1.5px solid #e0e0e0;
-      border-radius: 10px;
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus { border-color: #4E8D99; }
-
-    .icon-preview-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 8px;
-    }
-
-    .icon-preview-box {
-      width: 52px;
-      height: 52px;
-      border: 2px dashed #ddd;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: #F7F9FA;
-      font-size: 24px;
-    }
-
-    .icon-preview-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .icon-upload-btn {
-      background: #F7F9FA;
-      border: 1.5px solid #e0e0e0;
-      padding: 8px 14px;
+      border: 1.5px solid #ddd;
       border-radius: 8px;
-      font-size: 13px;
-      cursor: pointer;
-      transition: border-color 0.2s;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      outline: none;
+      transition: border 0.2s;
     }
 
-    .icon-upload-btn:hover { border-color: #4E8D99; }
+    .modal input:focus,
+    .modal select:focus {
+      border-color: #4E8D99;
+    }
 
     .modal-actions {
       display: flex;
       gap: 12px;
-      margin-top: 24px;
+      justify-content: flex-end;
+      margin-top: 8px;
+    }
+
+    .modal-actions button {
+      padding: 10px 22px;
+      border-radius: 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-cancel {
+      background: #f0f0f0;
+      color: #666;
     }
 
     .btn-save {
-      flex: 1;
       background: #4E8D99;
-      color: #fff;
-      border: none;
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
+      color: white;
     }
 
     .btn-save:hover { background: #6D445E; }
+    .btn-cancel:hover { background: #e0e0e0; }
 
-    .btn-cancel {
-      flex: 1;
-      background: #F7F9FA;
-      color: #555;
-      border: 1.5px solid #e0e0e0;
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
+    /* Logo preview */
+    .logo-preview {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      display: none;
     }
 
-    .btn-cancel:hover { background: #eee; }
+    /* FAVICON fallback container */
+    .favicon-wrap {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: #f0f5f6;
+      overflow: hidden;
+    }
 
-    /* ── Empty category hidden ── */
-    .category-section.hidden { display: none; }
+    .favicon-wrap img {
+      width: 52px;
+      height: 52px;
+    }
 
-    /* ── Responsive ── */
     @media (max-width: 600px) {
-      .header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
-      .search-bar { margin: 0; max-width: 100%; order: 3; flex-basis: 100%; }
-      .main { padding: 16px; }
-      .app-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+      header { flex-wrap: wrap; gap: 12px; }
+      .search-bar { max-width: 100%; margin: 0; order: 3; flex: 1 1 100%; }
+      main { padding: 16px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
-<header class="header">
+<!-- HEADER -->
+<header>
   <div class="header-left">
-    <div class="moxie-logo">Moxie<span>.</span></div>
-    <div class="dashboard-title">My Dashboard</div>
+    <img 
+      src="https://framerusercontent.com/images/ZKpBVJrKUhgEfVWEDuBsHFqxoM.png" 
+      alt="Moxie Logo" 
+      class="moxie-logo"
+      onerror="this.style.display='none'"
+    />
+    <h1>Moxie Dashboard</h1>
   </div>
-  <input class="search-bar" type="text" placeholder="🔍  Search apps..." id="searchInput" />
-  <button class="add-btn" onclick="openModal()">
-    <span>＋</span> Add App
-  </button>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="🔍 Search apps..." oninput="filterApps()"/>
+  </div>
+  <button class="add-btn" onclick="openModal()">+ Add App</button>
 </header>
 
-<!-- ── MAIN ── -->
-<main class="main" id="mainContent"></main>
+<!-- MAIN -->
+<main id="mainContent">
+  <!-- Categories rendered by JS -->
+</main>
 
-<!-- ── ADD APP MODAL ── -->
+<!-- ADD APP MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
-    <div class="modal-title">➕ Add New App</div>
+    <h2>➕ Add New App</h2>
 
-    <div class="form-group">
-      <label>App Name *</label>
-      <input type="text" id="appName" placeholder="e.g. Notion" />
-    </div>
+    <label>App Name *</label>
+    <input type="text" id="newAppName" placeholder="e.g. Notion" />
 
-    <div class="form-group">
-      <label>URL *</label>
-      <input type="url" id="appUrl" placeholder="https://..." />
-    </div>
+    <label>URL *</label>
+    <input type="text" id="newAppUrl" placeholder="https://..." />
 
-    <div class="form-group">
-      <label>Category *</label>
-      <select id="appCategory">
-        <option value="communication">📬 Communication</option>
-        <option value="projectmanagement">📋 Project Management</option>
-        <option value="finance">💰 Finance</option>
-        <option value="sales">🛒 Sales & CRM</option>
-        <option value="operations">🔧 Operations</option>
-        <option value="ai">🤖 AI Tools</option>
-      </select>
-    </div>
+    <label>Category</label>
+    <select id="newAppCategory">
+      <option value="Communication">📬 Communication</option>
+      <option value="Project Management">📋 Project Management</option>
+      <option value="Finance">💰 Finance</option>
+      <option value="Sales & CRM">🛒 Sales & CRM</option>
+      <option value="Operations">🔧 Operations</option>
+      <option value="AI Tools">🤖 AI Tools</option>
+    </select>
 
-    <div class="form-group">
-      <label>Icon / Logo</label>
-      <div class="icon-preview-area">
-        <div class="icon-preview-box" id="iconPreview">🔗</div>
-        <div>
-          <input type="file" id="iconFileInput" accept="image/*" style="display:none" onchange="handleIconUpload(event)"/>
-          <button class="icon-upload-btn" onclick="document.getElementById('iconFileInput').click()">Upload Image</button>
-          <div style="font-size:11px;color:#999;margin-top:4px;">Or we'll auto-fetch the logo</div>
-        </div>
-      </div>
-    </div>
+    <label>Logo URL (optional — leave blank to use favicon)</label>
+    <input type="text" id="newAppLogo" placeholder="https://..." oninput="previewLogo()" />
+    <img id="logoPreview" class="logo-preview" src="" alt="Preview"/>
+
+    <label>Or paste/upload logo image</label>
+    <input type="file" id="newAppLogoFile" accept="image/*" onchange="handleLogoUpload()" />
 
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal()">Cancel</button>
@@ -408,223 +362,262 @@ Copy
 </div>
 
 <script>
-// ══════════════════════════════════════════════
-//  DATA – Default Apps
-// ══════════════════════════════════════════════
+// ─── DEFAULT APPS ────────────────────────────────────────────────
 const DEFAULT_APPS = [
-  // 📬 Communication
-  { id:'gmail',      name:'Gmail',         url:'https://mail.google.com',             category:'communication',    icon:'https://www.google.com/gmail/about/static/images/logo-gmail.png?cache=1adba63' },
-  { id:'meet',       name:'Google Meet',   url:'https://meet.google.com',             category:'communication',    icon:'https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png' },
-  { id:'slack',      name:'Slack',         url:'https://slack.com',                   category:'communication',    icon:'https://a.slack-edge.com/80588/marketing/img/meta/slack_hash_256.png' },
-  { id:'loom',       name:'Loom',          url:'https://www.loom.com',                category:'communication',    icon:'https://cdn.loom.com/assets/img/og/loom-facebook-og.png' },
-  { id:'fathom',     name:'Fathom',        url:'https://fathom.video/home',           category:'communication',    icon:'https://fathom.video/favicon.ico' },
-  { id:'calendar',   name:'Google Calendar',url:'https://calendar.google.com',        category:'communication',    icon:'https://calendar.google.com/googlecalendar/images/favicon_v2018_256.png' },
+  // Communication
+  { name: "Gmail",          url: "https://mail.google.com",       category: "Communication",     logo: "" },
+  { name: "Google Meet",    url: "https://meet.google.com",       category: "Communication",     logo: "" },
+  { name: "Slack",          url: "https://slack.com",             category: "Communication",     logo: "" },
+  { name: "Loom",           url: "https://www.loom.com",          category: "Communication",     logo: "" },
+  { name: "Fathom",         url: "https://fathom.video/home",     category: "Communication",     logo: "" },
 
-  // 📋 Project Management
-  { id:'asana',      name:'Asana',         url:'https://app.asana.com/1/1203386861136560/home', category:'projectmanagement', icon:'https://luna1.co/7df202.png' },
-  { id:'notion',     name:'Notion',        url:'https://www.notion.so/moxie-docs/6060ef49fea04dc3a1dc0a32d0564233', category:'projectmanagement', icon:'https://www.notion.so/images/favicon.ico' },
-  { id:'arrows',     name:'Arrows',        url:'https://success.joinmoxie.com/home',  category:'projectmanagement', icon:'https://assets-global.website-files.com/614e2d59ec4e8e52620b8dde/6150dcd8bbcfd7e9e234d24d_favicon-arrows.png' },
+  // Project Management
+  { name: "Asana",          url: "https://app.asana.com/1/1203386861136560/home",  category: "Project Management", logo: "" },
+  { name: "Notion",         url: "https://www.notion.so/moxie-docs/6060ef49fea04dc3a1dc0a32d0564233", category: "Project Management", logo: "" },
+  { name: "Arrows",         url: "https://success.joinmoxie.com/home", category: "Project Management", logo: "" },
 
-  // 💰 Finance
-  { id:'ramp',       name:'Ramp',          url:'https://app.ramp.com/sign-in',        category:'finance',          icon:'https://ramp.com/favicon.ico' },
-  { id:'stripe',     name:'Stripe',        url:'https://dashboard.stripe.com/register?account_invite=uis_sSEYJeeK7OA10mzCAF69eIyxWICgGRPI', category:'finance', icon:'https://stripe.com/img/v3/home/twitter.png' },
-  { id:'justworks',  name:'JustWorks',     url:'https://payroll.justworks.com/account/vouchers', category:'finance', icon:'https://justworks.com/favicon.ico' },
+  // Finance
+  { name: "Ramp",           url: "https://app.ramp.com/sign-in",  category: "Finance",           logo: "" },
+  { name: "Stripe",         url: "https://dashboard.stripe.com/register?account_invite=uis_sSEYJeeK7OA10mzCAF69eIyxWICgGRPI", category: "Finance", logo: "" },
+  { name: "JustWorks",      url: "https://payroll.justworks.com/account/vouchers", category: "Finance", logo: "" },
 
-  // 🛒 Sales & CRM
-  { id:'hubspot',    name:'HubSpot',       url:'https://app.hubspot.com/login/?loginRedirectUrl=https%3A%2F%2Fapp.hubspot.com%2Fcontacts%2F22420370%2Fobjects%2F0-1%2Fviews%2Fall%2Flist&loginPortalId=22420370', category:'sales', icon:'https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png' },
-  { id:'shopify',    name:'Shopify',       url:'https://admin.shopify.com/store/moxie-9681', category:'sales',      icon:'https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_logo_black-d53b0c7d2a875d5dcb26af1b1d3f2e32c7c5bea68b31b8ae35cdb58a8da0ba43.png' },
+  // Sales & CRM
+  { name: "HubSpot",        url: "https://app.hubspot.com/login/?loginRedirectUrl=https%3A%2F%2Fapp.hubspot.com%2Fcontacts%2F22420370%2Fobjects%2F0-1%2Fviews%2Fall%2Flist&loginPortalId=22420370", category: "Sales & CRM", logo: "" },
+  { name: "Shopify",        url: "https://admin.shopify.com/store/moxie-9681", category: "Sales & CRM", logo: "" },
 
-  // 🔧 Operations
-  { id:'omni',       name:'Omni',          url:'https://moxie.omniapp.co',            category:'operations',       icon:'https://omniapp.co/favicon.ico' },
-  { id:'glean',      name:'Glean',         url:'https://app.glean.com',               category:'operations',       icon:'https://www.glean.com/favicon.ico' },
-  { id:'1password',  name:'1Password',     url:'https://1password.com',               category:'operations',       icon:'https://1password.com/img/logo-v1.svg' },
-  { id:'dropbox',    name:'Dropbox Sign',  url:'https://app.hellosign.com/account/logIn', category:'operations',   icon:'https://app.hellosign.com/favicon.ico' },
-  { id:'zapier',     name:'Zapier',        url:'https://zapier.com',                  category:'operations',       icon:'https://cdn.zapier.com/zapier/images/favicon.ico' },
-  { id:'googlesheets',name:'Google Sheets',url:'https://sheets.google.com',           category:'operations',       icon:'https://www.gstatic.com/images/branding/product/1x/sheets_2020q4_48dp.png' },
-  { id:'moxieadmin', name:'Moxie Admin',   url:'https://api.prod.internal.joinmoxie.com/admin/login/?next=/admin/', category:'operations', icon:'https://joinmoxie.com/favicon.ico' },
+  // Operations
+  { name: "Omni",           url: "https://moxie.omniapp.co",      category: "Operations",        logo: "" },
+  { name: "Glean",          url: "https://app.glean.com/?qe=https%3A%2F%2Fjoinmoxie-be.glean.com&utm_source=admin_invite&utm_medium=email&utm_campaign=vanity_v3&skip_to_sso=1&setup=welcome", category: "Operations", logo: "" },
+  { name: "Zapier",         url: "https://zapier.com",            category: "Operations",        logo: "" },
+  { name: "1Password",      url: "https://my.1password.com",      category: "Operations",        logo: "" },
+  { name: "Dropbox Sign",   url: "https://app.hellosign.com/account/logIn", category: "Operations", logo: "" },
+  { name: "Google Sheets",  url: "https://sheets.google.com",     category: "Operations",        logo: "" },
+  { name: "Google Calendar",url: "https://calendar.google.com",   category: "Operations",        logo: "" },
+  { name: "Moxie Admin",    url: "https://api.prod.internal.joinmoxie.com/admin/login/", category: "Operations", logo: "" },
+  { name: "GitHub",         url: "https://github.com",            category: "Operations",        logo: "" },
 
-  // 🤖 AI Tools
-  { id:'chatgpt',    name:'ChatGPT',       url:'https://chatgpt.com',                 category:'ai',               icon:'https://cdn.oaistatic.com/assets/favicon-o20kmmos.svg' },
+  // AI Tools
+  { name: "ChatGPT",        url: "https://chatgpt.com",           category: "AI Tools",          logo: "" },
 ];
 
-const CATEGORIES = [
-  { id:'communication',    label:'Communication',    icon:'📬' },
-  { id:'projectmanagement',label:'Project Management',icon:'📋' },
-  { id:'finance',          label:'Finance',           icon:'💰' },
-  { id:'sales',            label:'Sales & CRM',       icon:'🛒' },
-  { id:'operations',       label:'Operations',        icon:'🔧' },
-  { id:'ai',               label:'AI Tools',          icon:'🤖' },
-];
+// ─── CATEGORY CONFIG ─────────────────────────────────────────────
+const CATEGORY_META = {
+  "Communication":     { emoji: "📬", label: "Communication" },
+  "Project Management":{ emoji: "📋", label: "Project Management" },
+  "Finance":           { emoji: "💰", label: "Finance" },
+  "Sales & CRM":       { emoji: "🛒", label: "Sales & CRM" },
+  "Operations":        { emoji: "🔧", label: "Operations" },
+  "AI Tools":          { emoji: "🤖", label: "AI Tools" },
+};
 
-// ══════════════════════════════════════════════
-//  STATE
-// ══════════════════════════════════════════════
-let pendingIconDataUrl = null;
+// ─── STATE ───────────────────────────────────────────────────────
+let apps = [];
+let uploadedLogoData = null;
 
 function loadApps() {
-  const saved = localStorage.getItem('moxieDashboardApps');
-  if (saved) return JSON.parse(saved);
-  localStorage.setItem('moxieDashboardApps', JSON.stringify(DEFAULT_APPS));
-  return DEFAULT_APPS;
+  const stored = localStorage.getItem("moxieApps");
+  if (stored) {
+    apps = JSON.parse(stored);
+  } else {
+    apps = [...DEFAULT_APPS];
+    saveApps();
+  }
 }
 
-function saveApps(apps) {
-  localStorage.setItem('moxieDashboardApps', JSON.stringify(apps));
+function saveApps() {
+  localStorage.setItem("moxieApps", JSON.stringify(apps));
 }
 
-// ══════════════════════════════════════════════
-//  RENDER
-// ══════════════════════════════════════════════
-function renderDashboard(filter = '') {
-  const apps  = loadApps();
-  const main  = document.getElementById('mainContent');
-  main.innerHTML = '';
+// ─── FAVICON HELPER ──────────────────────────────────────────────
+function getFaviconUrl(siteUrl) {
+  try {
+    const domain = new URL(siteUrl).origin;
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+  } catch(e) {
+    return "";
+  }
+}
 
-  const filtered = filter
-    ? apps.filter(a => a.name.toLowerCase().includes(filter.toLowerCase()))
-    : apps;
+// ─── RENDER ──────────────────────────────────────────────────────
+function render(filter = "") {
+  const main = document.getElementById("mainContent");
+  main.innerHTML = "";
 
-  CATEGORIES.forEach(cat => {
-    const catApps = filtered.filter(a => a.category === cat.id);
-    if (catApps.length === 0) return;
+  const categoryOrder = Object.keys(CATEGORY_META);
 
-    const section = document.createElement('section');
-    section.className = 'category-section';
-    section.innerHTML = `
-      <div class="category-header">
-        <span class="category-icon">${cat.icon}</span>
-        <span class="category-title">${cat.label}</span>
-        <span class="category-count">${catApps.length}</span>
-      </div>
-      <div class="app-grid" id="grid-${cat.id}"></div>
-    `;
-    main.appendChild(section);
+  categoryOrder.forEach(cat => {
+    const filtered = apps.filter(a =>
+      a.category === cat &&
+      (filter === "" || a.name.toLowerCase().includes(filter.toLowerCase()))
+    );
 
-    const grid = document.getElementById(`grid-${cat.id}`);
-    catApps.forEach(app => {
-      const card = document.createElement('a');
-      card.className  = 'app-card';
-      card.href       = app.url;
-      card.target     = '_blank';
-      card.rel        = 'noopener noreferrer';
-      card.title      = app.name;
+    if (filtered.length === 0) return;
 
-      // Icon
-      const iconHtml = buildIconHtml(app);
+    const meta = CATEGORY_META[cat];
+    const section = document.createElement("section");
+    section.className = "category";
+
+    const header = document.createElement("div");
+    header.className = "category-header";
+    header.innerHTML = `<span class="emoji">${meta.emoji}</span><h2>${meta.label}</h2>`;
+    section.appendChild(header);
+
+    const grid = document.createElement("div");
+    grid.className = "app-grid";
+
+    filtered.forEach(app => {
+      const appIndex = apps.indexOf(app);
+      const imgSrc = app.logo || getFaviconUrl(app.url);
+
+      const card = document.createElement("a");
+      card.className = "app-card";
+      card.href = app.url;
+      card.target = "_blank";
+      card.rel = "noopener noreferrer";
 
       card.innerHTML = `
-        <button class="delete-btn" title="Remove" onclick="deleteApp(event,'${app.id}')">✕</button>
-        <div class="app-card-icon">${iconHtml}</div>
-        <div class="app-card-name">${app.name}</div>
+        <button class="delete-btn" title="Remove" onclick="removeApp(event, ${appIndex})">✕</button>
+        <div class="favicon-wrap">
+          <img src="${imgSrc}" alt="${app.name}" 
+               onerror="this.src='https://www.google.com/s2/favicons?domain=google.com&sz=64'" />
+        </div>
+        <span class="app-name">${app.name}</span>
+      `;
+
+      grid.appendChild(card);
+    });
+
+    section.appendChild(grid);
+    main.appendChild(section);
+  });
+
+  // Handle any custom categories not in default list
+  const customCats = [...new Set(apps.map(a => a.category))].filter(c => !categoryOrder.includes(c));
+  customCats.forEach(cat => {
+    const filtered = apps.filter(a =>
+      a.category === cat &&
+      (filter === "" || a.name.toLowerCase().includes(filter.toLowerCase()))
+    );
+    if (filtered.length === 0) return;
+
+    const section = document.createElement("section");
+    section.className = "category";
+    const header = document.createElement("div");
+    header.className = "category-header";
+    header.innerHTML = `<span class="emoji">📌</span><h2>${cat}</h2>`;
+    section.appendChild(header);
+
+    const grid = document.createElement("div");
+    grid.className = "app-grid";
+
+    filtered.forEach(app => {
+      const appIndex = apps.indexOf(app);
+      const imgSrc = app.logo || getFaviconUrl(app.url);
+      const card = document.createElement("a");
+      card.className = "app-card";
+      card.href = app.url;
+      card.target = "_blank";
+      card.rel = "noopener noreferrer";
+      card.innerHTML = `
+        <button class="delete-btn" title="Remove" onclick="removeApp(event, ${appIndex})">✕</button>
+        <div class="favicon-wrap">
+          <img src="${imgSrc}" alt="${app.name}"
+               onerror="this.src='https://www.google.com/s2/favicons?domain=google.com&sz=64'" />
+        </div>
+        <span class="app-name">${app.name}</span>
       `;
       grid.appendChild(card);
     });
+
+    section.appendChild(grid);
+    main.appendChild(section);
   });
+}
 
-  // If search yields nothing
-  if (main.innerHTML === '' && filter) {
-    main.innerHTML = `<p style="color:#999;text-align:center;margin-top:60px;font-size:15px;">No apps found for "<strong>${filter}</strong>"</p>`;
+// ─── SEARCH ──────────────────────────────────────────────────────
+function filterApps() {
+  const q = document.getElementById("searchInput").value;
+  render(q);
+}
+
+// ─── REMOVE ──────────────────────────────────────────────────────
+function removeApp(e, index) {
+  e.preventDefault();
+  e.stopPropagation();
+  if (confirm(`Remove "${apps[index].name}" from your dashboard?`)) {
+    apps.splice(index, 1);
+    saveApps();
+    render();
   }
 }
 
-function buildIconHtml(app) {
-  if (app.icon && app.icon.startsWith('data:')) {
-    return `<img src="${app.icon}" alt="${app.name}" onerror="this.parentNode.innerHTML='<span class=emoji-icon>🔗</span>'" />`;
-  }
-  if (app.icon) {
-    // Try direct icon, fall back to Google favicon service
-    const fallback = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(new URL(app.url).hostname)}&sz=64`;
-    return `<img src="${app.icon}" alt="${app.name}" onerror="this.src='${fallback}'" />`;
-  }
-  try {
-    const domain   = new URL(app.url).hostname;
-    const favicon  = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`;
-    return `<img src="${favicon}" alt="${app.name}" onerror="this.parentNode.innerHTML='<span class=emoji-icon>🔗</span>'" />`;
-  } catch {
-    return `<span class="emoji-icon">🔗</span>`;
-  }
-}
-
-// ══════════════════════════════════════════════
-//  MODAL
-// ══════════════════════════════════════════════
+// ─── MODAL ───────────────────────────────────────────────────────
 function openModal() {
-  document.getElementById('modalOverlay').classList.add('active');
-  document.getElementById('appName').value    = '';
-  document.getElementById('appUrl').value     = '';
-  document.getElementById('appCategory').value= 'communication';
-  document.getElementById('iconPreview').innerHTML = '🔗';
-  pendingIconDataUrl = null;
+  document.getElementById("modalOverlay").classList.add("active");
+  document.getElementById("newAppName").value = "";
+  document.getElementById("newAppUrl").value = "";
+  document.getElementById("newAppLogo").value = "";
+  document.getElementById("newAppLogoFile").value = "";
+  document.getElementById("logoPreview").style.display = "none";
+  uploadedLogoData = null;
 }
 
 function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('active');
+  document.getElementById("modalOverlay").classList.remove("active");
 }
 
-function handleIconUpload(event) {
-  const file = event.target.files[0];
+function previewLogo() {
+  const url = document.getElementById("newAppLogo").value;
+  const img = document.getElementById("logoPreview");
+  if (url) {
+    img.src = url;
+    img.style.display = "block";
+  } else {
+    img.style.display = "none";
+  }
+}
+
+function handleLogoUpload() {
+  const file = document.getElementById("newAppLogoFile").files[0];
   if (!file) return;
   const reader = new FileReader();
-  reader.onload = e => {
-    pendingIconDataUrl = e.target.result;
-    document.getElementById('iconPreview').innerHTML = `<img src="${pendingIconDataUrl}" style="width:100%;height:100%;object-fit:contain"/>`;
+  reader.onload = function(e) {
+    uploadedLogoData = e.target.result;
+    const img = document.getElementById("logoPreview");
+    img.src = uploadedLogoData;
+    img.style.display = "block";
   };
   reader.readAsDataURL(file);
 }
 
 function saveApp() {
-  const name     = document.getElementById('appName').value.trim();
-  const url      = document.getElementById('appUrl').value.trim();
-  const category = document.getElementById('appCategory').value;
+  const name     = document.getElementById("newAppName").value.trim();
+  const url      = document.getElementById("newAppUrl").value.trim();
+  const category = document.getElementById("newAppCategory").value;
+  const logoUrl  = document.getElementById("newAppLogo").value.trim();
 
   if (!name || !url) {
-    alert('Please enter both a name and a URL.');
+    alert("App name and URL are required.");
     return;
   }
 
-  const apps   = loadApps();
-  const newApp = {
-    id:       'custom_' + Date.now(),
-    name,
-    url,
-    category,
-    icon: pendingIconDataUrl || null,
-  };
+  const logo = uploadedLogoData || logoUrl || "";
 
-  apps.push(newApp);
-  saveApps(apps);
+  apps.push({ name, url, category, logo });
+  saveApps();
   closeModal();
-  renderDashboard();
+  render();
 }
-
-// ══════════════════════════════════════════════
-//  DELETE
-// ══════════════════════════════════════════════
-function deleteApp(e, id) {
-  e.preventDefault();
-  e.stopPropagation();
-  if (!confirm('Remove this app from your dashboard?')) return;
-  const apps = loadApps().filter(a => a.id !== id);
-  saveApps(apps);
-  renderDashboard();
-}
-
-// ══════════════════════════════════════════════
-//  SEARCH
-// ══════════════════════════════════════════════
-document.getElementById('searchInput').addEventListener('input', e => {
-  renderDashboard(e.target.value);
-});
 
 // Close modal on overlay click
-document.getElementById('modalOverlay').addEventListener('click', e => {
-  if (e.target === document.getElementById('modalOverlay')) closeModal();
+document.getElementById("modalOverlay").addEventListener("click", function(e) {
+  if (e.target === this) closeModal();
 });
 
-// ══════════════════════════════════════════════
-//  INIT
-// ══════════════════════════════════════════════
-renderDashboard();
+// ─── INIT ─────────────────────────────────────────────────────────
+loadApps();
+render();
 </script>
 </body>
 </html>
+
