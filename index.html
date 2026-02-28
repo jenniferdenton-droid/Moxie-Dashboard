@@ -1,299 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Moxie Dashboard</title>
 <style>
-  :root {
-    --primary: #4E8D99;
-    --secondary: #EBBA95;
-    --accent: #6D445E;
-    --bg: #f4f6f8;
-    --card-bg: #ffffff;
-    --text: #2c3e50;
-    --subtext: #7f8c8d;
-    --border: #e0e0e0;
-    --shadow: 0 2px 8px rgba(0,0,0,0.08);
-    --shadow-hover: 0 6px 20px rgba(78,141,153,0.25);
-    --radius: 12px;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f5f7f8;
+    color: #333;
     min-height: 100vh;
   }
 
   /* HEADER */
   header {
     background: white;
-    border-bottom: 2px solid var(--border);
-    padding: 0 32px;
+    border-bottom: 2px solid #4E8D99;
+    padding: 16px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
 
-  .header-left {
+  .logo-area {
     display: flex;
     align-items: center;
     gap: 14px;
   }
 
-  .logo-img {
+  .logo-area img {
     height: 36px;
     object-fit: contain;
   }
 
-  .header-title {
-    font-size: 1.4rem;
+  .dashboard-title {
+    font-size: 22px;
     font-weight: 700;
-    color: var(--primary);
-    letter-spacing: -0.3px;
+    color: #4E8D99;
+    letter-spacing: -0.5px;
   }
 
   .header-right {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
 
-  /* SEARCH */
-  .search-wrap {
-    position: relative;
-  }
-  .search-wrap input {
-    padding: 9px 16px 9px 38px;
-    border: 1.5px solid var(--border);
+  .search-box {
+    padding: 8px 16px;
+    border: 1.5px solid #ddd;
     border-radius: 24px;
-    font-size: 0.9rem;
-    width: 240px;
+    font-size: 14px;
+    width: 220px;
     outline: none;
     transition: border-color 0.2s;
-    background: var(--bg);
-  }
-  .search-wrap input:focus { border-color: var(--primary); background: white; }
-  .search-icon {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--subtext);
-    font-size: 0.85rem;
   }
 
-  /* BUTTONS */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 9px 18px;
-    border-radius: 24px;
+  .search-box:focus { border-color: #4E8D99; }
+
+  .add-btn {
+    background: #4E8D99;
+    color: white;
     border: none;
-    font-size: 0.88rem;
+    padding: 9px 20px;
+    border-radius: 24px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
-  .btn-primary {
-    background: var(--primary);
-    color: white;
-  }
-  .btn-primary:hover { background: #3d7480; transform: translateY(-1px); }
 
-  .btn-secondary {
-    background: white;
-    color: var(--accent);
-    border: 1.5px solid var(--accent);
-  }
-  .btn-secondary:hover { background: var(--accent); color: white; }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--subtext);
-    border: 1.5px solid var(--border);
-  }
-  .btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
-
-  .btn-sm {
-    padding: 5px 10px;
-    font-size: 0.78rem;
-    border-radius: 8px;
-  }
+  .add-btn:hover { background: #3d7480; }
 
   /* MAIN */
   main {
     max-width: 1300px;
     margin: 0 auto;
-    padding: 28px 24px;
+    padding: 32px 24px;
   }
 
   /* CATEGORY SECTION */
   .category-section {
-    margin-bottom: 36px;
+    margin-bottom: 40px;
   }
 
   .category-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--border);
-  }
-
-  .category-title-wrap {
-    display: flex;
-    align-items: center;
     gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #EBBA95;
   }
 
-  .category-emoji { font-size: 1.3rem; }
+  .category-icon { font-size: 20px; }
 
   .category-name {
-    font-size: 1.1rem;
+    font-size: 17px;
     font-weight: 700;
-    color: var(--text);
+    color: #6D445E;
+    letter-spacing: 0.3px;
   }
 
   .category-count {
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: #EBBA95;
+    color: #6D445E;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
     border-radius: 12px;
-    padding: 2px 9px;
-    font-size: 0.78rem;
-    color: var(--subtext);
-    font-weight: 600;
+    margin-left: auto;
   }
 
-  .category-actions {
-    display: flex;
-    gap: 6px;
-  }
-
-  /* GRID */
+  /* APP GRID */
   .app-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 14px;
-    min-height: 80px;
-    padding: 8px;
-    border-radius: var(--radius);
-    transition: background 0.2s;
-  }
-
-  .app-grid.drag-over {
-    background: rgba(78,141,153,0.08);
-    border: 2px dashed var(--primary);
+    gap: 16px;
   }
 
   /* APP CARD */
   .app-card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    border: 1.5px solid var(--border);
-    padding: 18px 12px 14px;
+    background: white;
+    border-radius: 14px;
+    padding: 20px 12px 16px;
+    text-align: center;
+    cursor: pointer;
+    border: 1.5px solid #eee;
+    transition: all 0.2s ease;
+    position: relative;
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    cursor: grab;
-    transition: all 0.2s;
-    position: relative;
-    text-decoration: none;
-    color: inherit;
-    user-select: none;
   }
 
   .app-card:hover {
-    box-shadow: var(--shadow-hover);
     transform: translateY(-3px);
-    border-color: var(--primary);
+    box-shadow: 0 8px 24px rgba(78,141,153,0.15);
+    border-color: #4E8D99;
   }
 
-  .app-card.dragging {
-    opacity: 0.4;
-    cursor: grabbing;
-    transform: scale(0.95);
-  }
-
-  .app-card-actions {
+  .app-card-menu {
     position: absolute;
-    top: 6px;
-    right: 6px;
-    display: none;
-    gap: 4px;
-  }
-
-  .app-card:hover .app-card-actions {
-    display: flex;
-  }
-
-  .card-action-btn {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 3px 6px;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
     cursor: pointer;
-    font-size: 0.72rem;
-    color: var(--subtext);
-    transition: all 0.15s;
-    line-height: 1.4;
+    color: #aaa;
+    font-size: 16px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.2s;
   }
-  .card-action-btn:hover { border-color: var(--primary); color: var(--primary); }
-  .card-action-btn.delete:hover { border-color: #e74c3c; color: #e74c3c; }
 
-  .app-icon-wrap {
+  .app-card:hover .app-card-menu { opacity: 1; }
+  .app-card-menu:hover { background: #f0f0f0; color: #333; }
+
+  .app-icon {
     width: 52px;
     height: 52px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
     overflow: hidden;
-    background: var(--bg);
+    background: #f5f7f8;
+    flex-shrink: 0;
   }
 
-  .app-icon-wrap img {
+  .app-icon img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 10px;
   }
 
-  .app-icon-wrap .emoji-icon {
-    font-size: 2rem;
+  .app-icon .emoji-icon {
+    font-size: 28px;
+    line-height: 1;
   }
 
   .app-name {
-    font-size: 0.8rem;
+    font-size: 12px;
     font-weight: 600;
-    text-align: center;
-    color: var(--text);
+    color: #444;
     line-height: 1.3;
     word-break: break-word;
   }
 
-  /* EMPTY STATE */
-  .empty-drop {
-    grid-column: 1/-1;
+  /* CONTEXT MENU */
+  .context-menu {
+    position: fixed;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    z-index: 1000;
+    min-width: 160px;
+    overflow: hidden;
+    display: none;
+  }
+
+  .context-menu button {
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 70px;
-    color: var(--subtext);
-    font-size: 0.85rem;
-    border: 2px dashed var(--border);
-    border-radius: var(--radius);
-    opacity: 0.6;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 16px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 13px;
+    cursor: pointer;
+    color: #333;
+    transition: background 0.15s;
+  }
+
+  .context-menu button:hover { background: #f5f7f8; }
+  .context-menu button.danger { color: #e53e3e; }
+  .context-menu button.danger:hover { background: #fff5f5; }
+
+  .context-divider {
+    height: 1px;
+    background: #eee;
+    margin: 4px 0;
   }
 
   /* MODAL OVERLAY */
@@ -302,148 +245,207 @@
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.45);
-    z-index: 1000;
+    z-index: 200;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(3px);
   }
-  .modal-overlay.open { display: flex; }
+
+  .modal-overlay.active { display: flex; }
 
   .modal {
     background: white;
     border-radius: 18px;
     padding: 32px;
-    width: 460px;
-    max-width: 95vw;
+    width: 90%;
+    max-width: 480px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.2);
     position: relative;
-    animation: modalIn 0.22s ease;
   }
 
-  @keyframes modalIn {
-    from { opacity: 0; transform: scale(0.93) translateY(-12px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
+  .modal h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #4E8D99;
+    margin-bottom: 24px;
   }
 
   .modal-close {
     position: absolute;
-    top: 14px; right: 18px;
-    background: none;
+    top: 16px;
+    right: 16px;
+    background: #f0f0f0;
     border: none;
-    font-size: 1.4rem;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
     cursor: pointer;
-    color: var(--subtext);
-    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
   }
-  .modal-close:hover { color: var(--text); }
 
-  .modal h2 {
-    font-size: 1.2rem;
-    margin-bottom: 22px;
-    color: var(--text);
-  }
+  .modal-close:hover { background: #e0e0e0; }
 
   .form-group {
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
 
   .form-group label {
     display: block;
-    font-size: 0.84rem;
+    font-size: 13px;
     font-weight: 600;
+    color: #555;
     margin-bottom: 6px;
-    color: var(--text);
   }
 
   .form-group input,
   .form-group select {
     width: 100%;
     padding: 10px 14px;
-    border: 1.5px solid var(--border);
+    border: 1.5px solid #ddd;
     border-radius: 10px;
-    font-size: 0.9rem;
+    font-size: 14px;
     outline: none;
     transition: border-color 0.2s;
-    background: var(--bg);
-    color: var(--text);
+    color: #333;
+    background: white;
   }
-  .form-group input:focus,
-  .form-group select:focus { border-color: var(--primary); background: white; }
 
-  .icon-preview-row {
+  .form-group input:focus,
+  .form-group select:focus { border-color: #4E8D99; }
+
+  .icon-preview {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     margin-top: 8px;
   }
 
-  .icon-preview {
-    width: 44px;
-    height: 44px;
+  .icon-preview-box {
+    width: 48px;
+    height: 48px;
     border-radius: 10px;
-    background: var(--bg);
-    border: 1.5px solid var(--border);
+    background: #f5f7f8;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1.5px solid #eee;
     overflow: hidden;
-    font-size: 1.6rem;
+    flex-shrink: 0;
   }
 
-  .icon-preview img { width: 100%; height: 100%; object-fit: contain; }
-
-  .icon-hint {
-    font-size: 0.78rem;
-    color: var(--subtext);
-    line-height: 1.5;
+  .icon-preview-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
-  .form-actions {
+  .icon-preview-text { font-size: 12px; color: #888; }
+
+  .modal-actions {
     display: flex;
     gap: 10px;
-    justify-content: flex-end;
     margin-top: 24px;
   }
 
-  /* TOAST */
-  #toast {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    background: var(--text);
+  .btn-primary {
+    flex: 1;
+    background: #4E8D99;
     color: white;
-    padding: 12px 22px;
+    border: none;
+    padding: 12px;
     border-radius: 10px;
-    font-size: 0.88rem;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: #3d7480; }
+
+  .btn-secondary {
+    background: #f0f0f0;
+    color: #555;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-secondary:hover { background: #e0e0e0; }
+
+  /* ADD CATEGORY MODAL */
+  .add-cat-btn {
+    background: white;
+    border: 2px dashed #EBBA95;
+    color: #6D445E;
+    padding: 10px 20px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 32px;
+  }
+
+  .add-cat-btn:hover {
+    background: #fdf6f0;
+    border-color: #6D445E;
+  }
+
+  /* DRAG & DROP */
+  .app-card.dragging {
+    opacity: 0.4;
+    border: 2px dashed #4E8D99;
+  }
+
+  .app-grid.drag-over {
+    background: rgba(78,141,153,0.05);
+    border-radius: 12px;
+  }
+
+  /* EMPTY STATE */
+  .empty-grid {
+    text-align: center;
+    padding: 32px;
+    color: #aaa;
+    font-size: 14px;
+    border: 2px dashed #eee;
+    border-radius: 12px;
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
     z-index: 9999;
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(10px);
     transition: all 0.3s;
     pointer-events: none;
   }
-  #toast.show { opacity: 1; transform: translateY(0); }
-  #toast.success { background: var(--primary); }
-  #toast.error { background: #e74c3c; }
 
-  /* CATEGORY MODAL */
-  #addCategoryModal .modal { width: 380px; }
-
-  /* DRAG PLACEHOLDER */
-  .drag-placeholder {
-    border: 2px dashed var(--primary);
-    border-radius: var(--radius);
-    background: rgba(78,141,153,0.06);
-    min-height: 120px;
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* RESPONSIVE */
-  @media (max-width: 640px) {
-    header { padding: 0 16px; height: auto; flex-wrap: wrap; gap: 10px; padding: 12px 16px; }
-    .search-wrap input { width: 180px; }
-    .header-title { font-size: 1.1rem; }
-    main { padding: 16px 12px; }
-    .app-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+  @media (max-width: 600px) {
+    header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+    .search-box { width: 100%; }
+    main { padding: 20px 12px; }
+    .app-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; }
   }
 </style>
 </head>
@@ -451,28 +453,32 @@
 
 <!-- HEADER -->
 <header>
-  <div class="header-left">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Moxie_logo.svg/320px-Moxie_logo.svg.png"
-         alt="Moxie Logo"
-         class="logo-img"
-         onerror="this.style.display='none'">
-    <span class="header-title">Moxie Dashboard</span>
+  <div class="logo-area">
+    <img src="https://raw.githubusercontent.com/jenniferdenton-droid/Moxie-Dashboard/main/moxie-logo.png"
+         onerror="this.style.display='none'"
+         alt="Moxie Logo">
+    <span class="dashboard-title">Moxie Dashboard</span>
   </div>
   <div class="header-right">
-    <div class="search-wrap">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" placeholder="Search apps..." oninput="filterApps(this.value)">
-    </div>
-    <button class="btn btn-primary" onclick="openAddModal()">＋ Add App</button>
-    <button class="btn btn-secondary" onclick="openAddCategoryModal()">＋ Category</button>
-    <button class="btn btn-ghost" onclick="exportData()" title="Export your dashboard">↓ Export</button>
-    <button class="btn btn-ghost" onclick="document.getElementById('importFile').click()" title="Import dashboard">↑ Import</button>
-    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(this)">
+    <input class="search-box" type="text" placeholder="🔍 Search apps..." id="searchInput" oninput="filterApps()">
+    <button class="add-btn" onclick="openAddModal()">＋ Add App</button>
   </div>
 </header>
 
 <!-- MAIN -->
-<main id="mainContent"></main>
+<main id="mainContent">
+  <!-- Categories rendered by JS -->
+</main>
+
+<!-- ADD CATEGORY BUTTON (rendered inside main by JS) -->
+
+<!-- CONTEXT MENU -->
+<div class="context-menu" id="contextMenu">
+  <button onclick="editApp()">✏️ Edit</button>
+  <button onclick="moveApp()">📂 Move to Category</button>
+  <div class="context-divider"></div>
+  <button class="danger" onclick="deleteApp()">🗑️ Delete</button>
+</div>
 
 <!-- ADD/EDIT APP MODAL -->
 <div class="modal-overlay" id="appModal">
@@ -482,485 +488,456 @@
 
     <div class="form-group">
       <label>App Name *</label>
-      <input type="text" id="appName" placeholder="e.g. Notion" />
+      <input type="text" id="appName" placeholder="e.g. Gmail">
     </div>
 
     <div class="form-group">
       <label>URL *</label>
-      <input type="url" id="appUrl" placeholder="https://..." />
+      <input type="url" id="appUrl" placeholder="https://...">
     </div>
 
     <div class="form-group">
-      <label>Category</label>
+      <label>Category *</label>
       <select id="appCategory"></select>
     </div>
 
     <div class="form-group">
-      <label>Icon</label>
-      <input type="text" id="appIcon"
-             placeholder="Emoji (🚀) or paste image URL or base64"
-             oninput="previewIcon(this.value)" />
-      <div class="icon-preview-row">
-        <div class="icon-preview" id="iconPreview"><span>🌐</span></div>
-        <div class="icon-hint">
-          Paste an emoji, an image URL, or upload:<br>
-          <label style="color:var(--primary);cursor:pointer;font-weight:600;">
-            Browse file
-            <input type="file" id="iconFileInput" accept="image/*"
-                   style="display:none" onchange="handleIconFile(this)">
-          </label>
+      <label>Logo URL <span style="color:#aaa;font-weight:400">(optional — leave blank for auto)</span></label>
+      <input type="url" id="appIcon" placeholder="https://...logo.png" oninput="previewIcon()">
+      <div class="icon-preview">
+        <div class="icon-preview-box" id="iconPreviewBox">
+          <span style="font-size:22px">🌐</span>
         </div>
+        <span class="icon-preview-text">Logo preview</span>
       </div>
     </div>
 
-    <div class="form-actions">
-      <button class="btn btn-ghost" onclick="closeModal('appModal')">Cancel</button>
-      <button class="btn btn-primary" onclick="saveApp()">Save App</button>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('appModal')">Cancel</button>
+      <button class="btn-primary" onclick="saveApp()">Save App</button>
     </div>
   </div>
 </div>
 
 <!-- ADD CATEGORY MODAL -->
-<div class="modal-overlay" id="addCategoryModal">
+<div class="modal-overlay" id="catModal">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal('addCategoryModal')">×</button>
-    <h2>Add New Category</h2>
+    <button class="modal-close" onclick="closeModal('catModal')">×</button>
+    <h2>New Category</h2>
+
     <div class="form-group">
       <label>Category Name *</label>
-      <input type="text" id="newCategoryName" placeholder="e.g. Design Tools" />
+      <input type="text" id="catName" placeholder="e.g. Design Tools">
     </div>
+
     <div class="form-group">
       <label>Emoji Icon</label>
-      <input type="text" id="newCategoryEmoji" placeholder="e.g. 🎨" maxlength="4" />
+      <input type="text" id="catEmoji" placeholder="e.g. 🎨" maxlength="4">
     </div>
-    <div class="form-actions">
-      <button class="btn btn-ghost" onclick="closeModal('addCategoryModal')">Cancel</button>
-      <button class="btn btn-primary" onclick="saveCategory()">Add Category</button>
+
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('catModal')">Cancel</button>
+      <button class="btn-primary" onclick="saveCategory()">Save Category</button>
+    </div>
+  </div>
+</div>
+
+<!-- MOVE APP MODAL -->
+<div class="modal-overlay" id="moveModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('moveModal')">×</button>
+    <h2>Move App</h2>
+    <div class="form-group">
+      <label>Choose Category</label>
+      <select id="moveCategorySelect"></select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('moveModal')">Cancel</button>
+      <button class="btn-primary" onclick="confirmMove()">Move</button>
     </div>
   </div>
 </div>
 
 <!-- TOAST -->
-<div id="toast"></div>
+<div class="toast" id="toast"></div>
 
 <script>
-// ─────────────────────────────────────────────
-//  DEFAULT DATA
-// ─────────────────────────────────────────────
+// ─── DEFAULT DATA ────────────────────────────────────────────────────────────
+
 const DEFAULT_CATEGORIES = [
-  { id: 'communication', name: 'Communication', emoji: '📬' },
-  { id: 'project',       name: 'Project Management', emoji: '📋' },
-  { id: 'finance',       name: 'Finance', emoji: '' },
-  { id: 'sales',         name: 'Sales & CRM', emoji: '' },
-  { id: 'operations',    name: 'Operations', emoji: '' },
-  { id: 'ai',            name: 'AI Tools', emoji: '🤖' },
+  { id: 'communication', name: 'Communication', icon: '📬' },
+  { id: 'project',       name: 'Project Management', icon: '📋' },
+  { id: 'finance',       name: 'Finance', icon: '💰' },
+  { id: 'sales',         name: 'Sales & CRM', icon: '🛒' },
+  { id: 'operations',    name: 'Operations', icon: '🔧' },
+  { id: 'ai',            name: 'AI Tools', icon: '🤖' }
 ];
 
 const DEFAULT_APPS = [
   // Communication
-  { id: 'gmail',     name: 'Gmail',          url: 'https://mail.google.com',           icon: 'https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico',                          category: 'communication' },
-  { id: 'gmeet',     name: 'Google Meet',    url: 'https://meet.google.com',           icon: 'https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png', category: 'communication' },
-  { id: 'slack',     name: 'Slack',          url: 'https://slack.com',                 icon: 'https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png',   category: 'communication' },
-  { id: 'loom',      name: 'Loom',           url: 'https://www.loom.com',              icon: 'https://cdn.loom.com/assets/favicons/favicon.ico',                                 category: 'communication' },
-  { id: 'fathom',    name: 'Fathom',         url: 'https://fathom.video/home',         icon: 'https://fathom.video/favicon.ico',                                                 category: 'communication' },
+  { id: 'gmail',    name: 'Gmail',          url: 'https://mail.google.com',       icon: 'https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_512dp.png',                   category: 'communication' },
+  { id: 'meet',     name: 'Google Meet',    url: 'https://meet.google.com',       icon: 'https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png', category: 'communication' },
+  { id: 'slack',    name: 'Slack',          url: 'https://slack.com',             icon: 'https://a.slack-edge.com/80588/marketing/img/meta/slack_hash_128.png',                          category: 'communication' },
+  { id: 'loom',     name: 'Loom',           url: 'https://www.loom.com',          icon: 'https://cdn.loom.com/assets/img/og/loom-share.png',                                             category: 'communication' },
+  { id: 'fathom',   name: 'Fathom',         url: 'https://fathom.video/home',     icon: 'https://fathom.video/favicon.ico',                                                              category: 'communication' },
 
   // Project Management
-  { id: 'asana',     name: 'Asana',          url: 'https://app.asana.com/1/1203386861136560/home', icon: 'https://assets.asana.biz/m/245ce5b3f2045ede/original/asana-icon-2x.png', category: 'project' },
-  { id: 'notion',    name: 'Notion',         url: 'https://www.notion.so/moxie-docs/6060ef49fea04dc3a1dc0a32d0564233', icon: 'https://www.notion.so/images/favicon.ico',        category: 'project' },
-  { id: 'arrows',    name: 'Arrows',         url: 'https://success.joinmoxie.com/home', icon: 'https://www.joinmoxie.com/favicon.ico',                                            category: 'project' },
+  { id: 'asana',    name: 'Asana',          url: 'https://app.asana.com/1/1203386861136560/home', icon: 'https://luna1.co/7d4500.png',                                                    category: 'project' },
+  { id: 'notion',   name: 'Notion',         url: 'https://www.notion.so/moxie-docs/6060ef49fea04dc3a1dc0a32d0564233', icon: 'https://www.notion.so/images/favicon.ico',                 category: 'project' },
+  { id: 'arrows',   name: 'Arrows',         url: 'https://success.joinmoxie.com/home', icon: 'https://success.joinmoxie.com/favicon.ico',                                                category: 'project' },
+  { id: 'gcal',     name: 'Google Calendar',url: 'https://calendar.google.com',   icon: 'https://calendar.google.com/googlecalendar/images/favicons_2020q4/calendar_2020q4_favicon2x.ico', category: 'project' },
+  { id: 'gsheets',  name: 'Google Sheets',  url: 'https://sheets.google.com',     icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png',                   category: 'project' },
 
   // Finance
-  { id: 'ramp',      name: 'Ramp',           url: 'https://app.ramp.com/sign-in',      icon: 'https://ramp.com/favicon.ico',                                                     category: 'finance' },
-  { id: 'stripe',    name: 'Stripe',         url: 'https://dashboard.stripe.com/register?account_invite=uis_sSEYJeeK7OA10mzCAF69eIyxWICgGRPI', icon: 'https://stripe.com/favicon.ico', category: 'finance' },
-  { id: 'justworks', name: 'JustWorks',      url: 'https://payroll.justworks.com/account/vouchers', icon: 'https://justworks.com/favicon.ico',                                    category: 'finance' },
+  { id: 'ramp',     name: 'Ramp',           url: 'https://app.ramp.com/sign-in',  icon: 'https://ramp.com/favicon.ico',                                                                  category: 'finance' },
+  { id: 'stripe',   name: 'Stripe',         url: 'https://dashboard.stripe.com/register?account_invite=uis_sSEYJeeK7OA10mzCAF69eIyxWICgGRPI', icon: 'https://stripe.com/favicon.ico',  category: 'finance' },
+  { id: 'justworks',name: 'JustWorks',      url: 'https://payroll.justworks.com/account/vouchers', icon: 'https://justworks.com/favicon.ico',                                             category: 'finance' },
 
   // Sales & CRM
-  { id: 'hubspot',   name: 'HubSpot',        url: 'https://app.hubspot.com/login/?loginRedirectUrl=https%3A%2F%2Fapp.hubspot.com%2Fcont', icon: 'https://www.hubspot.com/favicon.ico', category: 'sales' },
-  { id: 'shopify',   name: 'Shopify',        url: 'https://admin.shopify.com/store/moxie-9681', icon: 'https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_favicon-7f5c5352d7c3568e5fe49f0c81cf0e6a5fcd02cd5b61eedc34acfe2ca31a4bca.png', category: 'sales' },
+  { id: 'hubspot',  name: 'HubSpot',        url: 'https://app.hubspot.com/login/?loginRedirectUrl=https%3A%2F%2Fapp.hubspot.com%2Fcontacts%2F22420370%2Fobjects%2F0-1%2Fviews%2Fall%2Flist&loginPortalId=22420370', icon: 'https://www.hubspot.com/hubfs/assets/hubspot.com/buzz/HubSpotOpenGraph.png', category: 'sales' },
+  { id: 'shopify',  name: 'Shopify',        url: 'https://admin.shopify.com/store/moxie-9681', icon: 'https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-616ac4f57cc92b13e9f40c2b7d2f3f3c.svg', category: 'sales' },
 
   // Operations
-  { id: 'omni',      name: 'Omni',           url: 'https://moxie.omniapp.co',          icon: 'https://moxie.omniapp.co/favicon.ico',                                             category: 'operations' },
-  { id: 'glean',     name: 'Glean',          url: 'https://app.glean.com/?qe=https%3A%2F%2Fjoinmoxie-be.glean.com', icon: 'https://app.glean.com/favicon.ico',                  category: 'operations' },
-  { id: 'zapier',    name: 'Zapier',         url: 'https://zapier.com',                icon: 'https://cdn.zapier.com/storage/photos/9ec65c79de8ae54080e8e7f9a9e5f020.png',        category: 'operations' },
-  { id: '1password', name: '1Password',      url: 'https://my.1password.com',          icon: 'https://1password.com/favicon.ico',                                                category: 'operations' },
-  { id: 'dropbox',   name: 'Dropbox Sign',   url: 'https://app.hellosign.com/account/logIn', icon: 'https://app.hellosign.com/favicon.ico',                                      category: 'operations' },
-  { id: 'gcal',      name: 'Google Calendar',url: 'https://calendar.google.com',       icon: 'https://calendar.google.com/googlecalendar/images/favicon_v2014_1.ico',            category: 'operations' },
-  { id: 'gsheets',   name: 'Google Sheets',  url: 'https://sheets.google.com',         icon: 'https://ssl.gstatic.com/docs/spreadsheets/favicon3.ico',                           category: 'operations' },
-  { id: 'moxieadmin',name: 'Moxie Admin',    url: 'https://api.prod.internal.joinmoxie.com/admin/login/', icon: '',                                                            category: 'operations' },
-  { id: 'github',    name: 'GitHub',         url: 'https://github.com',                icon: 'https://github.com/favicon.ico',                                                   category: 'operations' },
+  { id: 'omni',     name: 'Omni',           url: 'https://moxie.omniapp.co',      icon: 'https://moxie.omniapp.co/favicon.ico',                                                          category: 'operations' },
+  { id: 'glean',    name: 'Glean',          url: 'https://app.glean.com/?qe=https%3A%2F%2Fjoinmoxie-be.glean.com&utm_source=admin_invite&utm_medium=email&utm_campaign=vanity_v3&skip_to_sso=1&setup=welcome', icon: 'https://app.glean.com/favicon.ico', category: 'operations' },
+  { id: '1password',name: '1Password',      url: 'https://my.1password.com',      icon: 'https://1password.com/img/social-sharing-logo.png',                                             category: 'operations' },
+  { id: 'dropbox',  name: 'Dropbox Sign',   url: 'https://app.hellosign.com/account/logIn', icon: 'https://app.hellosign.com/favicon.ico',                                               category: 'operations' },
+  { id: 'zapier',   name: 'Zapier',         url: 'https://zapier.com',            icon: 'https://cdn.zapier.com/zapier/images/favicon.ico',                                              category: 'operations' },
+  { id: 'github',   name: 'GitHub',         url: 'https://github.com',            icon: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',                     category: 'operations' },
+  { id: 'moxieadmin',name:'Moxie Admin',    url: 'https://api.prod.internal.joinmoxie.com/admin/login/', icon: '🔐',                                                                     category: 'operations' },
 
   // AI
-  { id: 'chatgpt',   name: 'ChatGPT',        url: 'https://chatgpt.com',               icon: 'https://chatgpt.com/favicon.ico',                                                  category: 'ai' },
+  { id: 'chatgpt',  name: 'ChatGPT',        url: 'https://chatgpt.com',           icon: 'https://cdn.oaistatic.com/_next/static/media/favicon-32x32.be48395e.png',                      category: 'ai' }
 ];
 
-// ─────────────────────────────────────────────
-//  STATE
-// ─────────────────────────────────────────────
-let state = { categories: [], apps: [] };
+// ─── STATE ───────────────────────────────────────────────────────────────────
+
+let categories = [];
+let apps = [];
 let editingAppId = null;
+let contextAppId = null;
 let dragSrcId = null;
-let dragSrcCategory = null;
 
-// ─────────────────────────────────────────────
-//  INIT
-// ─────────────────────────────────────────────
-function init() {
-  const saved = localStorage.getItem('moxieDashboard');
-  if (saved) {
-    try {
-      const parsed = JSON.parse(saved);
-      // Merge: keep saved data but add any new defaults not yet present
-      state.categories = parsed.categories || DEFAULT_CATEGORIES;
-      const savedIds = new Set((parsed.apps || []).map(a => a.id));
-      const newDefaults = DEFAULT_APPS.filter(a => !savedIds.has(a.id));
-      state.apps = [...(parsed.apps || []), ...newDefaults];
-    } catch(e) {
-      state = { categories: [...DEFAULT_CATEGORIES], apps: [...DEFAULT_APPS] };
-    }
+// ─── STORAGE ─────────────────────────────────────────────────────────────────
+
+function loadData() {
+  const savedCats = localStorage.getItem('moxie_categories');
+  const savedApps = localStorage.getItem('moxie_apps');
+
+  if (savedCats) {
+    categories = JSON.parse(savedCats);
   } else {
-    state = { categories: [...DEFAULT_CATEGORIES], apps: [...DEFAULT_APPS] };
+    categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
+    saveCategories();
   }
-  render();
+
+  if (savedApps) {
+    apps = JSON.parse(savedApps);
+  } else {
+    apps = JSON.parse(JSON.stringify(DEFAULT_APPS));
+    saveApps();
+  }
 }
 
-// ─────────────────────────────────────────────
-//  SAVE
-// ─────────────────────────────────────────────
-function save() {
-  localStorage.setItem('moxieDashboard', JSON.stringify(state));
+function saveCategories() {
+  localStorage.setItem('moxie_categories', JSON.stringify(categories));
 }
 
-// ─────────────────────────────────────────────
-//  RENDER
-// ─────────────────────────────────────────────
+function saveApps() {
+  localStorage.setItem('moxie_apps', JSON.stringify(apps));
+}
+
+// ─── RENDER ──────────────────────────────────────────────────────────────────
+
 function render(filter = '') {
   const main = document.getElementById('mainContent');
   main.innerHTML = '';
 
-  state.categories.forEach(cat => {
-    let apps = state.apps.filter(a => a.category === cat.id);
-    if (filter) {
-      apps = apps.filter(a => a.name.toLowerCase().includes(filter.toLowerCase()));
-    }
+  // Add Category button
+  const addCatBtn = document.createElement('button');
+  addCatBtn.className = 'add-cat-btn';
+  addCatBtn.textContent = '＋ Add Category';
+  addCatBtn.onclick = () => openModal('catModal');
+  main.appendChild(addCatBtn);
+
+  const query = filter.toLowerCase().trim();
+
+  categories.forEach(cat => {
+    const catApps = apps.filter(a => a.category === cat.id &&
+      (query === '' || a.name.toLowerCase().includes(query)));
+
+    if (query && catApps.length === 0) return;
 
     const section = document.createElement('div');
     section.className = 'category-section';
-    section.dataset.categoryId = cat.id;
+    section.dataset.catId = cat.id;
 
     section.innerHTML = `
       <div class="category-header">
-        <div class="category-title-wrap">
-          <span class="category-emoji">${cat.emoji || '📁'}</span>
-          <span class="category-name">${cat.name}</span>
-          <span class="category-count">${apps.length}</span>
-        </div>
-        <div class="category-actions">
-          <button class="btn btn-ghost btn-sm" onclick="renameCategory('${cat.id}')">✏️ Rename</button>
-          <button class="btn btn-ghost btn-sm" onclick="deleteCategory('${cat.id}')">🗑️ Remove</button>
-        </div>
+        <span class="category-icon">${cat.icon}</span>
+        <span class="category-name">${cat.name}</span>
+        <span class="category-count">${catApps.length}</span>
       </div>
-      <div class="app-grid" id="grid-${cat.id}"
-           ondragover="onDragOver(event,'${cat.id}')"
-           ondragleave="onDragLeave(event,'${cat.id}')"
-           ondrop="onDrop(event,'${cat.id}')">
-        ${apps.length === 0 ? '<div class="empty-drop">Drop apps here</div>' : ''}
-        ${apps.map(app => renderAppCard(app)).join('')}
-      </div>
+      <div class="app-grid" id="grid-${cat.id}" data-cat="${cat.id}"></div>
     `;
 
     main.appendChild(section);
+
+    const grid = section.querySelector(`#grid-${cat.id}`);
+
+    if (catApps.length === 0) {
+      grid.innerHTML = '<div class="empty-grid">No apps yet — click ＋ Add App</div>';
+    } else {
+      catApps.forEach(app => grid.appendChild(createCard(app)));
+    }
+
+    // Drag-over highlight
+    grid.addEventListener('dragover', e => {
+      e.preventDefault();
+      grid.classList.add('drag-over');
+    });
+
+    grid.addEventListener('dragleave', () => grid.classList.remove('drag-over'));
+
+    grid.addEventListener('drop', e => {
+      e.preventDefault();
+      grid.classList.remove('drag-over');
+      if (dragSrcId && dragSrcId !== cat.id + '') {
+        const idx = apps.findIndex(a => a.id === dragSrcId);
+        if (idx > -1) {
+          apps[idx].category = cat.id;
+          saveApps();
+          showToast(`Moved to ${cat.name}`);
+          render(document.getElementById('searchInput').value);
+        }
+      }
+    });
   });
 }
 
-function renderAppCard(app) {
-  const iconHtml = isEmoji(app.icon)
-    ? `<span class="emoji-icon">${app.icon}</span>`
-    : `<img src="${app.icon}" alt="${app.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🌐</text></svg>'">`;
+function createCard(app) {
+  const card = document.createElement('div');
+  card.className = 'app-card';
+  card.draggable = true;
+  card.dataset.appId = app.id;
 
-  return `
-    <div class="app-card"
-         draggable="true"
-         data-app-id="${app.id}"
-         ondragstart="onDragStart(event,'${app.id}','${app.category}')"
-         ondragend="onDragEnd(event)"
-         onclick="handleCardClick(event,'${app.url}')">
-      <div class="app-card-actions">
-        <button class="card-action-btn" onclick="editApp('${app.id}')" title="Edit">✏️</button>
-        <button class="card-action-btn delete" onclick="deleteApp('${app.id}')" title="Delete">✕</button>
-      </div>
-      <div class="app-icon-wrap">${iconHtml}</div>
-      <span class="app-name">${app.name}</span>
-    </div>
+  const iconHtml = buildIconHtml(app.icon, app.name);
+
+  card.innerHTML = `
+    <button class="app-card-menu" title="Options" onclick="openContextMenu(event, '${app.id}')">⋯</button>
+    <div class="app-icon">${iconHtml}</div>
+    <span class="app-name">${app.name}</span>
   `;
+
+  // Click to open (but not on menu button)
+  card.addEventListener('click', e => {
+    if (e.target.classList.contains('app-card-menu')) return;
+    window.open(app.url, '_blank');
+  });
+
+  // Drag
+  card.addEventListener('dragstart', () => {
+    dragSrcId = app.id;
+    setTimeout(() => card.classList.add('dragging'), 0);
+  });
+
+  card.addEventListener('dragend', () => {
+    card.classList.remove('dragging');
+    dragSrcId = null;
+  });
+
+  return card;
 }
 
-function isEmoji(str) {
-  if (!str) return false;
-  // Check if it's NOT a URL and NOT base64
-  return !str.startsWith('http') && !str.startsWith('data:') && !str.startsWith('/');
-}
-
-// ─────────────────────────────────────────────
-//  CARD CLICK (ignore if clicking action btn)
-// ─────────────────────────────────────────────
-function handleCardClick(e, url) {
-  if (e.target.closest('.app-card-actions')) return;
-  window.open(url, '_blank');
-}
-
-// ─────────────────────────────────────────────
-//  SEARCH
-// ─────────────────────────────────────────────
-function filterApps(val) { render(val); }
-
-// ─────────────────────────────────────────────
-//  DRAG & DROP
-// ─────────────────────────────────────────────
-function onDragStart(e, appId, catId) {
-  dragSrcId = appId;
-  dragSrcCategory = catId;
-  e.currentTarget.classList.add('dragging');
-  e.dataTransfer.effectAllowed = 'move';
-}
-
-function onDragEnd(e) {
-  e.currentTarget.classList.remove('dragging');
-  document.querySelectorAll('.app-grid').forEach(g => g.classList.remove('drag-over'));
-}
-
-function onDragOver(e, catId) {
-  e.preventDefault();
-  e.dataTransfer.dropEffect = 'move';
-  document.getElementById('grid-' + catId).classList.add('drag-over');
-}
-
-function onDragLeave(e, catId) {
-  document.getElementById('grid-' + catId).classList.remove('drag-over');
-}
-
-function onDrop(e, catId) {
-  e.preventDefault();
-  document.getElementById('grid-' + catId).classList.remove('drag-over');
-  if (!dragSrcId || dragSrcId === catId) return;
-
-  const app = state.apps.find(a => a.id === dragSrcId);
-  if (app) {
-    app.category = catId;
-    save();
-    render(document.getElementById('searchInput').value);
-    showToast(`Moved "${app.name}" to ${state.categories.find(c=>c.id===catId)?.name}`, 'success');
+function buildIconHtml(icon, name) {
+  if (!icon) {
+    return `<span class="emoji-icon">🌐</span>`;
   }
+  if (icon.startsWith('http') || icon.startsWith('data:')) {
+    return `<img src="${icon}" alt="${name}" onerror="this.parentElement.innerHTML='<span class=\\'emoji-icon\\'>🌐</span>'">`;
+  }
+  // It's an emoji or text
+  return `<span class="emoji-icon">${icon}</span>`;
 }
 
-// ─────────────────────────────────────────────
-//  ADD / EDIT APP MODAL
-// ─────────────────────────────────────────────
+// ─── SEARCH ──────────────────────────────────────────────────────────────────
+
+function filterApps() {
+  const q = document.getElementById('searchInput').value;
+  render(q);
+}
+
+// ─── ADD/EDIT APP ─────────────────────────────────────────────────────────────
+
 function openAddModal() {
   editingAppId = null;
   document.getElementById('modalTitle').textContent = 'Add New App';
   document.getElementById('appName').value = '';
   document.getElementById('appUrl').value = '';
   document.getElementById('appIcon').value = '';
-  previewIcon('');
-  populateCategorySelect();
+  document.getElementById('iconPreviewBox').innerHTML = '<span style="font-size:22px">🌐</span>';
+  populateCategorySelect('appCategory');
   openModal('appModal');
 }
 
-function editApp(appId) {
-  const app = state.apps.find(a => a.id === appId);
+function editApp() {
+  closeContextMenu();
+  const app = apps.find(a => a.id === contextAppId);
   if (!app) return;
-  editingAppId = appId;
+
+  editingAppId = app.id;
   document.getElementById('modalTitle').textContent = 'Edit App';
   document.getElementById('appName').value = app.name;
   document.getElementById('appUrl').value = app.url;
   document.getElementById('appIcon').value = app.icon || '';
-  previewIcon(app.icon || '');
-  populateCategorySelect(app.category);
+  previewIcon();
+  populateCategorySelect('appCategory', app.category);
   openModal('appModal');
-}
-
-function populateCategorySelect(selected = '') {
-  const sel = document.getElementById('appCategory');
-  sel.innerHTML = state.categories.map(c =>
-    `<option value="${c.id}" ${c.id === selected ? 'selected' : ''}>${c.emoji} ${c.name}</option>`
-  ).join('');
 }
 
 function saveApp() {
   const name = document.getElementById('appName').value.trim();
   const url  = document.getElementById('appUrl').value.trim();
   const icon = document.getElementById('appIcon').value.trim();
-  const cat  = document.getElementById('appCategory').value;
+  const category = document.getElementById('appCategory').value;
 
-  if (!name) { showToast('Please enter an app name', 'error'); return; }
-  if (!url)  { showToast('Please enter a URL', 'error'); return; }
+  if (!name || !url) { showToast('⚠️ Name and URL are required'); return; }
+  if (!url.startsWith('http')) { showToast('⚠️ URL must start with https://'); return; }
+  if (!category) { showToast('⚠️ Please select a category'); return; }
 
   if (editingAppId) {
-    const app = state.apps.find(a => a.id === editingAppId);
-    if (app) { app.name = name; app.url = url; app.icon = icon || '🌐'; app.category = cat; }
-    showToast(`"${name}" updated!`, 'success');
+    const idx = apps.findIndex(a => a.id === editingAppId);
+    if (idx > -1) {
+      apps[idx] = { ...apps[idx], name, url, icon, category };
+      showToast('✅ App updated!');
+    }
   } else {
-    const id = 'app_' + Date.now();
-    state.apps.push({ id, name, url, icon: icon || '🌐', category: cat });
-    showToast(`"${name}" added!`, 'success');
+    const newApp = {
+      id: 'app_' + Date.now(),
+      name, url, icon, category
+    };
+    apps.push(newApp);
+    showToast('✅ App added!');
   }
 
-  save();
+  saveApps();
   closeModal('appModal');
   render(document.getElementById('searchInput').value);
 }
 
-function deleteApp(appId) {
-  const app = state.apps.find(a => a.id === appId);
+function deleteApp() {
+  closeContextMenu();
+  if (!contextAppId) return;
+  const app = apps.find(a => a.id === contextAppId);
   if (!app) return;
-  if (!confirm(`Remove "${app.name}"?`)) return;
-  state.apps = state.apps.filter(a => a.id !== appId);
-  save();
+  if (!confirm(`Delete "${app.name}"?`)) return;
+  apps = apps.filter(a => a.id !== contextAppId);
+  saveApps();
+  showToast('🗑️ App deleted');
   render(document.getElementById('searchInput').value);
-  showToast(`"${app.name}" removed`, 'success');
 }
 
-// ─────────────────────────────────────────────
-//  ICON PREVIEW
-// ─────────────────────────────────────────────
-function previewIcon(val) {
-  const prev = document.getElementById('iconPreview');
-  if (!val) { prev.innerHTML = '<span>🌐</span>'; return; }
-  if (isEmoji(val)) {
-    prev.innerHTML = `<span style="font-size:1.8rem">${val}</span>`;
-  } else {
-    prev.innerHTML = `<img src="${val}" style="width:100%;height:100%;object-fit:contain" onerror="this.parentElement.innerHTML='<span>🌐</span>'">`;
+// ─── MOVE APP ─────────────────────────────────────────────────────────────────
+
+function moveApp() {
+  closeContextMenu();
+  populateCategorySelect('moveCategorySelect');
+  openModal('moveModal');
+}
+
+function confirmMove() {
+  const newCat = document.getElementById('moveCategorySelect').value;
+  const idx = apps.findIndex(a => a.id === contextAppId);
+  if (idx > -1 && newCat) {
+    apps[idx].category = newCat;
+    saveApps();
+    const cat = categories.find(c => c.id === newCat);
+    showToast(`Moved to ${cat ? cat.name : newCat}`);
+    closeModal('moveModal');
+    render(document.getElementById('searchInput').value);
   }
 }
 
-function handleIconFile(input) {
-  const file = input.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    document.getElementById('appIcon').value = e.target.result;
-    previewIcon(e.target.result);
-  };
-  reader.readAsDataURL(file);
-}
-
-// ─────────────────────────────────────────────
-//  CATEGORIES
-// ─────────────────────────────────────────────
-function openAddCategoryModal() {
-  document.getElementById('newCategoryName').value = '';
-  document.getElementById('newCategoryEmoji').value = '';
-  openModal('addCategoryModal');
-}
+// ─── ADD CATEGORY ─────────────────────────────────────────────────────────────
 
 function saveCategory() {
-  const name  = document.getElementById('newCategoryName').value.trim();
-  const emoji = document.getElementById('newCategoryEmoji').value.trim() || '📁';
-  if (!name) { showToast('Please enter a category name', 'error'); return; }
+  const name  = document.getElementById('catName').value.trim();
+  const emoji = document.getElementById('catEmoji').value.trim() || '📁';
+
+  if (!name) { showToast('⚠️ Category name required'); return; }
 
   const id = 'cat_' + Date.now();
-  state.categories.push({ id, name, emoji });
-  save();
-  closeModal('addCategoryModal');
+  categories.push({ id, name, icon: emoji });
+  saveCategories();
+  showToast(`✅ Category "${name}" added`);
+  closeModal('catModal');
   render(document.getElementById('searchInput').value);
-  showToast(`Category "${name}" added!`, 'success');
 }
 
-function renameCategory(catId) {
-  const cat = state.categories.find(c => c.id === catId);
-  if (!cat) return;
-  const newName = prompt('Rename category:', cat.name);
-  if (newName && newName.trim()) {
-    cat.name = newName.trim();
-    const newEmoji = prompt('Change emoji (optional):', cat.emoji);
-    if (newEmoji !== null) cat.emoji = newEmoji.trim() || cat.emoji;
-    save();
-    render(document.getElementById('searchInput').value);
-    showToast('Category updated!', 'success');
+// ─── CONTEXT MENU ────────────────────────────────────────────────────────────
+
+function openContextMenu(e, appId) {
+  e.stopPropagation();
+  e.preventDefault();
+  contextAppId = appId;
+
+  const menu = document.getElementById('contextMenu');
+  menu.style.display = 'block';
+
+  const x = Math.min(e.clientX, window.innerWidth - 180);
+  const y = Math.min(e.clientY, window.innerHeight - 150);
+  menu.style.left = x + 'px';
+  menu.style.top  = y + 'px';
+}
+
+function closeContextMenu() {
+  document.getElementById('contextMenu').style.display = 'none';
+}
+
+document.addEventListener('click', closeContextMenu);
+
+// ─── ICON PREVIEW ─────────────────────────────────────────────────────────────
+
+function previewIcon() {
+  const val = document.getElementById('appIcon').value.trim();
+  const box = document.getElementById('iconPreviewBox');
+  if (val.startsWith('http') || val.startsWith('data:')) {
+    box.innerHTML = `<img src="${val}" onerror="this.parentElement.innerHTML='<span style=\\'font-size:22px\\'>🌐</span>'">`;
+  } else if (val) {
+    box.innerHTML = `<span style="font-size:22px">${val}</span>`;
+  } else {
+    box.innerHTML = '<span style="font-size:22px">🌐</span>';
   }
 }
 
-function deleteCategory(catId) {
-  const cat = state.categories.find(c => c.id === catId);
-  const appCount = state.apps.filter(a => a.category === catId).length;
-  if (!confirm(`Delete category "${cat?.name}"? ${appCount > 0 ? `${appCount} app(s) will be moved to the first category.` : ''}`)) return;
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
 
-  state.categories = state.categories.filter(c => c.id !== catId);
-  if (state.categories.length > 0) {
-    state.apps.forEach(a => { if (a.category === catId) a.category = state.categories[0].id; });
-  }
-  save();
-  render(document.getElementById('searchInput').value);
-  showToast('Category removed', 'success');
+function populateCategorySelect(selectId, selectedId = '') {
+  const sel = document.getElementById(selectId);
+  sel.innerHTML = categories.map(c =>
+    `<option value="${c.id}" ${c.id === selectedId ? 'selected' : ''}>${c.icon} ${c.name}</option>`
+  ).join('');
 }
 
-// ─────────────────────────────────────────────
-//  EXPORT / IMPORT
-// ─────────────────────────────────────────────
-function exportData() {
-  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'moxie-dashboard-backup.json';
-  a.click();
-  showToast('Dashboard exported!', 'success');
-}
-
-function importData(input) {
-  const file = input.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    try {
-      const data = JSON.parse(e.target.result);
-      if (data.categories && data.apps) {
-        state = data;
-        save();
-        render();
-        showToast('Dashboard imported!', 'success');
-      } else {
-        showToast('Invalid file format', 'error');
-      }
-    } catch { showToast('Could not read file', 'error'); }
-  };
-  reader.readAsText(file);
-  input.value = '';
-}
-
-// ─────────────────────────────────────────────
-//  MODAL HELPERS
-// ─────────────────────────────────────────────
 function openModal(id) {
-  document.getElementById(id).classList.add('open');
+  document.getElementById(id).classList.add('active');
 }
+
 function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
+  document.getElementById(id).classList.remove('active');
 }
 
-// Close on overlay click
-document.querySelectorAll('.modal-overlay').forEach(overlay => {
-  overlay.addEventListener('click', e => {
-    if (e.target === overlay) overlay.classList.remove('open');
-  });
-});
-
-// ─────────────────────────────────────────────
-//  TOAST
-// ─────────────────────────────────────────────
-let toastTimeout;
-function showToast(msg, type = 'success') {
+function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
-  t.className = `show ${type}`;
-  clearTimeout(toastTimeout);
-  toastTimeout = setTimeout(() => { t.className = ''; }, 3000);
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
 }
 
-// ─────────────────────────────────────────────
-//  START
-// ─────────────────────────────────────────────
-init();
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+
+loadData();
+render();
 </script>
 </body>
 </html>
-
