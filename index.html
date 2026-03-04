@@ -1,1 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moxie Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f8f9fa;
+    color: #333;
+    min-height: 100vh;
+  }
+
+  .header {
+    background: white;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .header-logo {
+    height: 36px;
+    width: auto;
+  }
+
+  .header-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #4E8D99;
+  }
+
+  .header-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .btn-primary {
+    background: #4E8D99;
+    color: white;
+  }
+
+  .btn-primary:hover { background: #3d7280; }
+
+  .btn-secondary {
+    background: #f0f0f0;
+    color: #555;
+  }
+
+  .btn-secondary:hover { background: #e0e0e0; }
+
+  .btn-danger {
+    background: #fee2e2;
+    color: #dc2626;
+  }
+
+  .btn-danger:hover { background: #fecaca; }
+
+  .main {
+    padding: 24px 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .category-section {
+    margin-bottom: 32px;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e9ecef;
+  }
+
+  .category-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 16px;
+  }
+
+  .app-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    border: 2px solid transparent;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .app-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(78,141,153,0.2);
+    border-color: #4E8D99;
+  }
+
+  .app-card-actions {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: none;
+    gap: 4px;
+    z-index: 10;
+  }
+
+  .app-card:hover .app-card-actions {
+    display: flex;
+  }
+
+  .app-action-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .app-edit-btn {
+    background: #dbeafe;
+    color: #2563eb;
+  }
+
+  .app-edit-btn:hover { background: #93c5fd; }
+
+  .app-delete-btn {
+    background: #fee2e2;
+    color: #dc2626;
+  }
+
+  .app-delete-btn:hover { background: #fca5a5; }
+
+  .app-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f8f9fa;
+  }
+
+  .app-icon-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .app-icon-emoji {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .app-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #444;
+    line-height: 1.3;
+    word-break: break-word;
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+
+  .modal h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+    outline: none;
+    background: white;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: #4E8D99;
+  }
+
+  .icon-preview {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .icon-preview-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1.5px solid #e0e0e0;
+    flex-shrink: 0;
+  }
+
+  .icon-preview-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .icon-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .icon-option-btn {
+    padding: 6px 12px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-size: 12px;
+    color: #555;
+    transition: all 0.2s;
+  }
+
+  .icon-option-btn:hover, .icon-option-btn.active {
+    border-color: #4E8D99;
+    color: #4E8D99;
+    background: #f0f9fb;
+  }
+
+  .upload-btn-label {
+    padding: 6px 12px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-size: 12px;
+    color: #555;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .upload-btn-label:hover {
+    border-color: #4E8D99;
+    color: #4E8D99;
+    background: #f0f9fb;
+  }
+
+  #iconFileInput { display: none; }
+
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+  }
+
+  /* Category modal */
+  .cat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .cat-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+  }
+
+  .cat-item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cat-item-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .add-cat-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .add-cat-form input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+  }
+
+  .add-cat-form input:focus {
+    border-color: #4E8D99;
+  }
+
+  /* Drag and drop */
+  .app-card.dragging {
+    opacity: 0.4;
+    border: 2px dashed #4E8D99;
+  }
+
+  .apps-grid.drag-over {
+    background: #f0f9fb;
+    border-radius: 12px;
+    border: 2px dashed #4E8D99;
+  }
+
+  .hidden { display: none !important; }
+
+  /* Logo fallback */
+  .logo-text {
+    font-size: 22px;
+    font-weight: 800;
+    color: #4E8D99;
+    letter-spacing: -0.5px;
+  }
+
+  @media (max-width: 600px) {
+    .main { padding: 16px; }
+    .header { padding: 12px 16px; }
+    .apps-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+    .header-title { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <img class="header-logo" id="moxieLogo" 
+      src="https://app.joinmoxie.com/assets/moxie-logo.svg" 
+      alt="Moxie"
+      onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block';">
+    <span class="logo-text" id="logoFallback" style="display:none;">moxie</span>
+    <span class="header-title">Dashboard</span>
+  </div>
+  <div class="header-right">
+    <button class="btn btn-secondary" onclick="openCategoryModal()">⚙️ Categories</button>
+    <button class="btn btn-primary" onclick="openAddModal()">+ Add App</button>
+  </div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<!-- Add/Edit App Modal -->
+<div class="modal-overlay hidden" id="appModal">
+  <div class="modal">
+    <h2 id="appModalTitle">Add App</h2>
+    <div class="form-group">
+      <label>App Name *</label>
+      <input type="text" id="appName" placeholder="e.g. Gmail">
+    </div>
+    <div class="form-group">
+      <label>URL *</label>
+      <input type="url" id="appUrl" placeholder="https://...">
+    </div>
+    <div class="form-group">
+      <label>Category</label>
+      <select id="appCategory"></select>
+    </div>
+    <div class="form-group">
+      <label>Icon</label>
+      <div class="icon-options" style="margin-bottom:8px;">
+        <button class="icon-option-btn active" id="btnAutoIcon" onclick="setIconMode('auto')">Auto (from URL)</button>
+        <button class="icon-option-btn" id="btnUrlIcon" onclick="setIconMode('url')">Icon URL</button>
+        <label class="upload-btn-label">
+          📁 Upload Image
+          <input type="file" id="iconFileInput" accept="image/*" onchange="handleIconUpload(event)">
+        </label>
+      </div>
+      <div id="iconUrlGroup" class="hidden">
+        <input type="url" id="appIconUrl" placeholder="https://example.com/icon.png">
+      </div>
+      <div class="icon-preview">
+        <div class="icon-preview-box">
+          <img id="iconPreviewImg" src="" alt="" style="display:none;">
+          <span id="iconPreviewEmoji" style="font-size:28px;"></span>
+        </div>
+        <span style="font-size:12px;color:#888;">Icon preview</span>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeAppModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveApp()">Save App</button>
+    </div>
+  </div>
+</div>
+
+<!-- Category Manager Modal -->
+<div class="modal-overlay hidden" id="categoryModal">
+  <div class="modal">
+    <h2>Manage Categories</h2>
+    <div class="cat-list" id="catList"></div>
+    <div class="add-cat-form">
+      <input type="text" id="newCatName" placeholder="New category name...">
+      <input type="text" id="newCatEmoji" placeholder="Emoji" style="width:70px;">
+      <button class="btn btn-primary" onclick="addCategory()">Add</button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="closeCategoryModal()">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===================== DEFAULT DATA =====================
+const DEFAULT_CATEGORIES = [
+  { id: 'communication', name: 'Communication', emoji: '📬' },
+  { id: 'project', name: 'Project Management', emoji: '📋' },
+  { id: 'finance', name: 'Finance', emoji: '💰' },
+  { id: 'sales', name: 'Sales & CRM', emoji: '🛒' },
+  { id: 'operations', name: 'Operations', emoji: '🔧' },
+  { id: 'ai', name: 'AI Tools', emoji: '🤖' },
+  { id: 'cat_1772575179646', name: 'Supplies', emoji: '💊' }
+];
+
+const DEFAULT_APPS = [
+  // Communication
+  { id: 'gmail', name: 'Gmail', url: 'https://mail.google.com', category: 'communication',
+    icon: 'https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico' },
+  { id: 'meet', name: 'Google Meet', url: 'https://meet.google.com', category: 'communication',
+    icon: 'https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png' },
+  { id: 'slack', name: 'Slack', url: 'https://slack.com', category: 'communication',
+    icon: 'https://a.slack-edge.com/80588/marketing/img/meta/slack_hash_256.png' },
+  { id: 'loom', name: 'Loom', url: 'https://www.loom.com', category: 'communication',
+    icon: 'https://cdn.loom.com/assets/img/og/loom-facebook-og.png' },
+  { id: 'fathom', name: 'Fathom', url: 'https://fathom.video/home', category: 'communication',
+    icon: 'https://fathom.video/favicon.ico' },
+  { id: 'calendar', name: 'Google Calendar', url: 'https://calendar.google.com', category: 'communication',
+    icon: 'https://calendar.google.com/googlecalendar/images/favicon_v2018_256.png' },
+
+  // Project Management
+  { id: 'notion', name: 'Notion', url: 'https://www.notion.so/moxie-docs/6060ef49fea04dc3a1dc0a32d0564233', category: 'project',
+    icon: 'https://www.notion.so/images/favicon.ico' },
+  { id: 'arrows', name: 'Arrows', url: 'https://success.joinmoxie.com/home', category: 'project',
+    icon: 'https://assets-global.website-files.com/614e2d59ec4e8e52620b8dde/6150dcd8bbcfd7e9e234d24d_favicon-arrows.png' },
+  { id: 'asana', name: 'Asana', url: 'https://app.asana.com/1/1203386861136560/home', category: 'project',
+    icon: 'https://app.asana.com/favicon.ico' },
+  { id: 'gcal', name: 'Google Calendar', url: 'https://calendar.google.com', category: 'project',
+    icon: 'https://calendar.google.com/googlecalendar/images/favicon_v2018_256.png' },
+  { id: 'gsheets', name: 'Google Sheets', url: 'https://sheets.google.com', category: 'project',
+    icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png' },
+  { id: 'clickup', name: 'ClickUp', url: 'https://app.clickup.com/', category: 'project',
+    icon: 'https://clickup.com/landing/favicons/favicon-32x32.png' },
+
+  // Finance
+  { id: 'ramp', name: 'Ramp', url: 'https://app.ramp.com/sign-in', category: 'finance',
+    icon: 'https://ramp.com/favicon.ico' },
+  { id: 'stripe', name: 'Stripe', url: 'https://dashboard.stripe.com/register?account_invite=uis_sSEYJeeK7OA10mzCAF69eIyxWICgGRPI', category: 'finance',
+    icon: 'https://stripe.com/favicon.ico' },
+  { id: 'justworks', name: 'JustWorks', url: 'https://payroll.justworks.com/account/vouchers', category: 'finance',
+    icon: 'https://justworks.com/favicon.ico' },
+
+  // Sales & CRM
+  { id: 'hubspot', name: 'HubSpot', url: 'https://app.hubspot.com/login/?loginRedirectUrl=https%3A%2F%2Fapp.hubspot.com%2Fcontacts%2F22420370%2Fobjects%2F0-1%2Fviews%2Fall%2Flist&loginPortalId=22420370', category: 'sales',
+    icon: 'https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png' },
+  { id: 'shopify', name: 'Shopify', url: 'https://admin.shopify.com/store/moxie-9681', category: 'sales',
+    icon: 'https://cdn.shopify.com/shopifycloud/web/assets/v1/vite/client/en/assets/shopify-icon-GWnNFWHr.svg' },
+
+  // Operations
+  { id: 'omni', name: 'Omni', url: 'https://moxie.omniapp.co', category: 'operations',
+    icon: 'https://omniapp.co/favicon.ico' },
+  { id: 'glean', name: 'Glean', url: 'https://app.glean.com', category: 'operations',
+    icon: 'https://app.glean.com/favicon.ico' },
+  { id: '1password', name: '1Password', url: 'https://my.1password.com', category: 'operations',
+    icon: 'https://1password.com/favicon.ico' },
+  { id: 'dropbox', name: 'Dropbox Sign', url: 'https://app.hellosign.com/account/logIn', category: 'operations',
+    icon: 'https://app.hellosign.com/favicon.ico' },
+  { id: 'zapier', name: 'Zapier', url: 'https://zapier.com', category: 'operations',
+    icon: 'https://cdn.zapier.com/zapier/images/favicon.ico' },
+  { id: 'github', name: 'GitHub', url: 'https://github.com', category: 'operations',
+    icon: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' },
+  { id: 'moxieadmin', name: 'Moxie Admin', url: 'https://api.prod.internal.joinmoxie.com/admin/login/?next=/admin/', category: 'operations',
+    icon: 'https://joinmoxie.com/favicon.ico' },
+  { id: 'app_1772502003790', name: 'Moxie App', url: 'https://app.joinmoxie.com/', category: 'operations',
+    icon: 'https://app.joinmoxie.com/assets/moxie-logo.svg' },
+  { id: 'app_1772502126339', name: 'Moxie PC Ownership', url: 'https://www.notion.so/moxie-docs/Moxie-PC-Overview-PC-Owner-Roles-4e240fa3b3744c689b3fa58315ce7299', category: 'operations',
+    icon: 'https://www.notion.so/images/favicon.ico' },
+  { id: 'app_1772502201922', name: 'Moxie State Overview', url: 'https://www.notion.so/moxie-docs/88a04edd15f54a30b7eee6b71871258b', category: 'operations',
+    icon: 'https://www.notion.so/images/favicon.ico' },
+  { id: 'app_1772502288022', name: 'GTM Reporting', url: 'https://docs.google.com/spreadsheets/u/1/d/1FoMfitLCBZlUCOOgXK3e3GSfET2r7BsryEdcaMKw4Rc/edit', category: 'operations',
+    icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png' },
+  { id: 'app_1772502362737', name: 'WBR Reporting', url: 'https://docs.google.com/spreadsheets/d/1POeaDXKcETvpy9DPN7GSWUztlp6P3USS2cOkA4oEyeE/edit', category: 'operations',
+    icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png' },
+  { id: 'app_1772502684236', name: 'MD HQ', url: 'https://www.notion.so/moxie-docs/NEW-MD-HQ-19fe63b2b0a380858183f0f69fc29672', category: 'operations',
+    icon: 'https://www.notion.so/images/favicon.ico' },
+  { id: 'app_1772503142815', name: 'Compliance Breakdown', url: 'https://www.notion.so/moxie-docs/', category: 'operations',
+    icon: 'https://www.notion.so/images/favicon.ico' },
+
+  // AI Tools
+  { id: 'chatgpt', name: 'ChatGPT', url: 'https://chatgpt.com', category: 'ai',
+    icon: 'https://cdn.oaistatic.com/assets/favicon-o20kmmos.svg' },
+  { id: 'app_1772501906091_notebooklm', name: 'Notebook LM', url: 'https://notebooklm.google.com', category: 'ai',
+    icon: 'https://www.gstatic.com/notebooklm/notebooklm_favicon_v2.ico' },
+
+  // Supplies
+  { id: 'app_1772574016191', name: 'Pharma Promos', url: 'https://www.notion.so/moxie-docs/27ae63b2b0a3803b89cceeedba52132b', category: 'cat_1772575179646',
+    icon: 'https://www.notion.so/images/favicon.ico' },
+  { id: 'app_1772575277813', name: 'Pharma Pricing', url: 'https://docs.google.com/spreadsheets/d/1kHcpXh-aWWCGGCXlU51RaEsjrHVr2o4jaKypo8GerXw/edit', category: 'cat_1772575179646',
+    icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png' },
+  { id: 'app_1772575775828', name: 'Laser and Device Prices', url: 'https://www.notion.so/moxie-docs/Laser-and-Energy-Device-Look-Book-224e63b2b0a380dd9177d14fd9b2244e', category: 'cat_1772575179646',
+    icon: 'https://www.notion.so/images/favicon.ico' },
+  { id: 'app_1772502831735', name: 'ClickUp', url: 'https://app.clickup.com/', category: 'project',
+    icon: 'https://clickup.com/landing/favicons/favicon-32x32.png' }
+];
+
+// ===================== STATE =====================
+const STORAGE_KEY = 'moxieDashboard_v4';
+let state = { categories: [], apps: [] };
+let editingAppId = null;
+let iconMode = 'auto';
+let uploadedIconData = null;
+let dragSrcId = null;
+
+// ===================== STORAGE =====================
+function loadState() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      state = JSON.parse(saved);
+    } else {
+      // Check if old version exists and migrate
+      migrateFromOldStorage();
+    }
+    
+    // Always ensure default categories exist (by ID)
+    DEFAULT_CATEGORIES.forEach(dc => {
+      if (!state.categories.find(c => c.id === dc.id)) {
+        state.categories.push({ ...dc });
+      }
+    });
+    
+    // Always ensure default apps exist (by ID)
+    DEFAULT_APPS.forEach(da => {
+      if (!state.apps.find(a => a.id === da.id)) {
+        state.apps.push({ ...da });
+      }
+    });
+
+  } catch(e) {
+    state = {
+      categories: JSON.parse(JSON.stringify(DEFAULT_CATEGORIES)),
+      apps: JSON.parse(JSON.stringify(DEFAULT_APPS))
+    };
+  }
+  saveState();
+}
+
+function migrateFromOldStorage() {
+  // Try to load from old storage keys and merge data
+  const OLD_KEYS = ['moxieDashboard_v3', 'moxieDashboard_v2', 'moxieDashboard_v1'];
+  let oldState = null;
+  
+  for (const key of OLD_KEYS) {
+    try {
+      const old = localStorage.getItem(key);
+      if (old) {
+        oldState = JSON.parse(old);
+        break;
+      }
+    } catch(e) {}
+  }
+
+  if (oldState) {
+    // Start with defaults
+    state = {
+      categories: JSON.parse(JSON.stringify(DEFAULT_CATEGORIES)),
+      apps: JSON.parse(JSON.stringify(DEFAULT_APPS))
+    };
+
+    // Merge old custom categories (not in defaults)
+    if (oldState.categories) {
+      oldState.categories.forEach(oldCat => {
+        if (!state.categories.find(c => c.id === oldCat.id)) {
+          state.categories.push({ ...oldCat });
+        }
+      });
+    }
+
+    // Merge old custom apps (not in defaults)
+    if (oldState.apps) {
+      oldState.apps.forEach(oldApp => {
+        const existing = state.apps.find(a => a.id === oldApp.id);
+        if (!existing) {
+          // It's a custom app, add it
+          state.apps.push({ ...oldApp });
+        } else {
+          // Update with stored version to preserve user edits
+          Object.assign(existing, oldApp);
+        }
+      });
+    }
+  } else {
+    state = {
+      categories: JSON.parse(JSON.stringify(DEFAULT_CATEGORIES)),
+      apps: JSON.parse(JSON.stringify(DEFAULT_APPS))
+    };
+  }
+}
+
+function saveState() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch(e) {
+    console.warn('Could not save to localStorage:', e);
+  }
+}
+
+// ===================== RENDER =====================
+function render() {
+  const main = document.getElementById('mainContent');
+  main.innerHTML = '';
+
+  state.categories.forEach(cat => {
+    const apps = state.apps.filter(a => a.category === cat.id);
+    if (apps.length === 0) return;
+
+    const section = document.createElement('div');
+    section.className = 'category-section';
+    section.setAttribute('data-category', cat.id);
+
+    const emoji = cat.emoji || cat.icon || '📁';
+
+    section.innerHTML = `
+      <div class="category-header">
+        <div class="category-title">
+          <span>${emoji}</span>
+          <span>${escapeHtml(cat.name)}</span>
+        </div>
+      </div>
+      <div class="apps-grid" 
+           id="grid-${cat.id}"
+           ondragover="onDragOver(event)"
+           ondrop="onDrop(event, '${cat.id}')"
+           ondragleave="onDragLeave(event)">
+      </div>
+    `;
+
+    main.appendChild(section);
+
+    const grid = section.querySelector(`#grid-${cat.id}`);
+    apps.forEach(app => {
+      grid.appendChild(createAppCard(app));
+    });
+  });
+
+  // Apps with no matching category
+  const uncategorized = state.apps.filter(a => !state.categories.find(c => c.id === a.category));
+  if (uncategorized.length > 0) {
+    const section = document.createElement('div');
+    section.className = 'category-section';
+    section.innerHTML = `
+      <div class="category-header">
+        <div class="category-title"><span>📎 Uncategorized</span></div>
+      </div>
+      <div class="apps-grid" id="grid-uncategorized"
+           ondragover="onDragOver(event)"
+           ondrop="onDrop(event, 'uncategorized')"
+           ondragleave="onDragLeave(event)"></div>
+    `;
+    main.appendChild(section);
+    const grid = section.querySelector('#grid-uncategorized');
+    uncategorized.forEach(app => grid.appendChild(createAppCard(app)));
+  }
+}
+
+function createAppCard(app) {
+  const card = document.createElement('a');
+  card.className = 'app-card';
+  card.href = app.url;
+  card.target = '_blank';
+  card.rel = 'noopener noreferrer';
+  card.setAttribute('data-id', app.id);
+  card.draggable = true;
+
+  card.addEventListener('dragstart', (e) => {
+    dragSrcId = app.id;
+    card.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+  });
+  card.addEventListener('dragend', () => card.classList.remove('dragging'));
+
+  const safeId = app.id.replace(/[^a-zA-Z0-9_]/g, '_');
+  const iconHtml = getIconHtml(app, safeId);
+
+  card.innerHTML = `
+    <div class="app-card-actions">
+      <button class="app-action-btn app-edit-btn" title="Edit" onclick="openEditModal('${escapeHtml(app.id)}', event)">✏️</button>
+      <button class="app-action-btn app-delete-btn" title="Delete" onclick="deleteApp('${escapeHtml(app.id)}', event)">×</button>
+    </div>
+    <div class="app-icon-wrapper">${iconHtml}</div>
+    <div class="app-name">${escapeHtml(app.name)}</div>
+  `;
+
+  return card;
+}
+
+function getIconHtml(app, safeId) {
+  const fallbackEmoji = getDefaultEmoji(app.name);
+  if (!app.icon) {
+    return `<span class="app-icon-emoji">${fallbackEmoji}</span>`;
+  }
+  return `<img src="${escapeHtml(app.icon)}" alt="${escapeHtml(app.name)}" 
+    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <span class="app-icon-emoji" style="display:none;">${fallbackEmoji}</span>`;
+}
+
+function getDefaultEmoji(name) {
+  const n = (name || '').toLowerCase();
+  if (n.includes('gmail') || n.includes('mail')) return '📧';
+  if (n.includes('meet') || n.includes('zoom')) return '📹';
+  if (n.includes('slack')) return '💬';
+  if (n.includes('sheet') || n.includes('excel')) return '📊';
+  if (n.includes('notion')) return '📝';
+  if (n.includes('calendar')) return '📅';
+  if (n.includes('stripe') || n.includes('ramp') || n.includes('finance')) return '💳';
+  if (n.includes('shopify')) return '🛍️';
+  if (n.includes('github')) return '🐙';
+  if (n.includes('zapier')) return '⚡';
+  if (n.includes('password')) return '🔑';
+  if (n.includes('chat') || n.includes('gpt') || n.includes('ai')) return '🤖';
+  if (n.includes('notebook')) return '📒';
+  if (n.includes('asana') || n.includes('clickup')) return '✅';
+  if (n.includes('loom')) return '🎥';
+  if (n.includes('hubspot')) return '🎯';
+  if (n.includes('glean')) return '🔍';
+  if (n.includes('pharma') || n.includes('laser') || n.includes('supplies')) return '💊';
+  if (n.includes('compliance')) return '📋';
+  if (n.includes('reporting') || n.includes('gtm') || n.includes('wbr')) return '📈';
+  return '🔗';
+}
+
+function escapeHtml(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ===================== DRAG & DROP =====================
+function onDragOver(e) {
+  e.preventDefault();
+  e.currentTarget.classList.add('drag-over');
+  e.dataTransfer.dropEffect = 'move';
+}
+
+function onDragLeave(e) {
+  e.currentTarget.classList.remove('drag-over');
+}
+
+function onDrop(e, categoryId) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  if (dragSrcId) {
+    const app = state.apps.find(a => a.id === dragSrcId);
+    if (app) {
+      app.category = categoryId;
+      saveState();
+      render();
+    }
+    dragSrcId = null;
+  }
+}
+
+// ===================== APP MODAL =====================
+function openAddModal() {
+  editingAppId = null;
+  iconMode = 'auto';
+  uploadedIconData = null;
+  document.getElementById('appModalTitle').textContent = 'Add App';
+  document.getElementById('appName').value = '';
+  document.getElementById('appUrl').value = '';
+  document.getElementById('appIconUrl').value = '';
+  updateIconPreview('');
+  setIconMode('auto');
+  populateCategorySelect();
+  document.getElementById('appModal').classList.remove('hidden');
+}
+
+function openEditModal(appId, e) {
+  e.preventDefault();
+  e.stopPropagation();
+  const app = state.apps.find(a => a.id === appId);
+  if (!app) return;
+  editingAppId = appId;
+  uploadedIconData = null;
+  document.getElementById('appModalTitle').textContent = 'Edit App';
+  document.getElementById('appName').value = app.name;
+  document.getElementById('appUrl').value = app.url;
+  populateCategorySelect(app.category);
+
+  if (app.icon && app.icon.startsWith('data:')) {
+    iconMode = 'upload';
+    uploadedIconData = app.icon;
+    setIconMode('upload');
+    updateIconPreview(app.icon);
+  } else if (app.icon) {
+    iconMode = 'url';
+    document.getElementById('appIconUrl').value = app.icon;
+    setIconMode('url');
+    updateIconPreview(app.icon);
+  } else {
+    iconMode = 'auto';
+    setIconMode('auto');
+    updateIconPreview(getAutoIcon(app.url));
+  }
+
+  document.getElementById('appModal').classList.remove('hidden');
+}
+
+function closeAppModal() {
+  document.getElementById('appModal').classList.add('hidden');
+}
+
+function populateCategorySelect(selectedId) {
+  const sel = document.getElementById('appCategory');
+  sel.innerHTML = '';
+  state.categories.forEach(cat => {
+    const opt = document.createElement('option');
+    opt.value = cat.id;
+    const emoji = cat.emoji || cat.icon || '';
+    opt.textContent = `${emoji} ${cat.name}`;
+    if (cat.id === selectedId) opt.selected = true;
+    sel.appendChild(opt);
+  });
+}
+
+function setIconMode(mode) {
+  iconMode = mode;
+  document.getElementById('btnAutoIcon').classList.toggle('active', mode === 'auto');
+  document.getElementById('btnUrlIcon').classList.toggle('active', mode === 'url');
+  document.getElementById('iconUrlGroup').classList.toggle('hidden', mode !== 'url');
+
+  if (mode === 'auto') {
+    const url = document.getElementById('appUrl').value;
+    updateIconPreview(getAutoIcon(url));
+  } else if (mode === 'url') {
+    const iconUrl = document.getElementById('appIconUrl').value;
+    updateIconPreview(iconUrl);
+  } else if (mode === 'upload' && uploadedIconData) {
+    updateIconPreview(uploadedIconData);
+  }
+}
+
+function getAutoIcon(url) {
+  if (!url) return '';
+  try {
+    const u = new URL(url);
+    return `https://www.google.com/s2/favicons?domain=${u.hostname}&sz=64`;
+  } catch(e) { return ''; }
+}
+
+function handleIconUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    uploadedIconData = ev.target.result;
+    iconMode = 'upload';
+    document.getElementById('btnAutoIcon').classList.remove('active');
+    document.getElementById('btnUrlIcon').classList.remove('active');
+    updateIconPreview(uploadedIconData);
+  };
+  reader.readAsDataURL(file);
+}
+
+document.getElementById('appIconUrl').addEventListener('input', function() {
+  if (iconMode === 'url') updateIconPreview(this.value);
+});
+
+document.getElementById('appUrl').addEventListener('input', function() {
+  if (iconMode === 'auto') updateIconPreview(getAutoIcon(this.value));
+});
+
+function updateIconPreview(src) {
+  const img = document.getElementById('iconPreviewImg');
+  const emoji = document.getElementById('iconPreviewEmoji');
+  if (src) {
+    img.src = src;
+    img.style.display = 'block';
+    emoji.style.display = 'none';
+  } else {
+    img.style.display = 'none';
+    emoji.style.display = 'block';
+    emoji.textContent = '🔗';
+  }
+}
+
+function saveApp() {
+  const name = document.getElementById('appName').value.trim();
+  const url = document.getElementById('appUrl').value.trim();
+  const category = document.getElementById('appCategory').value;
+
+  if (!name) { alert('Please enter an app name.'); return; }
+  if (!url) { alert('Please enter a URL.'); return; }
+
+  let icon = '';
+  if (iconMode === 'upload' && uploadedIconData) {
+    icon = uploadedIconData;
+  } else if (iconMode === 'url') {
+    icon = document.getElementById('appIconUrl').value.trim();
+  } else {
+    try {
+      const hostname = new URL(url).hostname;
+      icon = `https://www.google.com/s2/favicons?domain=${hostname}&sz=64`;
+    } catch(e) { icon = ''; }
+  }
+
+  if (editingAppId) {
+    const app = state.apps.find(a => a.id === editingAppId);
+    if (app) {
+      app.name = name;
+      app.url = url;
+      app.category = category;
+      app.icon = icon;
+    }
+  } else {
+    state.apps.push({
+      id: 'app_' + Date.now(),
+      name, url, category, icon
+    });
+  }
+
+  saveState();
+  render();
+  closeAppModal();
+}
+
+// ===================== DELETE APP =====================
+function deleteApp(appId, e) {
+  e.preventDefault();
+  e.stopPropagation();
+  if (!confirm('Delete this app?')) return;
+  state.apps = state.apps.filter(a => a.id !== appId);
+  saveState();
+  render();
+}
+
+// ===================== CATEGORY MODAL =====================
+function openCategoryModal() {
+  renderCatList();
+  document.getElementById('categoryModal').classList.remove('hidden');
+}
+
+function closeCategoryModal() {
+  document.getElementById('categoryModal').classList.add('hidden');
+  render();
+}
+
+function renderCatList() {
+  const list = document.getElementById('catList');
+  list.innerHTML = '';
+  state.categories.forEach(cat => {
+    const item = document.createElement('div');
+    item.className = 'cat-item';
+    const emoji = cat.emoji || cat.icon || '📁';
+    item.innerHTML = `
+      <div class="cat-item-left">
+        <span style="font-size:20px;">${emoji}</span>
+        <span class="cat-item-name">${escapeHtml(cat.name)}</span>
+      </div>
+      <button class="app-action-btn app-delete-btn" style="width:auto;padding:4px 10px;border-radius:6px;" 
+        onclick="deleteCategory('${escapeHtml(cat.id)}')">Remove</button>
+    `;
+    list.appendChild(item);
+  });
+}
+
+function addCategory() {
+  const name = document.getElementById('newCatName').value.trim();
+  const emoji = document.getElementById('newCatEmoji').value.trim() || '📁';
+  if (!name) return;
+  const id = 'cat_' + Date.now();
+  state.categories.push({ id, name, emoji });
+  document.getElementById('newCatName').value = '';
+  document.getElementById('newCatEmoji').value = '';
+  saveState();
+  renderCatList();
+}
+
+function deleteCategory(catId) {
+  const count = state.apps.filter(a => a.category === catId).length;
+  if (count > 0 && !confirm(`This category has ${count} app(s). Remove category anyway? Apps will appear as uncategorized.`)) return;
+  state.categories = state.categories.filter(c => c.id !== catId);
+  saveState();
+  renderCatList();
+}
+
+// ===================== CLOSE MODALS ON OVERLAY CLICK =====================
+document.getElementById('appModal').addEventListener('click', function(e) {
+  if (e.target === this) closeAppModal();
+});
+document.getElementById('categoryModal').addEventListener('click', function(e) {
+  if (e.target === this) closeCategoryModal();
+});
+
+// ===================== INIT =====================
+loadState();
+render();
+</script>
+</body>
+</html>
 
