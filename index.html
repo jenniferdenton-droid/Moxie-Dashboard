@@ -17,16 +17,15 @@
   /* HEADER */
   .header {
     background: white;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 0 24px;
+    border-bottom: 2px solid #EBBA95;
+    padding: 16px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
 
   .header-left {
@@ -35,167 +34,152 @@
     gap: 16px;
   }
 
-  .logo-area {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .logo-circle {
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, #4E8D99, #6D445E);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 800;
-    font-size: 14px;
+  .logo-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #4E8D99;
     letter-spacing: -0.5px;
   }
 
-  .logo-text {
-    font-size: 18px;
-    font-weight: 700;
-    color: #4E8D99;
-    letter-spacing: -0.3px;
-  }
-
-  .logo-sub {
-    font-size: 11px;
-    color: #888;
-    font-weight: 400;
-    margin-left: 2px;
+  .logo-subtitle {
+    font-size: 13px;
+    color: #6D445E;
+    font-weight: 500;
   }
 
   .header-right {
     display: flex;
-    align-items: center;
     gap: 10px;
   }
 
   .btn {
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 9px 18px;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
-    transition: all 0.15s;
     display: flex;
     align-items: center;
     gap: 6px;
+    transition: all 0.2s;
   }
 
   .btn-primary {
     background: #4E8D99;
     color: white;
   }
-  .btn-primary:hover { background: #3d7280; }
+
+  .btn-primary:hover { background: #3d7a86; transform: translateY(-1px); }
 
   .btn-secondary {
-    background: #f0f0f0;
-    color: #555;
-  }
-  .btn-secondary:hover { background: #e0e0e0; }
-
-  .btn-accent {
     background: #6D445E;
     color: white;
   }
-  .btn-accent:hover { background: #5a3a4e; }
 
-  .btn-sm {
-    padding: 5px 10px;
-    font-size: 12px;
-    border-radius: 6px;
+  .btn-secondary:hover { background: #5a3750; transform: translateY(-1px); }
+
+  .btn-outline {
+    background: white;
+    color: #4E8D99;
+    border: 2px solid #4E8D99;
   }
 
-  /* MAIN */
+  .btn-outline:hover { background: #f0f9fa; }
+
+  /* MAIN CONTENT */
   .main {
-    padding: 24px;
     max-width: 1400px;
     margin: 0 auto;
+    padding: 32px 24px;
   }
 
   /* CATEGORY SECTION */
   .category-section {
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
 
   .category-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
+    gap: 10px;
+    margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #e8e8e8;
+    border-bottom: 2px solid #EBBA95;
   }
 
-  .category-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 16px;
-    font-weight: 700;
-    color: #333;
-  }
+  .category-icon { font-size: 20px; }
 
-  .category-icon {
+  .category-name {
     font-size: 18px;
+    font-weight: 700;
+    color: #4E8D99;
   }
 
   .category-count {
+    font-size: 13px;
+    color: #999;
     background: #f0f0f0;
-    color: #888;
-    border-radius: 10px;
-    padding: 1px 8px;
-    font-size: 11px;
-    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
   }
 
-  /* APP GRID */
-  .app-grid {
+  .category-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+  }
+
+  .btn-sm {
+    padding: 4px 10px;
+    font-size: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .btn-sm-edit {
+    background: #f0f9fa;
+    color: #4E8D99;
+    border: 1px solid #4E8D99;
+  }
+
+  .btn-sm-delete {
+    background: #fff0f0;
+    color: #e55;
+    border: 1px solid #e55;
+  }
+
+  /* APPS GRID */
+  .apps-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 12px;
-    min-height: 80px;
-  }
-
-  .app-grid.drag-over {
-    background: #f0f8ff;
-    border-radius: 12px;
-    border: 2px dashed #4E8D99;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
   }
 
   /* APP CARD */
   .app-card {
     background: white;
     border-radius: 12px;
-    border: 1px solid #e8e8e8;
-    padding: 16px 12px 12px;
+    padding: 20px 12px 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.2s;
+    border: 1px solid #eee;
     position: relative;
     text-decoration: none;
     color: inherit;
-    user-select: none;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   }
 
   .app-card:hover {
-    box-shadow: 0 4px 16px rgba(78,141,153,0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(78,141,153,0.18);
     border-color: #4E8D99;
-    transform: translateY(-1px);
-  }
-
-  .app-card.dragging {
-    opacity: 0.4;
-    transform: scale(0.95);
   }
 
   .app-card-actions {
@@ -203,298 +187,198 @@
     top: 6px;
     right: 6px;
     display: none;
-    gap: 3px;
+    gap: 4px;
   }
 
-  .app-card:hover .app-card-actions {
-    display: flex;
-  }
+  .app-card:hover .app-card-actions { display: flex; }
 
-  .card-action-btn {
-    width: 22px;
-    height: 22px;
-    border-radius: 5px;
+  .card-btn {
+    width: 24px;
+    height: 24px;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
     font-size: 11px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.1s;
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    transition: all 0.15s;
   }
 
-  .card-action-btn:hover { transform: scale(1.1); }
-  .edit-btn:hover { background: #4E8D99; color: white; }
-  .delete-btn:hover { background: #e74c3c; color: white; }
+  .card-btn-edit { background: #4E8D99; color: white; }
+  .card-btn-delete { background: #e55; color: white; }
 
-  .drag-handle {
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    color: #ccc;
-    font-size: 10px;
-    cursor: grab;
-    padding: 2px;
-    display: none;
-  }
-
-  .app-card:hover .drag-handle {
-    display: block;
-  }
-
-  .drag-handle:active { cursor: grabbing; }
-
-  .app-icon-wrap {
+  .app-icon {
     width: 52px;
     height: 52px;
     border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f5f5f5;
-    flex-shrink: 0;
-  }
-
-  .app-icon-wrap img {
-    width: 100%;
-    height: 100%;
     object-fit: contain;
-    border-radius: 8px;
+    display: block;
+    background: #f8f9fa;
+    padding: 4px;
   }
 
-  .app-icon-fallback {
+  .app-icon-placeholder {
     width: 52px;
     height: 52px;
     border-radius: 12px;
+    background: linear-gradient(135deg, #4E8D99, #6D445E);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 22px;
-    font-weight: 700;
     color: white;
+    font-weight: 700;
     flex-shrink: 0;
   }
 
   .app-name {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
-    text-align: center;
     color: #333;
+    text-align: center;
     line-height: 1.3;
-    max-width: 110px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    word-break: break-word;
+  }
+
+  /* DRAG AND DROP */
+  .app-card.dragging {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+
+  .app-card.drag-over {
+    border: 2px dashed #4E8D99;
+    background: #f0f9fa;
+  }
+
+  /* DIVIDER between categories */
+  .category-divider {
+    height: 1px;
+    background: linear-gradient(to right, #EBBA95, transparent);
+    margin: 8px 0 32px 0;
+    display: none;
   }
 
   /* MODAL */
   .modal-overlay {
+    display: none;
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.5);
     z-index: 1000;
-    display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(2px);
     padding: 20px;
   }
+
+  .modal-overlay.active { display: flex; }
 
   .modal {
     background: white;
     border-radius: 16px;
+    padding: 28px;
     width: 100%;
     max-width: 480px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    overflow: hidden;
-  }
-
-  .modal-header {
-    padding: 20px 24px 16px;
-    border-bottom: 1px solid #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .modal-title {
-    font-size: 17px;
-    font-weight: 700;
-    color: #333;
-  }
-
-  .modal-close {
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    border: none;
-    background: #f0f0f0;
-    cursor: pointer;
-    font-size: 16px;
-    color: #555;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .modal-close:hover { background: #e0e0e0; }
-
-  .modal-body {
-    padding: 20px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    max-height: 70vh;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    max-height: 90vh;
     overflow-y: auto;
   }
 
+  .modal-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #4E8D99;
+    margin-bottom: 20px;
+  }
+
   .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+    margin-bottom: 16px;
   }
 
   .form-label {
+    display: block;
     font-size: 13px;
     font-weight: 600;
     color: #555;
+    margin-bottom: 6px;
   }
 
   .form-input, .form-select {
-    padding: 10px 12px;
-    border: 1.5px solid #e0e0e0;
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #eee;
     border-radius: 8px;
     font-size: 14px;
-    transition: border-color 0.15s;
     outline: none;
-    background: white;
-    width: 100%;
+    transition: border-color 0.2s;
   }
 
   .form-input:focus, .form-select:focus {
     border-color: #4E8D99;
   }
 
-  /* ICON PREVIEW */
-  .icon-preview {
-  display: flex;
-  align-items: center;
-  gap: 0px;
-}
-.icon-preview a,
-.icon-preview span.icon-link-indicator {
-  display: none !important;
-}
-
-
-  .icon-preview-box {
-    width: 52px;
-    height: 52px;
-    border-radius: 12px;
+  /* IMAGE UPLOAD */
+  .icon-upload-area {
     border: 2px dashed #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f9f9f9;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  .icon-preview-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .icon-input-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .icon-options {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-
-  .icon-option-btn {
-    padding: 5px 10px;
-    border-radius: 6px;
-    border: 1.5px solid #e0e0e0;
-    background: white;
-    cursor: pointer;
-    font-size: 11px;
-    font-weight: 600;
-    color: #555;
-    transition: all 0.1s;
-  }
-
-  .icon-option-btn.active,
-  .icon-option-btn:hover {
-    border-color: #4E8D99;
-    color: #4E8D99;
-    background: #f0f8f9;
-  }
-
-  .icon-source-area {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .file-upload-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 12px;
-    border: 1.5px dashed #4E8D99;
     border-radius: 8px;
-    background: #f0f8f9;
-    color: #4E8D99;
-    font-size: 12px;
-    font-weight: 600;
+    padding: 16px;
+    text-align: center;
     cursor: pointer;
-    transition: all 0.15s;
-    width: 100%;
-    justify-content: center;
+    transition: all 0.2s;
+    background: #fafafa;
   }
 
-  .file-upload-btn:hover { background: #e0f0f2; }
-  
-  #fileInput { display: none; }
+  .icon-upload-area:hover {
+    border-color: #4E8D99;
+    background: #f0f9fa;
+  }
 
-  .modal-footer {
-    padding: 16px 24px 20px;
-    border-top: 1px solid #f0f0f0;
+  .icon-preview {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .icon-preview img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: contain;
+    border: 1px solid #eee;
+    background: white;
+    padding: 3px;
+  }
+
+  .icon-preview-text {
+    font-size: 13px;
+    color: #666;
+  }
+
+  .icon-clear-btn {
+    padding: 4px 10px;
+    background: #fff0f0;
+    color: #e55;
+    border: 1px solid #e55;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+
+  .modal-actions {
     display: flex;
     gap: 10px;
-    justify-content: flex-end;
+    margin-top: 20px;
   }
 
-  /* CATEGORY MODAL */
-  .cat-modal {
-    max-width: 400px;
-  }
+  .modal-actions .btn { flex: 1; justify-content: center; }
 
-  /* EMPTY STATE */
-  .empty-drop-zone {
-    background: #fafafa;
-    border: 2px dashed #e0e0e0;
-    border-radius: 12px;
-    padding: 24px;
-    text-align: center;
-    color: #bbb;
-    font-size: 13px;
-    min-height: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .btn-cancel {
+    background: #f0f0f0;
+    color: #666;
+    border: none;
   }
 
   /* TOAST */
@@ -504,43 +388,77 @@
     right: 24px;
     background: #333;
     color: white;
-    padding: 12px 18px;
-    border-radius: 10px;
-    font-size: 13px;
-    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
     z-index: 9999;
-    animation: slideUp 0.3s ease;
+    transform: translateY(100px);
+    transition: transform 0.3s;
     box-shadow: 0 4px 16px rgba(0,0,0,0.2);
   }
 
+  .toast.show { transform: translateY(0); }
   .toast.success { background: #4E8D99; }
-  .toast.error { background: #e74c3c; }
+  .toast.error { background: #e55; }
 
-  @keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+  /* EDIT CATEGORY MODAL */
+  .category-edit-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
   }
 
-  /* DRAG PLACEHOLDER */
-  .drag-placeholder {
-    background: #e8f5f7;
-    border: 2px dashed #4E8D99;
-    border-radius: 12px;
-    min-height: 100px;
-    pointer-events: none;
+  /* SEARCH */
+  .search-bar {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 16px;
+    border: 2px solid #eee;
+    border-radius: 24px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
   }
 
-  /* COLOR SWATCH */
-  .color-letter {
-    font-size: 20px;
-    font-weight: 700;
-    color: white;
+  .search-bar:focus { border-color: #4E8D99; }
+
+  .search-wrapper {
+    margin-bottom: 28px;
   }
 
-  .hint {
-    font-size: 11px;
-    color: #aaa;
-    margin-top: 2px;
+  .no-results {
+    text-align: center;
+    color: #999;
+    padding: 40px;
+    font-size: 15px;
+  }
+
+  /* DRAG HANDLE */
+  .drag-handle {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    cursor: grab;
+    font-size: 14px;
+    color: #ccc;
+    display: none;
+  }
+
+  .app-card:hover .drag-handle { display: block; }
+
+  /* EMPTY CATEGORY MESSAGE */
+  .empty-category {
+    color: #bbb;
+    font-size: 13px;
+    font-style: italic;
+    padding: 10px 0;
+  }
+
+  @media (max-width: 600px) {
+    .header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+    .main { padding: 20px 12px; }
+    .apps-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; }
   }
 </style>
 </head>
@@ -549,651 +467,615 @@
 <!-- HEADER -->
 <div class="header">
   <div class="header-left">
-    <div class="logo-area">
-      <div class="logo-circle">M</div>
-      <div>
-        <span class="logo-text">Moxie</span>
-        <span class="logo-sub">Dashboard</span>
-      </div>
+    <div>
+      <div class="logo-text">Moxie</div>
+      <div class="logo-subtitle">Dashboard</div>
     </div>
   </div>
+  <div style="flex:1; display:flex; justify-content:center; padding:0 20px;">
+    <input class="search-bar" id="searchBar" placeholder="🔍 Search apps..." oninput="renderDashboard()">
+  </div>
   <div class="header-right">
-    <button class="btn btn-secondary" onclick="addCategoryModal()">＋ Category</button>
+    <button class="btn btn-outline" onclick="openCategoryModal()">＋ Category</button>
     <button class="btn btn-primary" onclick="openAddModal()">＋ Add App</button>
+    <button class="btn btn-secondary" onclick="exportData()">⬇ Export</button>
+    <button class="btn btn-outline" onclick="triggerImport()">⬆ Import</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
   </div>
 </div>
 
 <!-- MAIN -->
-<div class="main" id="mainContent"></div>
+<div class="main" id="dashboardMain"></div>
 
 <!-- ADD/EDIT APP MODAL -->
-<div class="modal-overlay" id="appModal" style="display:none" onclick="handleOverlayClick(event,'appModal')">
-  <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-header">
-      <span class="modal-title" id="modalTitle">Add App</span>
-      <button class="modal-close" onclick="closeModal('appModal')">✕</button>
+<div class="modal-overlay" id="appModal">
+  <div class="modal">
+    <div class="modal-title" id="modalTitle">Add App</div>
+    
+    <div class="form-group">
+      <label class="form-label">App Name *</label>
+      <input class="form-input" id="appName" placeholder="e.g. Gmail">
     </div>
-    <div class="modal-body">
-      <input type="hidden" id="editAppId">
+
+    <div class="form-group">
+      <label class="form-label">URL *</label>
+      <input class="form-input" id="appUrl" placeholder="https://...">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Category *</label>
+      <select class="form-select" id="appCategory"></select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Icon / Logo</label>
+      <div class="icon-upload-area" onclick="document.getElementById('iconFileInput').click()">
+        <div style="font-size:13px; color:#999;">Click to upload image (PNG, JPG, SVG)</div>
+        <div style="font-size:11px; color:#bbb; margin-top:4px;">or paste an image URL below</div>
+      </div>
+      <input type="file" id="iconFileInput" accept="image/*" style="display:none" onchange="handleIconUpload(event)">
       
-      <div class="form-group">
-        <label class="form-label">App Name *</label>
-        <input class="form-input" id="appName" placeholder="e.g. Slack" />
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">URL *</label>
-        <input class="form-input" id="appUrl" placeholder="https://..." />
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Category</label>
-        <select class="form-select" id="appCategory"></select>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Icon / Logo</label>
-        <div class="icon-preview-area">
-          <div class="icon-preview-box" id="iconPreviewBox">
-            <span style="color:#ccc;font-size:22px">🖼</span>
-          </div>
-          <div class="icon-input-group">
-            <div class="icon-options">
-              <button class="icon-option-btn active" id="optUrl" onclick="switchIconMode('url')">URL</button>
-              <button class="icon-option-btn" id="optUpload" onclick="switchIconMode('upload')">Upload Image</button>
-              <button class="icon-option-btn" id="optAuto" onclick="switchIconMode('auto')">Auto-detect</button>
-            </div>
-            <div class="icon-source-area" id="iconSourceArea">
-              <input class="form-input" id="iconUrl" placeholder="https://site.com/favicon.ico" oninput="previewIconFromUrl()" />
-              <span class="hint">Paste a direct image URL</span>
-            </div>
-          </div>
+      <div id="iconPreviewArea" style="display:none" class="icon-preview">
+        <img id="iconPreviewImg" src="" alt="Icon preview">
+        <div>
+          <div class="icon-preview-text" id="iconPreviewName">Image selected</div>
+          <button class="icon-clear-btn" onclick="clearIcon()">✕ Remove</button>
         </div>
-        <input type="file" id="fileInput" accept="image/*" onchange="handleFileUpload(event)" />
       </div>
+
+      <input class="form-input" id="appIconUrl" placeholder="Or paste icon URL here..." 
+        style="margin-top:8px;" oninput="handleIconUrl(this.value)">
     </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('appModal')">Cancel</button>
-      <button class="btn btn-primary" id="saveAppBtn" onclick="saveApp()">Save App</button>
+
+    <div class="modal-actions">
+      <button class="btn btn-cancel" onclick="closeAppModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveApp()" id="saveAppBtn">Save App</button>
     </div>
   </div>
 </div>
 
-<!-- ADD CATEGORY MODAL -->
-<div class="modal-overlay" id="catModal" style="display:none" onclick="handleOverlayClick(event,'catModal')">
-  <div class="modal cat-modal" onclick="event.stopPropagation()">
-    <div class="modal-header">
-      <span class="modal-title">Add Category</span>
-      <button class="modal-close" onclick="closeModal('catModal')">✕</button>
+<!-- ADD/EDIT CATEGORY MODAL -->
+<div class="modal-overlay" id="categoryModal">
+  <div class="modal">
+    <div class="modal-title" id="catModalTitle">Add Category</div>
+    
+    <div class="form-group">
+      <label class="form-label">Category Name *</label>
+      <input class="form-input" id="catName" placeholder="e.g. Design Tools">
     </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label class="form-label">Category Name *</label>
-        <input class="form-input" id="catName" placeholder="e.g. Design Tools" />
-      </div>
-      <div class="form-group">
-        <label class="form-label">Emoji Icon</label>
-        <input class="form-input" id="catEmoji" placeholder="e.g. 🎨" maxlength="4" style="font-size:20px" />
-      </div>
+
+    <div class="form-group">
+      <label class="form-label">Emoji Icon</label>
+      <input class="form-input" id="catEmoji" placeholder="e.g. 🎨" maxlength="4">
     </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('catModal')">Cancel</button>
-      <button class="btn btn-primary" onclick="saveCategory()">Add Category</button>
+
+    <div class="modal-actions">
+      <button class="btn btn-cancel" onclick="closeCategoryModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveCategory()">Save Category</button>
     </div>
   </div>
 </div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
 <script>
 // ============================================================
-// STORAGE KEY
-// ============================================================
-const STORAGE_KEY = 'moxieDashboardV2';
-
-// ============================================================
-// DEFAULT DATA
+// DEFAULT DATA - YOUR APPS ARE BAKED IN HERE
 // ============================================================
 const DEFAULT_CATEGORIES = [
-  { id: 'communication', name: 'Communication', icon: '📬' },
-  { id: 'project', name: 'Project Management', icon: '📋' },
-  { id: 'finance', name: 'Finance', icon: '💰' },
-  { id: 'sales', name: 'Sales & CRM', icon: '🛒' },
-  { id: 'operations', name: 'Operations', icon: '🔧' },
-  { id: 'ai', name: 'AI Tools', icon: '🤖' }
+  { id: "communication", name: "Communication", icon: "📬" },
+  { id: "project",       name: "Project Management", icon: "📋" },
+  { id: "finance",       name: "Finance", icon: "💰" },
+  { id: "sales",         name: "Sales & CRM", icon: "🛒" },
+  { id: "operations",    name: "Operations", icon: "🔧" },
+  { id: "ai",            name: "AI Tools", icon: "🤖" },
+  { id: "cat_supplies",  name: "Supplies", icon: "💊" }
 ];
 
 const DEFAULT_APPS = [
-  { id: 'gmail', name: 'Gmail', url: 'https://mail.google.com', icon: 'https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_512dp.png', category: 'communication' },
-  { id: 'gmeet', name: 'Google Meet', url: 'https://meet.google.com', icon: 'https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png', category: 'communication' },
-  { id: 'slack', name: 'Slack', url: 'https://slack.com', icon: 'https://a.slack-edge.com/80588/marketing/img/meta/slack_hash_128.png', category: 'communication' },
-  { id: 'loom', name: 'Loom', url: 'https://www.loom.com', icon: 'https://cdn.loom.com/assets/img/og/loom-facebook-og.png', category: 'communication' },
-  { id: 'fathom', name: 'Fathom', url: 'https://fathom.video/home', icon: 'https://fathom.video/favicon.ico', category: 'communication' },
-  { id: 'gcal', name: 'Google Calendar', url: 'https://calendar.google.com', icon: 'https://calendar.google.com/googlecalendar/images/favicon_v2018_256.png', category: 'communication' },
-  { id: 'notion', name: 'Notion', url: 'https://www.notion.so/moxie-docs/6060ef49fea04dc3a1dc0a32d0564233', icon: 'https://www.notion.so/images/favicon.ico', category: 'project' },
-  { id: 'asana', name: 'Asana', url: 'https://app.asana.com/1/1203386861136560/home', icon: 'https://app.asana.com/favicon.ico', category: 'project' },
-  { id: 'arrows', name: 'Arrows', url: 'https://success.joinmoxie.com/home', icon: 'https://assets-global.website-files.com/614e2d59ec4e8e52620b8dde/6150dcd8bbcfd7e9e234d24d_favicon-arrows.png', category: 'project' },
-  { id: 'gsheets', name: 'Google Sheets', url: 'https://sheets.google.com', icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png', category: 'project' },
-  { id: 'ramp', name: 'Ramp', url: 'https://app.ramp.com/sign-in', icon: 'https://ramp.com/favicon.ico', category: 'finance' },
-  { id: 'stripe', name: 'Stripe', url: 'https://dashboard.stripe.com/', icon: 'https://stripe.com/favicon.ico', category: 'finance' },
-  { id: 'justworks', name: 'JustWorks', url: 'https://payroll.justworks.com/account/vouchers', icon: 'https://justworks.com/favicon.ico', category: 'finance' },
-  { id: 'hubspot', name: 'HubSpot', url: 'https://app.hubspot.com/login/?loginPortalId=22420370', icon: 'https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png', category: 'sales' },
-  { id: 'shopify', name: 'Shopify', url: 'https://admin.shopify.com/store/moxie-9681', icon: 'https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_logo_black-d53b0c7d2a875d5dcb26af1b1d3f2e32c7c5bea68b31b8ae35cdb58a8da0ba43.png', category: 'sales' },
-  { id: 'omni', name: 'Omni', url: 'https://moxie.omniapp.co', icon: 'https://moxie.omniapp.co/favicon.ico', category: 'operations' },
-  { id: 'glean', name: 'Glean', url: 'https://app.glean.com', icon: 'https://app.glean.com/favicon.ico', category: 'operations' },
-  { id: '1password', name: '1Password', url: 'https://my.1password.com', icon: 'https://1password.com/img/logo-v1.svg', category: 'operations' },
-  { id: 'dropbox', name: 'Dropbox Sign', url: 'https://app.hellosign.com/account/logIn', icon: 'https://app.hellosign.com/favicon.ico', category: 'operations' },
-  { id: 'zapier', name: 'Zapier', url: 'https://zapier.com', icon: 'https://cdn.zapier.com/zapier/images/favicon.ico', category: 'operations' },
-  { id: 'github', name: 'GitHub', url: 'https://github.com', icon: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png', category: 'operations' },
-  { id: 'moxieadmin', name: 'Moxie Admin', url: 'https://api.prod.internal.joinmoxie.com/admin/login/', icon: 'https://joinmoxie.com/favicon.ico', category: 'operations' },
-  { id: 'chatgpt', name: 'ChatGPT', url: 'https://chatgpt.com', icon: 'https://cdn.oaistatic.com/_next/static/media/favicon-32x32.be48395e.png', category: 'ai' }
+  // COMMUNICATION
+  { id:"gmail",     name:"Gmail",          url:"https://mail.google.com",         icon:"https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_512dp.png", category:"communication" },
+  { id:"gmeet",     name:"Google Meet",    url:"https://meet.google.com",         icon:"https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png", category:"communication" },
+  { id:"slack",     name:"Slack",          url:"https://slack.com",               icon:"https://a.slack-edge.com/80588/marketing/img/meta/slack_hash_128.png", category:"communication" },
+  { id:"loom",      name:"Loom",           url:"https://www.loom.com",            icon:"https://cdn.loom.com/assets/img/og/loom-facebook-og.png", category:"communication" },
+  { id:"fathom",    name:"Fathom",         url:"https://fathom.video/home",       icon:"https://fathom.video/favicon.ico", category:"communication" },
+  { id:"gcal",      name:"Google Calendar",url:"https://calendar.google.com",     icon:"https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg", category:"communication" },
+
+  // PROJECT MANAGEMENT
+  { id:"asana",     name:"Asana",          url:"https://app.asana.com/1/1203386861136560/home", icon:"https://luna1.co/7e4b7f.png", category:"project" },
+  { id:"notion",    name:"Notion",         url:"https://www.notion.so/moxie-docs/6060ef49fea04dc3a1dc0a32d0564233", icon:"https://www.notion.so/images/favicon.ico", category:"project" },
+  { id:"arrows",    name:"Arrows",         url:"https://success.joinmoxie.com/home", icon:"https://assets-global.website-files.com/614e2d59ec4e8e52620b8dde/6150dcd8bbcfd7e9e234d24d_favicon-arrows.png", category:"project" },
+  { id:"gsheets",   name:"Google Sheets",  url:"https://sheets.google.com",       icon:"https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png", category:"project" },
+  { id:"clickup",   name:"ClickUp",        url:"https://app.clickup.com/",        icon:"https://clickup.com/favicon.ico", category:"project" },
+
+  // FINANCE
+  { id:"ramp",      name:"Ramp",           url:"https://app.ramp.com/sign-in",    icon:"https://ramp.com/favicon.ico", category:"finance" },
+  { id:"stripe",    name:"Stripe",         url:"https://dashboard.stripe.com/register?account_invite=uis_sSEYJeeK7OA10mzCAF69eIyxWICgGRPI", icon:"https://stripe.com/favicon.ico", category:"finance" },
+  { id:"justworks", name:"JustWorks",      url:"https://payroll.justworks.com/account/vouchers", icon:"https://justworks.com/favicon.ico", category:"finance" },
+
+  // SALES & CRM
+  { id:"hubspot",   name:"HubSpot",        url:"https://app.hubspot.com/login/?loginRedirectUrl=https%3A%2F%2Fapp.hubspot.com%2Fcontacts%2F22420370%2Fobjects%2F0-1%2Fviews%2Fall%2Flist&loginPortalId=22420370", icon:"https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png", category:"sales" },
+  { id:"shopify",   name:"Shopify",        url:"https://admin.shopify.com/store/moxie-9681", icon:"https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_logo-e9e9e04cbcefd9e8e10ee8f5b33e4d3a6cf46da69748b55c3bb1de3c7e2dcde5.png", category:"sales" },
+
+  // OPERATIONS
+  { id:"omni",      name:"Omni",           url:"https://moxie.omniapp.co",        icon:"https://moxie.omniapp.co/favicon.ico", category:"operations" },
+  { id:"glean",     name:"Glean",          url:"https://app.glean.com/?qe=https%3A%2F%2Fjoinmoxie-be.glean.com&utm_source=admin_invite&utm_medium=email&utm_campaign=vanity_v3&skip_to_sso=1&setup=welcome", icon:"https://app.glean.com/favicon.ico", category:"operations" },
+  { id:"1password", name:"1Password",      url:"https://my.1password.com",        icon:"https://1password.com/img/redesign/1password-logo-white.svg", category:"operations" },
+  { id:"dropbox",   name:"Dropbox Sign",   url:"https://app.hellosign.com/account/logIn", icon:"https://app.hellosign.com/favicon.ico", category:"operations" },
+  { id:"zapier",    name:"Zapier",         url:"https://zapier.com",              icon:"https://cdn.zapier.com/zapier/images/favicon.ico", category:"operations" },
+  { id:"gsheets2",  name:"Google Sheets",  url:"https://sheets.google.com",       icon:"https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png", category:"operations" },
+  { id:"moxieadmin",name:"Moxie Admin",    url:"https://api.prod.internal.joinmoxie.com/admin/login/", icon:"https://joinmoxie.com/favicon.ico", category:"operations" },
+  { id:"github",    name:"GitHub",         url:"https://github.com",              icon:"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png", category:"operations" },
+  { id:"moxieapp",  name:"Moxie App",      url:"https://app.joinmoxie.com/",      icon:"https://app.joinmoxie.com/favicon.ico", category:"operations" },
+  { id:"moxiepc",   name:"Moxie PC Ownership", url:"https://www.notion.so/moxie-docs/Moxie-PC-Overview-PC-Owner-Roles-4e240fa3b3744c689b3fa58315ce7299", icon:"https://www.notion.so/images/favicon.ico", category:"operations" },
+  { id:"moxiestate",name:"Moxie State Overview", url:"https://www.notion.so/moxie-docs/88a04edd15f54a30b7eee6b71871258b?v=d3f9f1837e764d2c8f9740e7bc45b5da", icon:"https://www.notion.so/images/favicon.ico", category:"operations" },
+  { id:"gtm",       name:"GTM Reporting",  url:"https://docs.google.com/spreadsheets/u/1/d/1FoMfitLCBZlUCOOgXK3e3GSfET2r7BsryEdcaMKw4Rc/edit?gid=1252324728#gid=1252324728", icon:"https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png", category:"operations" },
+  { id:"wbr",       name:"WBR Reporting",  url:"https://docs.google.com/spreadsheets/d/1POeaDXKcETvpy9DPN7GSWUztlp6P3USS2cOkA4oEyeE/edit?gid=1144010606#gid=1144010606", icon:"https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png", category:"operations" },
+  { id:"mdhq",      name:"MD HQ",          url:"https://www.notion.so/moxie-docs/NEW-MD-HQ-19fe63b2b0a380858183f0f69fc29672", icon:"https://www.notion.so/images/favicon.ico", category:"operations" },
+
+  // AI
+  { id:"chatgpt",   name:"ChatGPT",        url:"https://chatgpt.com",             icon:"https://cdn.oaistatic.com/_next/static/media/favicon-32x32.be48395e.png", category:"ai" },
+  { id:"notebooklm",name:"Notebook LM",    url:"https://notebooklm.google.com/notebook/8fdc297d-ab9c-455a-ba95-42f83ce1170f", icon:"https://notebooklm.google.com/favicon.ico", category:"ai" },
+
+  // SUPPLIES
+  { id:"pharmapromos",  name:"Pharma Promos",       url:"https://www.notion.so/moxie-docs/27ae63b2b0a3803b89cceeedba52132b?v=27ae63b2b0a380f3a719000c273997d8", icon:"https://www.notion.so/images/favicon.ico", category:"cat_supplies" },
+  { id:"pharmapricing", name:"Pharma Pricing",      url:"https://docs.google.com/spreadsheets/d/1kHcpXh-aWWCGGCXlU51RaEsjrHVr2o4jaKypo8GerXw/edit?gid=227519511#gid=227519511", icon:"https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png", category:"cat_supplies" },
+  { id:"laserprices",   name:"Laser & Device Prices",url:"https://www.notion.so/moxie-docs/Laser-and-Energy-Device-Look-Book-224e63b2b0a380dd9177d14fd9b2244e", icon:"https://www.notion.so/images/favicon.ico", category:"cat_supplies" },
+  { id:"compliance",    name:"Compliance Breakdown", url:"https://www.notion.so/moxie-docs/", icon:"https://www.notion.so/images/favicon.ico", category:"cat_supplies" }
 ];
 
 // ============================================================
-// ICON MODE
+// STATE
 // ============================================================
-let currentIconMode = 'url';
-let currentIconData = '';
+let categories = [];
+let apps = [];
+let editingAppId = null;
+let editingCatId = null;
+let currentIconData = null;
 let dragSrcId = null;
 
-function switchIconMode(mode) {
-  currentIconMode = mode;
-  ['url','upload','auto'].forEach(m => {
-    document.getElementById('opt' + m.charAt(0).toUpperCase() + m.slice(1))
-      .classList.toggle('active', m === mode);
-  });
-  
-  const area = document.getElementById('iconSourceArea');
-  if (mode === 'url') {
-    area.innerHTML = `
-      <input class="form-input" id="iconUrl" placeholder="https://site.com/favicon.ico" oninput="previewIconFromUrl()" value="${currentIconData.startsWith('http') ? currentIconData : ''}" />
-      <span class="hint">Paste a direct image URL</span>`;
-  } else if (mode === 'upload') {
-    area.innerHTML = `
-      <label class="file-upload-btn" for="fileInput">📁 Choose Image File</label>
-      <span class="hint">PNG, JPG, SVG, ICO — saved as base64</span>`;
-  } else {
-    const urlVal = document.getElementById('appUrl')?.value || '';
-    area.innerHTML = `
-      <button class="btn btn-secondary btn-sm" onclick="autoDetectIcon()" style="width:100%">🔍 Detect from URL</button>
-      <span class="hint">Will try to fetch favicon from the app's domain</span>`;
-  }
-}
-
-function previewIconFromUrl() {
-  const val = document.getElementById('iconUrl')?.value || '';
-  currentIconData = val;
-  updateIconPreview(val);
-}
-
-function autoDetectIcon() {
-  const url = document.getElementById('appUrl')?.value || '';
-  if (!url) { showToast('Enter a URL first', 'error'); return; }
-  try {
-    const domain = new URL(url).origin;
-    const favicon = `${domain}/favicon.ico`;
-    currentIconData = favicon;
-    updateIconPreview(favicon);
-    showToast('Favicon detected!', 'success');
-  } catch(e) {
-    showToast('Could not detect icon', 'error');
-  }
-}
-
-function handleFileUpload(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(ev) {
-    currentIconData = ev.target.result;
-    updateIconPreview(currentIconData);
-    showToast('Image uploaded!', 'success');
-  };
-  reader.readAsDataURL(file);
-  e.target.value = '';
-}
-
-function updateIconPreview(src) {
-  const box = document.getElementById('iconPreviewBox');
-  if (!box) return;
-  if (src) {
-    box.innerHTML = `<img src="${src}" onerror="this.style.display='none'" />`;
-  } else {
-    box.innerHTML = `<span style="color:#ccc;font-size:22px">🖼</span>`;
-  }
-}
+const STORAGE_KEY = 'moxieDashboard_v2';
 
 // ============================================================
-// DATA MANAGEMENT
+// STORAGE
 // ============================================================
 function loadData() {
-  // Try new key first
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (raw) {
-    try { return JSON.parse(raw); } catch(e) {}
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const d = JSON.parse(saved);
+      categories = d.categories || [...DEFAULT_CATEGORIES];
+      apps = d.apps || [...DEFAULT_APPS];
+    } else {
+      categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
+      apps = JSON.parse(JSON.stringify(DEFAULT_APPS));
+      saveData();
+    }
+  } catch(e) {
+    categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
+    apps = JSON.parse(JSON.stringify(DEFAULT_APPS));
   }
-
-  // MIGRATE from old keys
-  let categories = [...DEFAULT_CATEGORIES];
-  let apps = [...DEFAULT_APPS];
-  let migrated = false;
-
-  // Try moxie_categories + moxie_apps (most recent old format)
-  const oldCats = localStorage.getItem('moxie_categories');
-  const oldApps = localStorage.getItem('moxie_apps');
-  if (oldApps) {
-    try {
-      const parsed = JSON.parse(oldApps);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        // Merge: keep defaults, add any custom ones
-        const defaultIds = new Set(DEFAULT_APPS.map(a => a.id));
-        const customApps = parsed.filter(a => !defaultIds.has(a.id) && a.id && a.id.startsWith('app_'));
-        apps = [...DEFAULT_APPS, ...customApps];
-        migrated = true;
-      }
-    } catch(e) {}
-  }
-  if (oldCats) {
-    try {
-      const parsed = JSON.parse(oldCats);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        const defaultIds = new Set(DEFAULT_CATEGORIES.map(c => c.id));
-        const customCats = parsed.filter(c => !defaultIds.has(c.id));
-        categories = [...DEFAULT_CATEGORIES, ...customCats];
-        migrated = true;
-      }
-    } catch(e) {}
-  }
-
-  // Also check moxieDashboard key
-  const oldDash = localStorage.getItem('moxieDashboard');
-  if (oldDash) {
-    try {
-      const parsed = JSON.parse(oldDash);
-      if (parsed.apps && Array.isArray(parsed.apps)) {
-        const defaultIds = new Set(DEFAULT_APPS.map(a => a.id));
-        const customApps2 = parsed.apps.filter(a => !defaultIds.has(a.id) && a.id && a.id.startsWith('app_'));
-        // Merge without duplicates
-        const existingCustomIds = new Set(apps.filter(a=>a.id.startsWith('app_')).map(a=>a.id));
-        const newCustom = customApps2.filter(a => !existingCustomIds.has(a.id));
-        apps = [...apps, ...newCustom];
-        migrated = true;
-      }
-      if (parsed.categories && Array.isArray(parsed.categories)) {
-        const defaultIds = new Set(DEFAULT_CATEGORIES.map(c => c.id));
-        const existingCustomIds = new Set(categories.filter(c=>c.id.startsWith('cat_')).map(c=>c.id));
-        const newCustomCats = parsed.categories.filter(c => !defaultIds.has(c.id) && !existingCustomIds.has(c.id));
-        categories = [...categories, ...newCustomCats];
-        migrated = true;
-      }
-    } catch(e) {}
-  }
-
-  if (migrated) {
-    console.log('✅ Migrated data from old storage keys. Custom apps found:', apps.filter(a=>a.id.startsWith('app_')).length);
-  }
-
-  const data = { categories, apps };
-  saveData(data);
-  return data;
 }
 
-function saveData(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-
-function getData() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return loadData();
-  try { return JSON.parse(raw); } catch(e) { return loadData(); }
+function saveData() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ categories, apps }));
 }
 
 // ============================================================
 // RENDER
 // ============================================================
-function render() {
-  const data = getData();
-  const main = document.getElementById('mainContent');
-  main.innerHTML = '';
+function renderDashboard() {
+  const search = (document.getElementById('searchBar')?.value || '').toLowerCase().trim();
+  const main = document.getElementById('dashboardMain');
+  
+  let html = '';
+  let hasResults = false;
 
-  data.categories.forEach(cat => {
-    const catApps = data.apps.filter(a => a.category === cat.id);
-    
-    const section = document.createElement('div');
-    section.className = 'category-section';
-    section.dataset.categoryId = cat.id;
+  categories.forEach((cat, idx) => {
+    const catApps = apps.filter(a => {
+      const inCat = a.category === cat.id;
+      if (!search) return inCat;
+      return inCat && (a.name.toLowerCase().includes(search) || a.url.toLowerCase().includes(search));
+    });
 
-    section.innerHTML = `
-      <div class="category-header">
-        <div class="category-title">
+    if (search && catApps.length === 0) return;
+    hasResults = true;
+
+    html += `
+      <div class="category-section" data-cat-id="${cat.id}">
+        <div class="category-header">
           <span class="category-icon">${cat.icon || cat.emoji || '📁'}</span>
-          <span>${cat.name}</span>
+          <span class="category-name">${escHtml(cat.name)}</span>
           <span class="category-count">${catApps.length}</span>
+          <div class="category-actions">
+            <button class="btn-sm btn-sm-edit" onclick="openEditCategoryModal('${cat.id}')">✏️ Edit</button>
+            <button class="btn-sm btn-sm-delete" onclick="deleteCategory('${cat.id}')">🗑 Delete</button>
+          </div>
         </div>
-        <div style="display:flex;gap:6px">
-          <button class="btn btn-secondary btn-sm" onclick="openAddModal('${cat.id}')">＋ Add</button>
-          ${!DEFAULT_CATEGORIES.find(d=>d.id===cat.id) ? `<button class="btn btn-secondary btn-sm" onclick="deleteCategory('${cat.id}')">🗑</button>` : ''}
-        </div>
-      </div>
-      <div class="app-grid" id="grid-${cat.id}" 
-        ondragover="handleDragOver(event)" 
-        ondrop="handleDrop(event,'${cat.id}')"
-        ondragleave="handleDragLeave(event)">
-        ${catApps.length === 0 ? '<div class="empty-drop-zone">Drop apps here</div>' : ''}
-      </div>
+        <div class="apps-grid" id="grid-${cat.id}">
     `;
 
-    main.appendChild(section);
+    if (catApps.length === 0) {
+      html += `<div class="empty-category">No apps in this category yet.</div>`;
+    } else {
+      catApps.forEach(app => {
+        html += renderAppCard(app);
+      });
+    }
 
-    const grid = document.getElementById(`grid-${cat.id}`);
-    catApps.forEach(app => {
-      grid.appendChild(createAppCard(app));
-    });
+    html += `</div></div>`;
   });
 
-  // Uncategorized
-  const allCatIds = new Set(data.categories.map(c => c.id));
-  const uncategorized = data.apps.filter(a => !allCatIds.has(a.category));
-  if (uncategorized.length > 0) {
-    const section = document.createElement('div');
-    section.className = 'category-section';
-    section.innerHTML = `
-      <div class="category-header">
-        <div class="category-title"><span class="category-icon">📂</span><span>Uncategorized</span><span class="category-count">${uncategorized.length}</span></div>
-      </div>
-      <div class="app-grid" id="grid-uncategorized"></div>
-    `;
-    main.appendChild(section);
-    const grid = document.getElementById('grid-uncategorized');
-    uncategorized.forEach(app => grid.appendChild(createAppCard(app)));
+  if (!hasResults) {
+    html = `<div class="no-results">No apps found for "<strong>${escHtml(search)}</strong>"</div>`;
   }
+
+  main.innerHTML = html;
+  setupDragAndDrop();
 }
 
-function createAppCard(app) {
-  const card = document.createElement('a');
-  card.className = 'app-card';
-  card.href = app.url;
-  card.target = '_blank';
-  card.rel = 'noopener noreferrer';
-  card.dataset.appId = app.id;
-  card.draggable = true;
+function renderAppCard(app) {
+  const iconHtml = app.icon
+    ? `<img class="app-icon" src="${escHtml(app.icon)}" alt="${escHtml(app.name)}" 
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+       <div class="app-icon-placeholder" style="display:none">${escHtml(app.name.charAt(0))}</div>`
+    : `<div class="app-icon-placeholder">${escHtml(app.name.charAt(0))}</div>`;
 
-  card.addEventListener('dragstart', handleDragStart);
-  card.addEventListener('dragend', handleDragEnd);
-
-  const colors = ['#4E8D99','#6D445E','#EBBA95','#5b8c5a','#7b68ee','#ff7f50','#20b2aa','#da70d6'];
-  const colorIndex = app.name.charCodeAt(0) % colors.length;
-  const bgColor = colors[colorIndex];
-  const letter = app.name.charAt(0).toUpperCase();
-
-  let iconHtml;
-  if (app.icon) {
-    iconHtml = `
-      <div class="app-icon-wrap">
-        <img src="${app.icon}" alt="${app.name}" 
-          onerror="this.parentElement.outerHTML='<div class=\\'app-icon-fallback\\' style=\\'background:${bgColor}\\'><span class=\\'color-letter\\'>${letter}</span></div>'" />
-      </div>`;
-  } else {
-    iconHtml = `<div class="app-icon-fallback" style="background:${bgColor}"><span class="color-letter">${letter}</span></div>`;
-  }
-
-  card.innerHTML = `
-    <div class="drag-handle" draggable="false">⠿⠿</div>
-    <div class="app-card-actions">
-      <button class="card-action-btn edit-btn" title="Edit" onclick="event.preventDefault();event.stopPropagation();openEditModal('${app.id}')">✏️</button>
-      <button class="card-action-btn delete-btn" title="Delete" onclick="event.preventDefault();event.stopPropagation();deleteApp('${app.id}')">🗑</button>
+  return `
+    <div class="app-card" draggable="true" data-app-id="${app.id}" 
+         onclick="openApp('${escHtml(app.url)}')">
+      <span class="drag-handle" onclick="event.stopPropagation()" title="Drag to reorder">⠿</span>
+      <div class="app-card-actions">
+        <button class="card-btn card-btn-edit" onclick="event.stopPropagation(); openEditModal('${app.id}')" title="Edit">✏</button>
+        <button class="card-btn card-btn-delete" onclick="event.stopPropagation(); deleteApp('${app.id}')" title="Delete">✕</button>
+      </div>
+      ${iconHtml}
+      <div class="app-name">${escHtml(app.name)}</div>
     </div>
-    ${iconHtml}
-    <span class="app-name">${app.name}</span>
   `;
+}
 
-  return card;
+function openApp(url) {
+  window.open(url, '_blank');
+}
+
+function escHtml(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 // ============================================================
 // DRAG AND DROP
 // ============================================================
-function handleDragStart(e) {
-  dragSrcId = e.currentTarget.dataset.appId;
-  e.currentTarget.classList.add('dragging');
-  e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/plain', dragSrcId);
+function setupDragAndDrop() {
+  document.querySelectorAll('.app-card').forEach(card => {
+    card.addEventListener('dragstart', e => {
+      dragSrcId = card.dataset.appId;
+      card.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    card.addEventListener('dragend', () => {
+      card.classList.remove('dragging');
+      document.querySelectorAll('.app-card').forEach(c => c.classList.remove('drag-over'));
+    });
+    card.addEventListener('dragover', e => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      card.classList.add('drag-over');
+    });
+    card.addEventListener('dragleave', () => {
+      card.classList.remove('drag-over');
+    });
+    card.addEventListener('drop', e => {
+      e.preventDefault();
+      card.classList.remove('drag-over');
+      const targetId = card.dataset.appId;
+      if (dragSrcId && targetId && dragSrcId !== targetId) {
+        reorderApps(dragSrcId, targetId);
+      }
+    });
+  });
 }
 
-function handleDragEnd(e) {
-  e.currentTarget.classList.remove('dragging');
-  document.querySelectorAll('.app-grid').forEach(g => g.classList.remove('drag-over'));
-}
-
-function handleDragOver(e) {
-  e.preventDefault();
-  e.dataTransfer.dropEffect = 'move';
-  const grid = e.currentTarget;
-  document.querySelectorAll('.app-grid').forEach(g => g.classList.remove('drag-over'));
-  grid.classList.add('drag-over');
-}
-
-function handleDragLeave(e) {
-  if (!e.currentTarget.contains(e.relatedTarget)) {
-    e.currentTarget.classList.remove('drag-over');
-  }
-}
-
-function handleDrop(e, categoryId) {
-  e.preventDefault();
-  e.currentTarget.classList.remove('drag-over');
-  
-  const appId = e.dataTransfer.getData('text/plain') || dragSrcId;
-  if (!appId) return;
-
-  const data = getData();
-  const app = data.apps.find(a => a.id === appId);
-  if (!app) return;
-
-  if (app.category === categoryId) return;
-
-  app.category = categoryId;
-  saveData(data);
-  render();
-  showToast(`Moved to ${data.categories.find(c=>c.id===categoryId)?.name || categoryId}`, 'success');
-}
-
-// ============================================================
-// MODAL HELPERS
-// ============================================================
-function handleOverlayClick(e, modalId) {
-  if (e.target.classList.contains('modal-overlay')) closeModal(modalId);
-}
-
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
+function reorderApps(srcId, targetId) {
+  const srcIdx = apps.findIndex(a => a.id === srcId);
+  const tgtIdx = apps.findIndex(a => a.id === targetId);
+  if (srcIdx === -1 || tgtIdx === -1) return;
+  const [moved] = apps.splice(srcIdx, 1);
+  // Also update category to match the target's category
+  moved.category = apps[tgtIdx > srcIdx ? tgtIdx - 1 : tgtIdx].category || moved.category;
+  apps.splice(tgtIdx, 0, moved);
+  saveData();
+  renderDashboard();
+  showToast('App moved!', 'success');
 }
 
 // ============================================================
-// ADD APP MODAL
+// APP MODAL
 // ============================================================
-function openAddModal(presetCategory) {
-  document.getElementById('editAppId').value = '';
+function openAddModal() {
+  editingAppId = null;
+  currentIconData = null;
   document.getElementById('modalTitle').textContent = 'Add App';
-  document.getElementById('saveAppBtn').textContent = 'Save App';
   document.getElementById('appName').value = '';
   document.getElementById('appUrl').value = '';
-  currentIconData = '';
-  switchIconMode('url');
-  updateIconPreview('');
-  populateCategorySelect(presetCategory || '');
-  document.getElementById('appModal').style.display = 'flex';
-  setTimeout(() => document.getElementById('appName').focus(), 100);
+  document.getElementById('appIconUrl').value = '';
+  document.getElementById('saveAppBtn').textContent = 'Save App';
+  clearIconPreview();
+  populateCategorySelect();
+  document.getElementById('appModal').classList.add('active');
+  document.getElementById('appName').focus();
 }
 
 function openEditModal(appId) {
-  const data = getData();
-  const app = data.apps.find(a => a.id === appId);
+  const app = apps.find(a => a.id === appId);
   if (!app) return;
-
-  document.getElementById('editAppId').value = appId;
+  editingAppId = appId;
+  currentIconData = app.icon || null;
   document.getElementById('modalTitle').textContent = 'Edit App';
-  document.getElementById('saveAppBtn').textContent = 'Update App';
   document.getElementById('appName').value = app.name;
   document.getElementById('appUrl').value = app.url;
-  currentIconData = app.icon || '';
+  document.getElementById('appIconUrl').value = (app.icon && !app.icon.startsWith('data:')) ? app.icon : '';
+  document.getElementById('saveAppBtn').textContent = 'Update App';
+  populateCategorySelect(app.category);
   
-  populateCategorySelect(app.category || '');
-  
-  if (currentIconData && currentIconData.startsWith('data:')) {
-    switchIconMode('upload');
-    updateIconPreview(currentIconData);
-  } else if (currentIconData) {
-    switchIconMode('url');
-    updateIconPreview(currentIconData);
-    setTimeout(() => {
-      const input = document.getElementById('iconUrl');
-      if (input) input.value = currentIconData;
-    }, 50);
+  if (app.icon) {
+    showIconPreview(app.icon, 'Current icon');
   } else {
-    switchIconMode('url');
-    updateIconPreview('');
+    clearIconPreview();
   }
+  
+  document.getElementById('appModal').classList.add('active');
+  document.getElementById('appName').focus();
+}
 
-  document.getElementById('appModal').style.display = 'flex';
+function closeAppModal() {
+  document.getElementById('appModal').classList.remove('active');
+  editingAppId = null;
+  currentIconData = null;
 }
 
 function populateCategorySelect(selectedId) {
-  const data = getData();
   const sel = document.getElementById('appCategory');
-  sel.innerHTML = data.categories.map(c =>
-    `<option value="${c.id}" ${c.id === selectedId ? 'selected' : ''}>${c.icon || c.emoji || ''} ${c.name}</option>`
+  sel.innerHTML = categories.map(c =>
+    `<option value="${c.id}" ${c.id === selectedId ? 'selected' : ''}>${c.icon || ''} ${c.name}</option>`
   ).join('');
 }
 
 function saveApp() {
-  const editId = document.getElementById('editAppId').value;
   const name = document.getElementById('appName').value.trim();
   const url = document.getElementById('appUrl').value.trim();
   const category = document.getElementById('appCategory').value;
+  const urlInput = document.getElementById('appIconUrl').value.trim();
 
   if (!name) { showToast('Please enter an app name', 'error'); return; }
   if (!url) { showToast('Please enter a URL', 'error'); return; }
 
-  // Get icon
-  let icon = currentIconData;
-  if (currentIconMode === 'url') {
-    const urlInput = document.getElementById('iconUrl');
-    if (urlInput) icon = urlInput.value.trim() || icon;
-  }
-  if (!icon && url) {
-    try { icon = `${new URL(url).origin}/favicon.ico`; } catch(e) {}
-  }
+  let finalIcon = currentIconData || urlInput || '';
 
-  const data = getData();
-
-  if (editId) {
-    // Edit existing
-    const app = data.apps.find(a => a.id === editId);
-    if (app) {
-      app.name = name;
-      app.url = url;
-      app.category = category;
-      app.icon = icon;
-      saveData(data);
-      showToast(`Updated ${name}!`, 'success');
+  if (editingAppId) {
+    const idx = apps.findIndex(a => a.id === editingAppId);
+    if (idx !== -1) {
+      apps[idx] = { ...apps[idx], name, url, category, icon: finalIcon };
     }
+    showToast('App updated!', 'success');
   } else {
-    // Add new
-    const newApp = {
+    apps.push({
       id: 'app_' + Date.now(),
-      name, url, icon, category
-    };
-    data.apps.push(newApp);
-    saveData(data);
-    showToast(`Added ${name}!`, 'success');
+      name, url, category,
+      icon: finalIcon
+    });
+    showToast('App added!', 'success');
   }
 
-  closeModal('appModal');
-  render();
+  saveData();
+  closeAppModal();
+  renderDashboard();
 }
 
-// ============================================================
-// DELETE
-// ============================================================
 function deleteApp(appId) {
-  if (!confirm('Remove this app from your dashboard?')) return;
-  const data = getData();
-  data.apps = data.apps.filter(a => a.id !== appId);
-  saveData(data);
-  render();
-  showToast('App removed', 'success');
+  if (!confirm('Delete this app?')) return;
+  apps = apps.filter(a => a.id !== appId);
+  saveData();
+  renderDashboard();
+  showToast('App deleted', 'success');
 }
 
-function deleteCategory(catId) {
-  const data = getData();
-  const cat = data.categories.find(c => c.id === catId);
-  const appsInCat = data.apps.filter(a => a.category === catId);
+// ============================================================
+// ICON HANDLING - NO LINK ICON, CLEAN IMAGE ONLY
+// ============================================================
+function handleIconUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
   
-  const msg = appsInCat.length > 0 
-    ? `Delete "${cat?.name}" category? The ${appsInCat.length} app(s) in it will become uncategorized.`
-    : `Delete "${cat?.name}" category?`;
-  
-  if (!confirm(msg)) return;
-  
-  data.categories = data.categories.filter(c => c.id !== catId);
-  saveData(data);
-  render();
-  showToast('Category deleted', 'success');
+  if (file.size > 2 * 1024 * 1024) {
+    showToast('Image too large. Max 2MB.', 'error');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    currentIconData = e.target.result;
+    document.getElementById('appIconUrl').value = '';
+    showIconPreview(currentIconData, file.name);
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleIconUrl(url) {
+  if (url.trim()) {
+    currentIconData = null;
+    showIconPreview(url.trim(), 'URL icon');
+  } else {
+    clearIconPreview();
+  }
+}
+
+function showIconPreview(src, name) {
+  const area = document.getElementById('iconPreviewArea');
+  const img = document.getElementById('iconPreviewImg');
+  const nameEl = document.getElementById('iconPreviewName');
+  img.src = src;
+  nameEl.textContent = name;
+  area.style.display = 'flex';
+}
+
+function clearIcon() {
+  currentIconData = null;
+  document.getElementById('appIconUrl').value = '';
+  document.getElementById('iconFileInput').value = '';
+  clearIconPreview();
+}
+
+function clearIconPreview() {
+  const area = document.getElementById('iconPreviewArea');
+  area.style.display = 'none';
+  document.getElementById('iconPreviewImg').src = '';
 }
 
 // ============================================================
 // CATEGORY MODAL
 // ============================================================
-function addCategoryModal() {
+function openCategoryModal() {
+  editingCatId = null;
+  document.getElementById('catModalTitle').textContent = 'Add Category';
   document.getElementById('catName').value = '';
   document.getElementById('catEmoji').value = '';
-  document.getElementById('catModal').style.display = 'flex';
-  setTimeout(() => document.getElementById('catName').focus(), 100);
+  document.getElementById('categoryModal').classList.add('active');
+  document.getElementById('catName').focus();
+}
+
+function openEditCategoryModal(catId) {
+  const cat = categories.find(c => c.id === catId);
+  if (!cat) return;
+  editingCatId = catId;
+  document.getElementById('catModalTitle').textContent = 'Edit Category';
+  document.getElementById('catName').value = cat.name;
+  document.getElementById('catEmoji').value = cat.icon || cat.emoji || '';
+  document.getElementById('categoryModal').classList.add('active');
+}
+
+function closeCategoryModal() {
+  document.getElementById('categoryModal').classList.remove('active');
+  editingCatId = null;
 }
 
 function saveCategory() {
   const name = document.getElementById('catName').value.trim();
-  const emoji = document.getElementById('catEmoji').value.trim() || '📁';
+  const icon = document.getElementById('catEmoji').value.trim() || '📁';
+
   if (!name) { showToast('Please enter a category name', 'error'); return; }
+
+  if (editingCatId) {
+    const idx = categories.findIndex(c => c.id === editingCatId);
+    if (idx !== -1) { categories[idx] = { ...categories[idx], name, icon }; }
+    showToast('Category updated!', 'success');
+  } else {
+    categories.push({ id: 'cat_' + Date.now(), name, icon });
+    showToast('Category added!', 'success');
+  }
+
+  saveData();
+  closeCategoryModal();
+  renderDashboard();
+}
+
+function deleteCategory(catId) {
+  const cat = categories.find(c => c.id === catId);
+  const appCount = apps.filter(a => a.category === catId).length;
   
-  const data = getData();
-  data.categories.push({ id: 'cat_' + Date.now(), name, icon: emoji });
-  saveData(data);
-  closeModal('catModal');
-  render();
-  showToast(`Category "${name}" added!`, 'success');
+  if (!confirm(`Delete category "${cat?.name}"? ${appCount > 0 ? `The ${appCount} apps in it will be uncategorized.` : ''}`)) return;
+  
+  categories = categories.filter(c => c.id !== catId);
+  // Move apps to first remaining category or remove category
+  if (categories.length > 0) {
+    apps = apps.map(a => a.category === catId ? { ...a, category: categories[0].id } : a);
+  }
+  saveData();
+  renderDashboard();
+  showToast('Category deleted', 'success');
+}
+
+// ============================================================
+// EXPORT / IMPORT
+// ============================================================
+function exportData() {
+  const data = JSON.stringify({ categories, apps }, null, 2);
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'moxie-dashboard-backup.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Data exported!', 'success');
+}
+
+function triggerImport() {
+  document.getElementById('importFile').click();
+}
+
+function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const d = JSON.parse(e.target.result);
+      if (d.categories && d.apps) {
+        if (!confirm(`Import ${d.apps.length} apps and ${d.categories.length} categories? This will replace your current dashboard.`)) return;
+        categories = d.categories;
+        apps = d.apps;
+        saveData();
+        renderDashboard();
+        showToast('Data imported successfully!', 'success');
+      } else {
+        showToast('Invalid file format', 'error');
+      }
+    } catch(err) {
+      showToast('Could not read file', 'error');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
 }
 
 // ============================================================
 // TOAST
 // ============================================================
 function showToast(msg, type = '') {
-  const t = document.createElement('div');
-  t.className = `toast ${type}`;
+  const t = document.getElementById('toast');
   t.textContent = msg;
-  document.body.appendChild(t);
-  setTimeout(() => t.remove(), 3000);
+  t.className = 'toast show ' + type;
+  setTimeout(() => { t.className = 'toast'; }, 3000);
 }
 
 // ============================================================
-// KEYBOARD
+// KEYBOARD SHORTCUTS
 // ============================================================
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
-    closeModal('appModal');
-    closeModal('catModal');
+    closeAppModal();
+    closeCategoryModal();
   }
-  if ((e.key === 'Enter') && document.getElementById('appModal').style.display !== 'none') {
-    const active = document.activeElement;
-    if (active && active.tagName !== 'BUTTON') saveApp();
+  if (e.key === 'Enter' && document.getElementById('appModal').classList.contains('active')) {
+    saveApp();
   }
+});
+
+// Close modal on overlay click
+document.getElementById('appModal').addEventListener('click', function(e) {
+  if (e.target === this) closeAppModal();
+});
+document.getElementById('categoryModal').addEventListener('click', function(e) {
+  if (e.target === this) closeCategoryModal();
 });
 
 // ============================================================
 // INIT
 // ============================================================
-loadData(); // triggers migration
-render();
-console.log('✅ Moxie Dashboard loaded. Apps:', getData().apps.length, '| Categories:', getData().categories.length);
+loadData();
+renderDashboard();
 </script>
 </body>
 </html>
