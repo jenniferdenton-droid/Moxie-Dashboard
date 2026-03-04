@@ -15,105 +15,117 @@
   }
 
   /* HEADER */
-  .header {
+  header {
     background: white;
+    border-bottom: 1px solid #e8eaed;
     padding: 16px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px solid #4E8D99;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
   }
 
   .logo-area {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
 
   .logo-area img {
-    height: 36px;
+    height: 38px;
     object-fit: contain;
   }
 
-  .header-title {
+  .logo-area h1 {
     font-size: 22px;
     font-weight: 700;
     color: #4E8D99;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.3px;
   }
 
   .header-actions {
     display: flex;
-    gap: 10px;
     align-items: center;
+    gap: 10px;
   }
 
+  .sync-status {
+    font-size: 12px;
+    color: #888;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: #f0f0f0;
+  }
+  .sync-status.syncing { background: #fff3cd; color: #856404; }
+  .sync-status.success { background: #d4edda; color: #155724; }
+  .sync-status.error { background: #f8d7da; color: #721c24; }
+
   .btn {
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 9px 18px;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .btn-primary {
     background: #4E8D99;
     color: white;
   }
-
-  .btn-primary:hover { background: #3d7080; }
+  .btn-primary:hover { background: #3d7a86; transform: translateY(-1px); }
 
   .btn-secondary {
-    background: #6D445E;
+    background: #f0f0f0;
+    color: #555;
+  }
+  .btn-secondary:hover { background: #e0e0e0; }
+
+  .btn-danger {
+    background: #dc3545;
     color: white;
   }
+  .btn-danger:hover { background: #c82333; }
 
-  .btn-secondary:hover { background: #5a3750; }
-
-  .btn-outline {
-    background: white;
-    color: #4E8D99;
-    border: 2px solid #4E8D99;
+  /* TOKEN BANNER */
+  .token-banner {
+    background: #fff3cd;
+    border-bottom: 1px solid #ffc107;
+    padding: 10px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
   }
-
-  .btn-outline:hover { background: #f0f8fa; }
-
-  /* SEARCH */
-  .search-bar {
-    padding: 16px 32px;
-    background: white;
-    border-bottom: 1px solid #e9ecef;
+  .token-banner.hidden { display: none; }
+  .token-input {
+    flex: 1;
+    max-width: 380px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: monospace;
   }
+  .token-info { color: #6c757d; font-size: 12px; }
 
-  .search-bar input {
-    width: 100%;
-    max-width: 500px;
-    padding: 10px 16px;
-    border: 2px solid #e9ecef;
-    border-radius: 50px;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  .search-bar input:focus { border-color: #4E8D99; }
-
-  /* MAIN */
-  .main {
-    padding: 24px 32px;
+  /* MAIN CONTENT */
+  main {
+    padding: 28px 32px;
     max-width: 1400px;
     margin: 0 auto;
   }
 
-  /* CATEGORY */
+  /* CATEGORY SECTION */
   .category-section {
-    margin-bottom: 32px;
+    margin-bottom: 36px;
   }
 
   .category-header {
@@ -121,57 +133,90 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e8eaed;
   }
 
   .category-icon { font-size: 20px; }
 
-  .category-name {
+  .category-title {
     font-size: 18px;
-    font-weight: 700;
-    color: #4E8D99;
+    font-weight: 600;
+    color: #333;
   }
 
   .category-count {
-    background: #EBBA95;
-    color: #6D445E;
+    background: #e8f4f6;
+    color: #4E8D99;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 600;
     padding: 2px 8px;
-    border-radius: 20px;
+    border-radius: 10px;
   }
 
   /* APP GRID */
   .app-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 16px;
   }
 
   /* APP CARD */
   .app-card {
     background: white;
-    border-radius: 12px;
-    padding: 16px 12px;
+    border-radius: 14px;
+    padding: 20px 12px 16px;
     text-align: center;
     cursor: pointer;
     transition: all 0.2s;
-    border: 2px solid transparent;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    border: 1px solid #e8eaed;
     position: relative;
     text-decoration: none;
     color: inherit;
     display: block;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
   }
 
   .app-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(78,141,153,0.15);
     border-color: #4E8D99;
-    box-shadow: 0 4px 16px rgba(78,141,153,0.2);
-    transform: translateY(-2px);
   }
 
-  .app-card-actions {
+  .app-icon-wrap {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 12px;
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    border: 1px solid #eee;
+  }
+
+  .app-icon-wrap img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .app-icon-emoji {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .app-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #444;
+    line-height: 1.3;
+    word-break: break-word;
+  }
+
+  /* CARD ACTIONS */
+  .card-actions {
     position: absolute;
     top: 6px;
     right: 6px;
@@ -179,104 +224,37 @@
     gap: 4px;
   }
 
-  .app-card:hover .app-card-actions { display: flex; }
+  .app-card:hover .card-actions { display: flex; }
 
   .card-btn {
-    background: rgba(78,141,153,0.15);
+    width: 24px;
+    height: 24px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    padding: 2px 5px;
-    font-size: 11px;
-    color: #4E8D99;
-    transition: background 0.2s;
-  }
-
-  .card-btn:hover { background: rgba(78,141,153,0.3); }
-
-  .card-btn.delete { color: #e74c3c; }
-  .card-btn.delete:hover { background: rgba(231,76,60,0.15); }
-
-  /* ICON — this is the key fix */
-  .app-icon-wrapper {
-    width: 56px;
-    height: 56px;
-    margin: 0 auto 10px;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #f0f8fa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .app-icon-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block; /* removes inline gap */
-    border: none;
-    outline: none;
-    /* kill any browser decoration */
-    -webkit-user-drag: none;
-  }
-
-  /* hide broken-image icon */
-  .app-icon-wrapper img.errored {
-    display: none;
-  }
-
-  .app-icon-fallback {
-    font-size: 28px;
-    line-height: 1;
-  }
-
-  .app-name {
     font-size: 12px;
-    font-weight: 600;
-    color: #333;
-    line-height: 1.3;
-    word-break: break-word;
-  }
-
-  /* ADD CARD */
-  .add-card {
-    background: white;
-    border-radius: 12px;
-    padding: 16px 12px;
-    text-align: center;
-    cursor: pointer;
-    border: 2px dashed #ccc;
-    color: #999;
-    font-size: 13px;
-    transition: all 0.2s;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    min-height: 100px;
+    transition: all 0.15s;
   }
 
-  .add-card:hover {
-    border-color: #4E8D99;
-    color: #4E8D99;
-    background: #f0f8fa;
-  }
-
-  .add-card-plus { font-size: 24px; font-weight: 300; }
+  .card-btn-edit { background: #e8f4f6; color: #4E8D99; }
+  .card-btn-edit:hover { background: #4E8D99; color: white; }
+  .card-btn-delete { background: #fde8ea; color: #dc3545; }
+  .card-btn-delete:hover { background: #dc3545; color: white; }
 
   /* MODAL */
   .modal-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.5);
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
-    padding: 16px;
+    padding: 20px;
+    backdrop-filter: blur(2px);
   }
 
   .modal-overlay.hidden { display: none; }
@@ -295,40 +273,43 @@
   .modal h2 {
     font-size: 20px;
     font-weight: 700;
-    color: #4E8D99;
+    color: #333;
     margin-bottom: 20px;
   }
 
-  .form-group { margin-bottom: 16px; }
+  .form-group {
+    margin-bottom: 16px;
+  }
 
-  .form-group label {
+  label {
     display: block;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
     color: #555;
     margin-bottom: 6px;
   }
 
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
+  input[type="text"], input[type="url"], select, textarea {
     width: 100%;
     padding: 10px 12px;
-    border: 2px solid #e9ecef;
+    border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
     font-family: inherit;
+    transition: border-color 0.2s;
+    background: white;
   }
 
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus { border-color: #4E8D99; }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #4E8D99;
+    box-shadow: 0 0 0 3px rgba(78,141,153,0.1);
+  }
 
-  .icon-preview-row {
+  /* ICON PREVIEW */
+  .icon-preview-area {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
     margin-top: 8px;
   }
@@ -337,184 +318,154 @@
     width: 56px;
     height: 56px;
     border-radius: 12px;
-    background: #f0f8fa;
+    border: 2px dashed #ddd;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    border: 2px solid #e9ecef;
+    background: #f9f9f9;
     flex-shrink: 0;
+    overflow: hidden;
   }
 
   .icon-preview-box img {
-    width: 100%;
-    height: 100%;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
-    display: block;
   }
 
-  .icon-preview-box .fallback-emoji { font-size: 28px; }
-
-  .icon-options {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    flex: 1;
+  .icon-preview-box .empty-icon {
+    font-size: 22px;
+    color: #ccc;
   }
 
-  .icon-tab-btns {
+  .icon-inputs { flex: 1; }
+
+  .icon-option-row {
     display: flex;
-    gap: 6px;
+    gap: 8px;
     margin-bottom: 8px;
   }
 
-  .icon-tab-btn {
-    padding: 5px 10px;
-    border-radius: 6px;
-    border: 2px solid #e9ecef;
-    background: white;
-    cursor: pointer;
+  .icon-option-row input { margin-bottom: 0; }
+
+  .icon-sep {
+    text-align: center;
     font-size: 12px;
-    font-weight: 600;
+    color: #999;
+    margin: 6px 0;
+  }
+
+  .upload-btn-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
     color: #555;
-    transition: all 0.2s;
+    transition: background 0.2s;
+    border: 1px solid #ddd;
+    white-space: nowrap;
   }
-
-  .icon-tab-btn.active {
-    border-color: #4E8D99;
-    background: #4E8D99;
-    color: white;
-  }
-
-  .icon-input-area { display: none; }
-  .icon-input-area.active { display: block; }
+  .upload-btn-label:hover { background: #e0e0e0; }
 
   .modal-actions {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
     margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
   }
 
-  /* CATEGORY EDIT */
-  .category-edit-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    color: #aaa;
-    padding: 2px 6px;
-    border-radius: 4px;
-    transition: color 0.2s;
-  }
-
-  .category-edit-btn:hover { color: #4E8D99; }
-
-  /* DRAG HANDLE */
-  .drag-handle {
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    font-size: 14px;
-    color: #ccc;
-    cursor: grab;
-    display: none;
-  }
-
-  .app-card:hover .drag-handle { display: block; }
-
-  /* EDIT MODE */
-  .edit-mode .app-card { border: 2px dashed #EBBA95; }
-
-  /* DIVIDER */
-  .section-divider {
-    border: none;
-    border-top: 1px solid #e9ecef;
-    margin: 8px 0 16px;
-  }
-
-  /* TOAST */
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: #4E8D99;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    z-index: 9999;
-    transform: translateY(80px);
-    opacity: 0;
-    transition: all 0.3s;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  }
-
-  .toast.show { transform: translateY(0); opacity: 1; }
-
-  /* ADD CATEGORY */
-  .add-category-btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    background: white;
-    border: 2px dashed #ccc;
-    border-radius: 8px;
-    cursor: pointer;
+  /* EMPTY STATE */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
     color: #999;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 24px;
-    transition: all 0.2s;
   }
+  .empty-state .empty-icon { font-size: 48px; margin-bottom: 12px; }
+  .empty-state p { font-size: 15px; }
 
-  .add-category-btn:hover { border-color: #4E8D99; color: #4E8D99; }
+  /* LOADING */
+  .loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.9);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .loading-overlay.hidden { display: none; }
+  .spinner {
+    width: 40px; height: 40px;
+    border: 3px solid #e8eaed;
+    border-top-color: #4E8D99;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-text { color: #4E8D99; font-weight: 500; }
 
-  /* RESPONSIVE */
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #f1f1f1; }
+  ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
   @media (max-width: 600px) {
-    .main { padding: 16px; }
-    .header { padding: 12px 16px; }
-    .header-title { font-size: 18px; }
-    .app-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; }
+    header { padding: 12px 16px; }
+    main { padding: 16px; }
+    .app-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; }
+    .token-banner { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="logo-area">
-    <img src="https://jenniferdenton-droid.github.io/Moxie-Dashboard/moxie-logo.png"
-         onerror="this.style.display='none'"
-         alt="Moxie">
-    <span class="header-title">Moxie Dashboard</span>
-  </div>
-  <div class="header-actions">
-    <button class="btn btn-outline" onclick="openAddModal()">+ Add App</button>
-    <button class="btn btn-secondary" onclick="openAddCategoryModal()">+ Category</button>
-    <button class="btn btn-primary" onclick="exportConfig()">Export</button>
-  </div>
+<!-- LOADING -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <div class="loading-text">Loading Moxie Dashboard...</div>
 </div>
 
-<!-- SEARCH -->
-<div class="search-bar">
-  <input type="text" id="searchInput" placeholder="🔍  Search apps..." oninput="renderAll()">
+<!-- HEADER -->
+<header>
+  <div class="logo-area">
+    <img src="https://i.imgur.com/placeholder.png" alt="Moxie" id="moxieLogo" onerror="this.style.display='none'">
+    <h1>Moxie Dashboard</h1>
+  </div>
+  <div class="header-actions">
+    <span class="sync-status" id="syncStatus">Loading...</span>
+    <button class="btn btn-secondary" onclick="showCategoryModal()">＋ Category</button>
+    <button class="btn btn-primary" onclick="showAppModal()">＋ Add App</button>
+  </div>
+</header>
+
+<!-- TOKEN BANNER -->
+<div class="token-banner" id="tokenBanner">
+  <span>⚠️ Enter your GitHub token to save changes for everyone:</span>
+  <input type="password" class="token-input" id="tokenInput" placeholder="ghp_xxxxxxxxxxxx">
+  <button class="btn btn-primary" onclick="saveToken()">Save Token</button>
+  <span class="token-info">Stored locally on your device only</span>
 </div>
 
 <!-- MAIN -->
-<div class="main" id="mainContent">
-  <!-- rendered by JS -->
-</div>
+<main id="mainContent">
+  <div class="empty-state">
+    <div class="empty-icon">⏳</div>
+    <p>Loading apps...</p>
+  </div>
+</main>
 
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
-
-<!-- ADD/EDIT APP MODAL -->
+<!-- APP MODAL -->
 <div class="modal-overlay hidden" id="appModal">
   <div class="modal">
-    <h2 id="modalTitle">Add App</h2>
+    <h2 id="appModalTitle">Add App</h2>
 
     <div class="form-group">
       <label>App Name *</label>
@@ -533,50 +484,47 @@
 
     <div class="form-group">
       <label>Icon</label>
-      <div class="icon-preview-row">
+      <div class="icon-preview-area">
         <div class="icon-preview-box" id="iconPreviewBox">
-          <span class="fallback-emoji" id="iconPreviewEmoji">🔗</span>
+          <span class="empty-icon">🖼️</span>
         </div>
-        <div style="flex:1">
-          <div class="icon-tab-btns">
-            <button class="icon-tab-btn active" onclick="switchIconTab('url', this)">URL</button>
-            <button class="icon-tab-btn" onclick="switchIconTab('upload', this)">Upload</button>
-            <button class="icon-tab-btn" onclick="switchIconTab('favicon', this)">Auto</button>
+        <div class="icon-inputs">
+          <div class="icon-option-row">
+            <input type="url" id="iconUrl" placeholder="Icon URL (https://...)" oninput="previewIcon()">
           </div>
-          <div class="icon-input-area active" id="iconTabUrl">
-            <input type="url" id="iconUrl" placeholder="https://...icon.png" oninput="previewIconUrl()">
-          </div>
-          <div class="icon-input-area" id="iconTabUpload">
-            <input type="file" id="iconFile" accept="image/*" onchange="previewIconFile()">
-          </div>
-          <div class="icon-input-area" id="iconTabFavicon">
-            <small style="color:#666">Auto-fetches favicon from the URL above when you save.</small>
+          <div class="icon-sep">— or upload —</div>
+          <div class="icon-option-row">
+            <label class="upload-btn-label">
+              📁 Upload Image
+              <input type="file" id="iconFile" accept="image/*" style="display:none" onchange="handleIconUpload(event)">
+            </label>
           </div>
         </div>
       </div>
+      <input type="hidden" id="iconData">
     </div>
 
     <div class="modal-actions">
-      <button class="btn btn-outline" onclick="closeModal('appModal')">Cancel</button>
-      <button class="btn btn-primary" id="saveAppBtn" onclick="saveApp()">Save App</button>
+      <button class="btn btn-secondary" onclick="closeAppModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveApp()">Save App</button>
     </div>
   </div>
 </div>
 
-<!-- ADD CATEGORY MODAL -->
+<!-- CATEGORY MODAL -->
 <div class="modal-overlay hidden" id="categoryModal">
   <div class="modal">
     <h2>Add Category</h2>
     <div class="form-group">
       <label>Category Name *</label>
-      <input type="text" id="catName" placeholder="e.g. Design Tools">
+      <input type="text" id="catName" placeholder="e.g. Marketing">
     </div>
     <div class="form-group">
-      <label>Icon (emoji)</label>
-      <input type="text" id="catEmoji" placeholder="e.g. 🎨" maxlength="4">
+      <label>Emoji Icon</label>
+      <input type="text" id="catEmoji" placeholder="e.g. 📊" maxlength="4">
     </div>
     <div class="modal-actions">
-      <button class="btn btn-outline" onclick="closeModal('categoryModal')">Cancel</button>
+      <button class="btn btn-secondary" onclick="closeCategoryModal()">Cancel</button>
       <button class="btn btn-primary" onclick="saveCategory()">Save Category</button>
     </div>
   </div>
@@ -584,450 +532,449 @@
 
 <script>
 // ============================================================
-// DEFAULT DATA — your apps hardcoded so shared link works
+// CONFIG - UPDATE THESE
 // ============================================================
-const DEFAULT_CATEGORIES = [
-  { id: "communication",    name: "Communication",      icon: "📬" },
-  { id: "project",          name: "Project Management", icon: "📋" },
-  { id: "finance",          name: "Finance",            icon: "💰" },
-  { id: "sales",            name: "Sales & CRM",        icon: "🛒" },
-  { id: "operations",       name: "Operations",         icon: "🔧" },
-  { id: "ai",               name: "AI Tools",           icon: "🤖" },
-  { id: "supplies",         name: "Supplies",           icon: "💊" }
-];
-
-const DEFAULT_APPS = [
-  // COMMUNICATION
-  { id:"gmail",      name:"Gmail",           url:"https://mail.google.com",         category:"communication", icon:"https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_512dp.png" },
-  { id:"meet",       name:"Google Meet",     url:"https://meet.google.com",         category:"communication", icon:"https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png" },
-  { id:"slack",      name:"Slack",           url:"https://slack.com",               category:"communication", icon:"https://a.slack-edge.com/80588/marketing/img/meta/slack_hash_256.png" },
-  { id:"loom",       name:"Loom",            url:"https://www.loom.com",            category:"communication", icon:"https://cdn.loom.com/assets/img/og/loom-facebook-og.png" },
-  { id:"fathom",     name:"Fathom",          url:"https://fathom.video/home",       category:"communication", icon:"https://fathom.video/favicon.ico" },
-  { id:"gcal",       name:"Google Calendar", url:"https://calendar.google.com",     category:"communication", icon:"https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg" },
-
-  // PROJECT MANAGEMENT
-  { id:"asana",      name:"Asana",           url:"https://app.asana.com/1/1203386861136560/home", category:"project", icon:"https://assets.asana.biz/transform/ba9d5765-1733-4edd-b491-a9f2e2d9e3c1/brand-asana-logo-coral-transparency" },
-  { id:"notion",     name:"Notion",          url:"https://www.notion.so/moxie-docs/6060ef49fea04dc3a1dc0a32d0564233", category:"project", icon:"https://www.notion.so/images/favicon.ico" },
-  { id:"arrows",     name:"Arrows",          url:"https://success.joinmoxie.com/home", category:"project", icon:"https://assets-global.website-files.com/614e2d59ec4e8e52620b8dde/6150dcd8bbcfd7e9e234d24d_favicon-arrows.png" },
-  { id:"gsheets",    name:"Google Sheets",   url:"https://sheets.google.com",       category:"project", icon:"https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png" },
-  { id:"clickup",    name:"ClickUp",         url:"https://app.clickup.com/",        category:"project", icon:"https://clickup.com/favicon.ico" },
-
-  // FINANCE
-  { id:"ramp",       name:"Ramp",            url:"https://app.ramp.com/sign-in",    category:"finance", icon:"https://ramp.com/favicon.ico" },
-  { id:"stripe",     name:"Stripe",          url:"https://dashboard.stripe.com/register?account_invite=uis_sSEYJeeK7OA10mzCAF69eIyxWICgGRPI", category:"finance", icon:"https://stripe.com/favicon.ico" },
-  { id:"justworks",  name:"JustWorks",       url:"https://payroll.justworks.com/account/vouchers", category:"finance", icon:"https://justworks.com/favicon.ico" },
-
-  // SALES & CRM
-  { id:"hubspot",    name:"HubSpot",         url:"https://app.hubspot.com/login/?loginRedirectUrl=https%3A%2F%2Fapp.hubspot.com%2Fcontacts%2F22420370%2Fobjects%2F0-1%2Fviews%2Fall%2Flist&loginPortalId=22420370", category:"sales", icon:"https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png" },
-  { id:"shopify",    name:"Shopify",         url:"https://admin.shopify.com/store/moxie-9681", category:"sales", icon:"https://cdn.shopify.com/shopifycloud/shopify/assets/favicon-ad78a4a8.ico" },
-
-  // OPERATIONS
-  { id:"omni",       name:"Omni",            url:"https://moxie.omniapp.co",        category:"operations", icon:"https://moxie.omniapp.co/favicon.ico" },
-  { id:"glean",      name:"Glean",           url:"https://app.glean.com/",          category:"operations", icon:"https://app.glean.com/favicon.ico" },
-  { id:"1password",  name:"1Password",       url:"https://my.1password.com",        category:"operations", icon:"https://1password.com/img/logo-v1.svg" },
-  { id:"dropbox",    name:"Dropbox Sign",    url:"https://app.hellosign.com/account/logIn", category:"operations", icon:"https://app.hellosign.com/favicon.ico" },
-  { id:"zapier",     name:"Zapier",          url:"https://zapier.com",              category:"operations", icon:"https://cdn.zapier.com/zapier/images/favicon.ico" },
-  { id:"github",     name:"GitHub",          url:"https://github.com",              category:"operations", icon:"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" },
-  { id:"moxieadmin", name:"Moxie Admin",     url:"https://api.prod.internal.joinmoxie.com/admin/login/", category:"operations", icon:"https://joinmoxie.com/favicon.ico" },
-  { id:"moxieapp",   name:"Moxie App",       url:"https://app.joinmoxie.com/",      category:"operations", icon:"https://app.joinmoxie.com/favicon.ico" },
-  { id:"notebooklm", name:"Notebook LM",     url:"https://notebooklm.google.com/", category:"ai",         icon:"https://www.gstatic.com/lamda/images/notebooklm_logo_v2_192px.png" },
-
-  // AI
-  { id:"chatgpt",    name:"ChatGPT",         url:"https://chatgpt.com",             category:"ai", icon:"https://cdn.oaistatic.com/_next/static/media/favicon-32x32.be48395e.png" },
-
-  // SUPPLIES / PHARMA
-  { id:"pharmapromos",  name:"Pharma Promos",      url:"https://www.notion.so/moxie-docs/27ae63b2b0a3803b89cceeedba52132b?v=27ae63b2b0a380f3a719000c273997d8", category:"supplies", icon:"https://www.notion.so/images/favicon.ico" },
-  { id:"pharmapricing", name:"Pharma Pricing",     url:"https://docs.google.com/spreadsheets/d/1kHcpXh-aWWCGGCXlU51RaEsjrHVr2o4jaKypo8GerXw/edit", category:"supplies", icon:"https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png" },
-  { id:"laserdevice",   name:"Laser & Device Prices", url:"https://www.notion.so/moxie-docs/Laser-and-Energy-Device-Look-Book-224e63b2b0a380dd9177d14fd9b2244e", category:"supplies", icon:"https://www.notion.so/images/favicon.ico" },
-
-  // REPORTING (operations)
-  { id:"gtmreport",  name:"GTM Reporting",   url:"https://docs.google.com/spreadsheets/d/1FoMfitLCBZlUCOOgXK3e3GSfET2r7BsryEdcaMKw4Rc/edit", category:"operations", icon:"https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png" },
-  { id:"wbrreport",  name:"WBR Reporting",   url:"https://docs.google.com/spreadsheets/d/1POeaDXKcETvpy9DPN7GSWUztlp6P3USS2cOkA4oEyeE/edit", category:"operations", icon:"https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png" },
-  { id:"mdhq",       name:"MD HQ",           url:"https://www.notion.so/moxie-docs/NEW-MD-HQ-19fe63b2b0a380858183f0f69fc29672", category:"operations", icon:"https://www.notion.so/images/favicon.ico" },
-  { id:"moxiepc",    name:"Moxie PC Ownership", url:"https://www.notion.so/moxie-docs/Moxie-PC-Overview-PC-Owner-Roles-4e240fa3b3744c689b3fa58315ce7299", category:"operations", icon:"https://www.notion.so/images/favicon.ico" },
-  { id:"moxiestate", name:"Moxie State Overview", url:"https://www.notion.so/moxie-docs/88a04edd15f54a30b7eee6b71871258b?v=d3f9f1837e764d2c8f9740e7bc45b5da", category:"operations", icon:"https://www.notion.so/images/favicon.ico" },
-  { id:"compliance", name:"Compliance Breakdown", url:"https://www.notion.so/moxie-docs/", category:"operations", icon:"https://www.notion.so/images/favicon.ico" },
-];
+const GITHUB_USER = 'jenniferdenton-droid';
+const GITHUB_REPO = 'Moxie-Dashboard';
+const DATA_FILE = 'data.json';
+const MOXIE_LOGO = 'data:image/jpeg;base64,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';
 
 // ============================================================
-// STATE — merges defaults with localStorage additions
+// STATE
 // ============================================================
-const STORAGE_KEY_EXTRA_APPS = 'moxieDash_extraApps';
-const STORAGE_KEY_EXTRA_CATS = 'moxieDash_extraCats';
-const STORAGE_KEY_ORDER      = 'moxieDash_order';
+let state = {
+  categories: [],
+  apps: [],
+  editingAppId: null
+};
 
-function getCategories() {
-  const extra = JSON.parse(localStorage.getItem(STORAGE_KEY_EXTRA_CATS) || '[]');
-  // merge: extra cats added by this user
-  const ids = new Set(DEFAULT_CATEGORIES.map(c => c.id));
-  const merged = [...DEFAULT_CATEGORIES];
-  extra.forEach(c => { if (!ids.has(c.id)) merged.push(c); });
-  return merged;
+let githubToken = localStorage.getItem('moxie_gh_token') || '';
+let fileSha = '';
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  // Set Moxie logo
+  document.getElementById('moxieLogo').src = MOXIE_LOGO;
+  
+  // Show token banner if no token
+  if (!githubToken) {
+    document.getElementById('tokenBanner').classList.remove('hidden');
+  }
+
+  loadData();
+});
+
+// ============================================================
+// GITHUB API
+// ============================================================
+async function loadData() {
+  showLoading(true);
+  setSyncStatus('Loading...', '');
+
+  try {
+    const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${DATA_FILE}?t=${Date.now()}`;
+    const headers = { 'Accept': 'application/vnd.github.v3+json' };
+    if (githubToken) headers['Authorization'] = `token ${githubToken}`;
+
+    const res = await fetch(url, { headers });
+
+    if (res.ok) {
+      const json = await res.json();
+      fileSha = json.sha;
+      const decoded = JSON.parse(atob(json.content.replace(/\n/g, '')));
+      state.categories = decoded.categories || [];
+      state.apps = decoded.apps || [];
+      setSyncStatus('✓ Synced', 'success');
+    } else if (res.status === 404) {
+      // File doesn't exist yet, use defaults
+      state.categories = getDefaultCategories();
+      state.apps = getDefaultApps();
+      setSyncStatus('Using defaults', '');
+    } else {
+      throw new Error(`GitHub API error: ${res.status}`);
+    }
+  } catch (err) {
+    console.error('Load error:', err);
+    setSyncStatus('⚠ Load failed', 'error');
+    state.categories = getDefaultCategories();
+    state.apps = getDefaultApps();
+  }
+
+  renderDashboard();
+  showLoading(false);
 }
 
-function getApps() {
-  const extra = JSON.parse(localStorage.getItem(STORAGE_KEY_EXTRA_APPS) || '[]');
-  const ids = new Set(DEFAULT_APPS.map(a => a.id));
-  const merged = [...DEFAULT_APPS];
-  extra.forEach(a => { if (!ids.has(a.id)) merged.push(a); });
-  return merged;
+async function saveData() {
+  if (!githubToken) {
+    document.getElementById('tokenBanner').classList.remove('hidden');
+    alert('Please enter your GitHub token to save changes for everyone.');
+    return false;
+  }
+
+  setSyncStatus('Saving...', 'syncing');
+
+  try {
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(state, null, 2))));
+    const body = {
+      message: 'Update dashboard data',
+      content,
+      sha: fileSha || undefined
+    };
+
+    const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${DATA_FILE}`;
+    const res = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${githubToken}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github.v3+json'
+      },
+      body: JSON.stringify(body)
+    });
+
+    if (res.ok) {
+      const json = await res.json();
+      fileSha = json.content.sha;
+      setSyncStatus('✓ Saved', 'success');
+      setTimeout(() => setSyncStatus('✓ Synced', 'success'), 2000);
+      return true;
+    } else {
+      const errJson = await res.json();
+      console.error('Save error:', errJson);
+      setSyncStatus('⚠ Save failed', 'error');
+      alert(`Save failed: ${errJson.message || res.status}`);
+      return false;
+    }
+  } catch (err) {
+    console.error('Save error:', err);
+    setSyncStatus('⚠ Save failed', 'error');
+    return false;
+  }
 }
 
-function saveExtraApps(apps) {
-  // only save apps that aren't in DEFAULT
-  const defaultIds = new Set(DEFAULT_APPS.map(a => a.id));
-  const extra = apps.filter(a => !defaultIds.has(a.id));
-  localStorage.setItem(STORAGE_KEY_EXTRA_APPS, JSON.stringify(extra));
-}
-
-function saveExtraCats(cats) {
-  const defaultIds = new Set(DEFAULT_CATEGORIES.map(c => c.id));
-  const extra = cats.filter(c => !defaultIds.has(c.id));
-  localStorage.setItem(STORAGE_KEY_EXTRA_CATS, JSON.stringify(extra));
+// ============================================================
+// TOKEN
+// ============================================================
+function saveToken() {
+  const val = document.getElementById('tokenInput').value.trim();
+  if (!val) { alert('Please enter a token'); return; }
+  githubToken = val;
+  localStorage.setItem('moxie_gh_token', val);
+  document.getElementById('tokenBanner').classList.add('hidden');
+  document.getElementById('tokenInput').value = '';
+  // Reload to verify token works
+  loadData();
 }
 
 // ============================================================
 // RENDER
 // ============================================================
-function renderAll() {
-  const query = document.getElementById('searchInput').value.toLowerCase().trim();
-  const categories = getCategories();
-  const apps = getApps();
+function renderDashboard() {
   const main = document.getElementById('mainContent');
-  main.innerHTML = '';
-
-  // add-category button
-  const addCatBtn = document.createElement('button');
-  addCatBtn.className = 'add-category-btn';
-  addCatBtn.innerHTML = '＋ Add Category';
-  addCatBtn.onclick = openAddCategoryModal;
-  main.appendChild(addCatBtn);
-
-  categories.forEach(cat => {
-    let catApps = apps.filter(a => a.category === cat.id);
-    if (query) catApps = catApps.filter(a => a.name.toLowerCase().includes(query));
-    // show category even if empty (when not searching)
-    if (query && catApps.length === 0) return;
-
-    const section = document.createElement('div');
-    section.className = 'category-section';
-    section.id = 'cat-' + cat.id;
-
-    section.innerHTML = `
-      <div class="category-header">
-        <span class="category-icon">${cat.icon || '📁'}</span>
-        <span class="category-name">${cat.name}</span>
-        <span class="category-count">${catApps.length}</span>
-        <button class="category-edit-btn" onclick="editCategory('${cat.id}')" title="Edit category">✏️</button>
-        <button class="category-edit-btn" onclick="deleteCategory('${cat.id}')" title="Delete category" style="color:#e74c3c">🗑</button>
-      </div>
-      <div class="app-grid" id="grid-${cat.id}"></div>
-    `;
-
-    main.appendChild(section);
-
-    const grid = section.querySelector('#grid-' + cat.id);
-    catApps.forEach(app => grid.appendChild(makeAppCard(app)));
-
-    // Add App button inside each category
-    const addCard = document.createElement('div');
-    addCard.className = 'add-card';
-    addCard.onclick = () => openAddModal(cat.id);
-    addCard.innerHTML = `<span class="add-card-plus">＋</span><span>Add App</span>`;
-    grid.appendChild(addCard);
-  });
-}
-
-function makeAppCard(app) {
-  const a = document.createElement('a');
-  a.className = 'app-card';
-  a.href = app.url;
-  a.target = '_blank';
-  a.rel = 'noopener noreferrer';
-  a.title = app.name;
-
-  // icon wrapper — no link decoration leaks out
-  const wrapper = document.createElement('div');
-  wrapper.className = 'app-icon-wrapper';
-
-  if (app.icon && app.icon.trim()) {
-    const img = document.createElement('img');
-    img.src = app.icon;
-    img.alt = app.name;
-    img.addEventListener('error', () => {
-      img.style.display = 'none';
-      const fb = document.createElement('span');
-      fb.className = 'app-icon-fallback';
-      fb.textContent = app.name.charAt(0).toUpperCase();
-      wrapper.appendChild(fb);
-    });
-    wrapper.appendChild(img);
-  } else {
-    const fb = document.createElement('span');
-    fb.className = 'app-icon-fallback';
-    fb.textContent = app.name.charAt(0).toUpperCase();
-    wrapper.appendChild(fb);
+  
+  if (!state.apps.length) {
+    main.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">🚀</div>
+        <p>No apps yet. Click <strong>+ Add App</strong> to get started!</p>
+      </div>`;
+    return;
   }
 
-  const nameEl = document.createElement('div');
-  nameEl.className = 'app-name';
-  nameEl.textContent = app.name;
+  let html = '';
 
-  // hover actions
-  const actions = document.createElement('div');
-  actions.className = 'app-card-actions';
-  actions.innerHTML = `
-    <button class="card-btn" onclick="event.preventDefault();event.stopPropagation();editApp('${app.id}')" title="Edit">✏️</button>
-    <button class="card-btn delete" onclick="event.preventDefault();event.stopPropagation();deleteApp('${app.id}')" title="Delete">✕</button>
-  `;
+  state.categories.forEach(cat => {
+    const catApps = state.apps.filter(a => a.category === cat.id);
+    if (!catApps.length) return;
 
-  a.appendChild(actions);
-  a.appendChild(wrapper);
-  a.appendChild(nameEl);
-  return a;
+    html += `
+      <div class="category-section">
+        <div class="category-header">
+          <span class="category-icon">${cat.icon || cat.emoji || '📁'}</span>
+          <span class="category-title">${cat.name}</span>
+          <span class="category-count">${catApps.length}</span>
+        </div>
+        <div class="app-grid">
+          ${catApps.map(app => renderCard(app)).join('')}
+        </div>
+      </div>`;
+  });
+
+  // Uncategorized
+  const uncatApps = state.apps.filter(a => !a.category || !state.categories.find(c => c.id === a.category));
+  if (uncatApps.length) {
+    html += `
+      <div class="category-section">
+        <div class="category-header">
+          <span class="category-icon">📌</span>
+          <span class="category-title">Other</span>
+          <span class="category-count">${uncatApps.length}</span>
+        </div>
+        <div class="app-grid">
+          ${uncatApps.map(app => renderCard(app)).join('')}
+        </div>
+      </div>`;
+  }
+
+  main.innerHTML = html || `
+    <div class="empty-state">
+      <div class="empty-icon">🚀</div>
+      <p>No apps yet. Click <strong>+ Add App</strong> to get started!</p>
+    </div>`;
+}
+
+function renderCard(app) {
+  const iconHtml = buildIconHtml(app);
+  return `
+    <a class="app-card" href="${escHtml(app.url)}" target="_blank" rel="noopener">
+      <div class="card-actions" onclick="event.preventDefault(); event.stopPropagation();">
+        <button class="card-btn card-btn-edit" onclick="editApp('${app.id}')" title="Edit">✏️</button>
+        <button class="card-btn card-btn-delete" onclick="deleteApp('${app.id}')" title="Delete">🗑</button>
+      </div>
+      <div class="app-icon-wrap">
+        ${iconHtml}
+      </div>
+      <div class="app-name">${escHtml(app.name)}</div>
+    </a>`;
+}
+
+function buildIconHtml(app) {
+  const icon = app.icon || '';
+  if (!icon) {
+    // Use first letter as fallback
+    return `<div style="font-size:24px;font-weight:700;color:#4E8D99;">${app.name.charAt(0).toUpperCase()}</div>`;
+  }
+  // It's an image (URL or base64)
+  return `<img src="${escHtml(icon)}" alt="${escHtml(app.name)}" onerror="this.parentNode.innerHTML='<div style=\\'font-size:24px;font-weight:700;color:#4E8D99;\\'>${app.name.charAt(0).toUpperCase()}</div>'">`;
 }
 
 // ============================================================
-// ADD / EDIT APP MODAL
+// APP MODAL
 // ============================================================
-let editingAppId = null;
-let currentIconData = '';
-let currentIconTab = 'url';
+function showAppModal(appId = null) {
+  state.editingAppId = appId;
+  const modal = document.getElementById('appModal');
+  const title = document.getElementById('appModalTitle');
 
-function openAddModal(categoryId) {
-  editingAppId = null;
-  currentIconData = '';
-  document.getElementById('modalTitle').textContent = 'Add App';
-  document.getElementById('saveAppBtn').textContent = 'Save App';
-  document.getElementById('appName').value = '';
-  document.getElementById('appUrl').value = '';
-  document.getElementById('iconUrl').value = '';
-  document.getElementById('iconFile').value = '';
-  updateIconPreview('');
-  populateCategorySelect(categoryId || '');
-  switchIconTab('url');
-  document.getElementById('appModal').classList.remove('hidden');
+  // Populate category dropdown
+  const catSel = document.getElementById('appCategory');
+  catSel.innerHTML = state.categories.map(c =>
+    `<option value="${c.id}">${c.icon || c.emoji || ''} ${c.name}</option>`
+  ).join('');
+
+  if (appId) {
+    const app = state.apps.find(a => a.id === appId);
+    if (!app) return;
+    title.textContent = 'Edit App';
+    document.getElementById('appName').value = app.name || '';
+    document.getElementById('appUrl').value = app.url || '';
+    document.getElementById('appCategory').value = app.category || '';
+    document.getElementById('iconUrl').value = (app.icon && !app.icon.startsWith('data:')) ? app.icon : '';
+    document.getElementById('iconData').value = app.icon || '';
+    updateIconPreview(app.icon || '');
+  } else {
+    title.textContent = 'Add App';
+    document.getElementById('appName').value = '';
+    document.getElementById('appUrl').value = '';
+    document.getElementById('iconUrl').value = '';
+    document.getElementById('iconData').value = '';
+    updateIconPreview('');
+  }
+
+  modal.classList.remove('hidden');
+  document.getElementById('appName').focus();
+}
+
+function closeAppModal() {
+  document.getElementById('appModal').classList.add('hidden');
+  state.editingAppId = null;
+}
+
+async function saveApp() {
+  const name = document.getElementById('appName').value.trim();
+  const url = document.getElementById('appUrl').value.trim();
+  const category = document.getElementById('appCategory').value;
+  const iconData = document.getElementById('iconData').value.trim();
+  const iconUrl = document.getElementById('iconUrl').value.trim();
+  const icon = iconData || iconUrl || '';
+
+  if (!name) { alert('Please enter an app name.'); return; }
+  if (!url) { alert('Please enter a URL.'); return; }
+
+  if (state.editingAppId) {
+    const idx = state.apps.findIndex(a => a.id === state.editingAppId);
+    if (idx > -1) {
+      state.apps[idx] = { ...state.apps[idx], name, url, category, icon };
+    }
+  } else {
+    state.apps.push({
+      id: 'app_' + Date.now(),
+      name, url, category, icon
+    });
+  }
+
+  renderDashboard();
+  closeAppModal();
+  await saveData();
 }
 
 function editApp(id) {
-  const apps = getApps();
-  const app = apps.find(a => a.id === id);
+  showAppModal(id);
+}
+
+async function deleteApp(id) {
+  const app = state.apps.find(a => a.id === id);
   if (!app) return;
-  editingAppId = id;
-  currentIconData = app.icon || '';
-  document.getElementById('modalTitle').textContent = 'Edit App';
-  document.getElementById('saveAppBtn').textContent = 'Update App';
-  document.getElementById('appName').value = app.name;
-  document.getElementById('appUrl').value = app.url;
-  document.getElementById('iconUrl').value = app.icon && !app.icon.startsWith('data:') ? app.icon : '';
-  updateIconPreview(app.icon || '');
-  populateCategorySelect(app.category);
-  switchIconTab('url');
-  document.getElementById('appModal').classList.remove('hidden');
+  if (!confirm(`Delete "${app.name}"?`)) return;
+  state.apps = state.apps.filter(a => a.id !== id);
+  renderDashboard();
+  await saveData();
 }
-
-function saveApp() {
-  const name = document.getElementById('appName').value.trim();
-  const url  = document.getElementById('appUrl').value.trim();
-  const cat  = document.getElementById('appCategory').value;
-
-  if (!name || !url) { showToast('Name and URL are required', true); return; }
-
-  // resolve icon
-  let icon = currentIconData;
-  if (!icon && currentIconTab === 'favicon') {
-    try {
-      const domain = new URL(url).origin;
-      icon = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
-    } catch(e) {}
-  }
-
-  const apps = getApps();
-  if (editingAppId) {
-    // find and update
-    const idx = apps.findIndex(a => a.id === editingAppId);
-    if (idx !== -1) {
-      apps[idx] = { ...apps[idx], name, url, category: cat, icon };
-    }
-  } else {
-    apps.push({ id: 'app_' + Date.now(), name, url, category: cat, icon });
-  }
-
-  saveExtraApps(apps);
-  closeModal('appModal');
-  renderAll();
-  showToast(editingAppId ? 'App updated!' : 'App added!');
-}
-
-function deleteApp(id) {
-  if (!confirm('Remove this app from your dashboard?')) return;
-  // If it's a default app, we need to store it in a "removed" list
-  const defaultIds = new Set(DEFAULT_APPS.map(a => a.id));
-  if (defaultIds.has(id)) {
-    const removed = JSON.parse(localStorage.getItem('moxieDash_removed') || '[]');
-    if (!removed.includes(id)) removed.push(id);
-    localStorage.setItem('moxieDash_removed', JSON.stringify(removed));
-  } else {
-    const extra = JSON.parse(localStorage.getItem(STORAGE_KEY_EXTRA_APPS) || '[]');
-    const filtered = extra.filter(a => a.id !== id);
-    localStorage.setItem(STORAGE_KEY_EXTRA_APPS, JSON.stringify(filtered));
-  }
-  renderAll();
-  showToast('App removed');
-}
-
-// Override getApps to respect removed list
-const _baseGetApps = getApps;
-window.getApps = function() {
-  const removed = JSON.parse(localStorage.getItem('moxieDash_removed') || '[]');
-  return _baseGetApps().filter(a => !removed.includes(a.id));
-};
 
 // ============================================================
-// ICON HANDLING
+// ICON
 // ============================================================
-function switchIconTab(tab, btn) {
-  currentIconTab = tab;
-  ['url','upload','favicon'].forEach(t => {
-    document.getElementById('iconTab' + t.charAt(0).toUpperCase() + t.slice(1))
-      .classList.toggle('active', t === tab);
-  });
-  document.querySelectorAll('.icon-tab-btn').forEach((b,i) => {
-    b.classList.toggle('active', ['url','upload','favicon'][i] === tab);
-  });
-}
-
-function previewIconUrl() {
+function previewIcon() {
   const url = document.getElementById('iconUrl').value.trim();
-  currentIconData = url;
+  document.getElementById('iconData').value = url;
   updateIconPreview(url);
 }
 
-function previewIconFile() {
-  const file = document.getElementById('iconFile').files[0];
+function handleIconUpload(event) {
+  const file = event.target.files[0];
   if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    currentIconData = e.target.result;
-    updateIconPreview(e.target.result);
+
+  // Compress if large
+  const maxSize = 100 * 1024; // 100KB
+  if (file.size > maxSize) {
+    compressImage(file, 64, 0.7, (dataUrl) => {
+      document.getElementById('iconData').value = dataUrl;
+      document.getElementById('iconUrl').value = '';
+      updateIconPreview(dataUrl);
+    });
+  } else {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      document.getElementById('iconData').value = e.target.result;
+      document.getElementById('iconUrl').value = '';
+      updateIconPreview(e.target.result);
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function compressImage(file, maxDim, quality, callback) {
+  const img = new Image();
+  const url = URL.createObjectURL(file);
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    let w = img.width, h = img.height;
+    if (w > maxDim || h > maxDim) {
+      if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; }
+      else { w = Math.round(w * maxDim / h); h = maxDim; }
+    }
+    canvas.width = w; canvas.height = h;
+    canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+    callback(canvas.toDataURL('image/jpeg', quality));
+    URL.revokeObjectURL(url);
   };
-  reader.readAsDataURL(file);
+  img.src = url;
 }
 
 function updateIconPreview(src) {
   const box = document.getElementById('iconPreviewBox');
-  const emoji = document.getElementById('iconPreviewEmoji');
-  if (src) {
-    box.innerHTML = `<img src="${src}" alt="preview" style="width:100%;height:100%;object-fit:contain;display:block" onerror="this.style.display='none'">`;
-  } else {
-    box.innerHTML = `<span class="fallback-emoji" id="iconPreviewEmoji">🔗</span>`;
+  if (!src) {
+    box.innerHTML = '<span class="empty-icon">🖼️</span>';
+    return;
   }
+  box.innerHTML = `<img src="${escHtml(src)}" alt="preview" style="width:40px;height:40px;object-fit:contain;" onerror="this.parentNode.innerHTML='<span class=\\'empty-icon\\'>❌</span>'">`;
 }
 
 // ============================================================
-// CATEGORIES
+// CATEGORY MODAL
 // ============================================================
-function openAddCategoryModal() {
+function showCategoryModal() {
   document.getElementById('catName').value = '';
   document.getElementById('catEmoji').value = '';
   document.getElementById('categoryModal').classList.remove('hidden');
+  document.getElementById('catName').focus();
 }
 
-function saveCategory() {
+function closeCategoryModal() {
+  document.getElementById('categoryModal').classList.add('hidden');
+}
+
+async function saveCategory() {
   const name = document.getElementById('catName').value.trim();
   const icon = document.getElementById('catEmoji').value.trim() || '📁';
-  if (!name) { showToast('Category name required', true); return; }
-  const cats = getCategories();
-  const newCat = { id: 'cat_' + Date.now(), name, icon };
-  cats.push(newCat);
-  saveExtraCats(cats);
-  closeModal('categoryModal');
-  renderAll();
-  showToast('Category added!');
-}
+  if (!name) { alert('Please enter a category name.'); return; }
 
-function editCategory(id) {
-  const cats = getCategories();
-  const cat = cats.find(c => c.id === id);
-  if (!cat) return;
-  const name = prompt('Category name:', cat.name);
-  if (name === null) return;
-  const icon = prompt('Icon (emoji):', cat.icon || '📁');
-  cat.name = name.trim() || cat.name;
-  cat.icon = icon ? icon.trim() : cat.icon;
-  saveExtraCats(cats);
-  renderAll();
-  showToast('Category updated!');
-}
-
-function deleteCategory(id) {
-  const defaultIds = new Set(DEFAULT_CATEGORIES.map(c => c.id));
-  if (defaultIds.has(id)) {
-    showToast('Cannot delete a default category', true);
-    return;
-  }
-  if (!confirm('Delete this category? Apps in it will remain but be uncategorised.')) return;
-  const extra = JSON.parse(localStorage.getItem(STORAGE_KEY_EXTRA_CATS) || '[]');
-  localStorage.setItem(STORAGE_KEY_EXTRA_CATS, JSON.stringify(extra.filter(c => c.id !== id)));
-  renderAll();
-  showToast('Category deleted');
-}
-
-function populateCategorySelect(selectedId) {
-  const sel = document.getElementById('appCategory');
-  sel.innerHTML = '';
-  getCategories().forEach(cat => {
-    const opt = document.createElement('option');
-    opt.value = cat.id;
-    opt.textContent = (cat.icon || '') + ' ' + cat.name;
-    if (cat.id === selectedId) opt.selected = true;
-    sel.appendChild(opt);
+  state.categories.push({
+    id: 'cat_' + Date.now(),
+    name,
+    icon
   });
-}
 
-// ============================================================
-// EXPORT — copies full config so you can paste into code
-// ============================================================
-function exportConfig() {
-  const data = {
-    extraApps: JSON.parse(localStorage.getItem(STORAGE_KEY_EXTRA_APPS) || '[]'),
-    extraCats: JSON.parse(localStorage.getItem(STORAGE_KEY_EXTRA_CATS) || '[]'),
-    removed:   JSON.parse(localStorage.getItem('moxieDash_removed') || '[]'),
-  };
-  const json = JSON.stringify(data, null, 2);
-  navigator.clipboard.writeText(json).then(() => {
-    showToast('Config copied to clipboard!');
-  }).catch(() => {
-    const ta = document.createElement('textarea');
-    ta.value = json;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    showToast('Config copied!');
-  });
+  renderDashboard();
+  closeCategoryModal();
+  await saveData();
 }
 
 // ============================================================
 // UTILITIES
 // ============================================================
-function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-
-function showToast(msg, isError) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.style.background = isError ? '#e74c3c' : '#4E8D99';
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
+function setSyncStatus(text, type) {
+  const el = document.getElementById('syncStatus');
+  el.textContent = text;
+  el.className = 'sync-status' + (type ? ' ' + type : '');
 }
 
-// close modal on overlay click
-document.querySelectorAll('.modal-overlay').forEach(ov => {
-  ov.addEventListener('click', e => { if (e.target === ov) ov.classList.add('hidden'); });
-});
+function showLoading(show) {
+  document.getElementById('loadingOverlay').classList.toggle('hidden', !show);
+}
 
-// init
-renderAll();
+function escHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// ============================================================
+// DEFAULTS (if data.json doesn't exist yet)
+// ============================================================
+function getDefaultCategories() {
+  return [
+    {id:'communication', name:'Communication', icon:'📬'},
+    {id:'project', name:'Project Management', icon:'📋'},
+    {id:'finance', name:'Finance', icon:'💰'},
+    {id:'sales', name:'Sales & CRM', icon:'🛒'},
+    {id:'operations', name:'Operations', icon:'🔧'},
+    {id:'ai', name:'AI Tools', icon:'🤖'}
+  ];
+}
+
+function getDefaultApps() {
+  return [
+    {id:'gmail', name:'Gmail', url:'https://mail.google.com', icon:'https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico', category:'communication'},
+    {id:'gmeet', name:'Google Meet', url:'https://meet.google.com', icon:'https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png', category:'communication'},
+    {id:'slack', name:'Slack', url:'https://slack.com', icon:'https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png', category:'communication'},
+    {id:'chatgpt', name:'ChatGPT', url:'https://chatgpt.com', icon:'https://cdn.oaistatic.com/_next/static/media/favicon-32x32.be48395e.png', category:'ai'}
+  ];
+}
+
+// Close modals on overlay click
+document.getElementById('appModal').addEventListener('click', function(e) {
+  if (e.target === this) closeAppModal();
+});
+document.getElementById('categoryModal').addEventListener('click', function(e) {
+  if (e.target === this) closeCategoryModal();
+});
 </script>
 </body>
 </html>
