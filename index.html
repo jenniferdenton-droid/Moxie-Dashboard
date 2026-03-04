@@ -6,12 +6,14 @@
 <title>Moxie Dashboard</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: #f8f9fa;
     color: #333;
     min-height: 100vh;
   }
+
   .header {
     background: white;
     padding: 16px 32px;
@@ -23,26 +25,30 @@
     top: 0;
     z-index: 100;
   }
+
   .header-left {
     display: flex;
     align-items: center;
     gap: 12px;
   }
+
   .header-logo {
     height: 36px;
     width: auto;
   }
+
   .header-title {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 600;
     color: #4E8D99;
-    letter-spacing: -0.3px;
   }
+
   .header-right {
     display: flex;
     gap: 10px;
     align-items: center;
   }
+
   .btn {
     padding: 8px 16px;
     border-radius: 8px;
@@ -55,18 +61,22 @@
     align-items: center;
     gap: 6px;
   }
+
   .btn-primary { background: #4E8D99; color: white; }
   .btn-primary:hover { background: #3d7280; }
   .btn-secondary { background: #f0f0f0; color: #555; }
   .btn-secondary:hover { background: #e0e0e0; }
   .btn-danger { background: #fee2e2; color: #dc2626; }
   .btn-danger:hover { background: #fecaca; }
+
   .main {
     padding: 24px 32px;
     max-width: 1400px;
     margin: 0 auto;
   }
+
   .category-section { margin-bottom: 32px; }
+
   .category-header {
     display: flex;
     align-items: center;
@@ -75,6 +85,7 @@
     padding-bottom: 8px;
     border-bottom: 2px solid #e9ecef;
   }
+
   .category-title {
     font-size: 18px;
     font-weight: 600;
@@ -83,11 +94,13 @@
     align-items: center;
     gap: 8px;
   }
+
   .apps-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     gap: 16px;
   }
+
   .app-card {
     background: white;
     border-radius: 12px;
@@ -102,11 +115,13 @@
     color: inherit;
     display: block;
   }
+
   .app-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 16px rgba(78,141,153,0.2);
     border-color: #4E8D99;
   }
+
   .app-card-actions {
     position: absolute;
     top: 6px;
@@ -115,7 +130,9 @@
     gap: 4px;
     z-index: 10;
   }
+
   .app-card:hover .app-card-actions { display: flex; }
+
   .app-action-btn {
     width: 22px;
     height: 22px;
@@ -128,10 +145,12 @@
     justify-content: center;
     transition: all 0.2s;
   }
+
   .app-edit-btn { background: #dbeafe; color: #2563eb; }
   .app-edit-btn:hover { background: #93c5fd; }
   .app-delete-btn { background: #fee2e2; color: #dc2626; }
   .app-delete-btn:hover { background: #fca5a5; }
+
   .app-icon-wrapper {
     width: 56px;
     height: 56px;
@@ -143,13 +162,16 @@
     overflow: hidden;
     background: #f8f9fa;
   }
+
   .app-icon-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     display: block;
   }
+
   .app-icon-emoji { font-size: 32px; line-height: 1; }
+
   .app-name {
     font-size: 12px;
     font-weight: 500;
@@ -157,6 +179,7 @@
     line-height: 1.3;
     word-break: break-word;
   }
+
   .modal-overlay {
     position: fixed;
     inset: 0;
@@ -167,6 +190,7 @@
     justify-content: center;
     padding: 20px;
   }
+
   .modal {
     background: white;
     border-radius: 16px;
@@ -177,9 +201,19 @@
     overflow-y: auto;
     box-shadow: 0 20px 60px rgba(0,0,0,0.2);
   }
+
   .modal h2 { font-size: 20px; font-weight: 600; color: #333; margin-bottom: 20px; }
+
   .form-group { margin-bottom: 16px; }
-  .form-group label { display: block; font-size: 13px; font-weight: 500; color: #555; margin-bottom: 6px; }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 6px;
+  }
+
   .form-group input,
   .form-group select {
     width: 100%;
@@ -191,14 +225,17 @@
     outline: none;
     background: white;
   }
+
   .form-group input:focus,
   .form-group select:focus { border-color: #4E8D99; }
+
   .icon-preview {
     margin-top: 8px;
     display: flex;
     align-items: center;
     gap: 12px;
   }
+
   .icon-preview-box {
     width: 48px;
     height: 48px;
@@ -211,8 +248,16 @@
     border: 1.5px solid #e0e0e0;
     flex-shrink: 0;
   }
+
   .icon-preview-box img { width: 100%; height: 100%; object-fit: contain; }
-  .icon-options { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+  .icon-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
   .icon-option-btn {
     padding: 6px 12px;
     border: 1.5px solid #e0e0e0;
@@ -223,11 +268,13 @@
     color: #555;
     transition: all 0.2s;
   }
+
   .icon-option-btn:hover, .icon-option-btn.active {
     border-color: #4E8D99;
     color: #4E8D99;
     background: #f0f9fb;
   }
+
   .upload-btn-label {
     padding: 6px 12px;
     border: 1.5px solid #e0e0e0;
@@ -239,8 +286,11 @@
     transition: all 0.2s;
     white-space: nowrap;
   }
+
   .upload-btn-label:hover { border-color: #4E8D99; color: #4E8D99; background: #f0f9fb; }
+
   #iconFileInput { display: none; }
+
   .modal-actions {
     display: flex;
     gap: 10px;
@@ -249,6 +299,7 @@
     padding-top: 16px;
     border-top: 1px solid #eee;
   }
+
   .cat-list {
     display: flex;
     flex-direction: column;
@@ -257,6 +308,7 @@
     max-height: 300px;
     overflow-y: auto;
   }
+
   .cat-item {
     display: flex;
     align-items: center;
@@ -266,9 +318,12 @@
     border-radius: 8px;
     border: 1px solid #e9ecef;
   }
+
   .cat-item-left { display: flex; align-items: center; gap: 10px; }
   .cat-item-name { font-size: 14px; font-weight: 500; }
+
   .add-cat-form { display: flex; gap: 8px; margin-top: 12px; }
+
   .add-cat-form input {
     flex: 1;
     padding: 8px 12px;
@@ -277,10 +332,19 @@
     font-size: 14px;
     outline: none;
   }
+
   .add-cat-form input:focus { border-color: #4E8D99; }
+
   .app-card.dragging { opacity: 0.4; border: 2px dashed #4E8D99; }
-  .apps-grid.drag-over { background: #f0f9fb; border-radius: 12px; border: 2px dashed #4E8D99; }
+
+  .apps-grid.drag-over {
+    background: #f0f9fb;
+    border-radius: 12px;
+    border: 2px dashed #4E8D99;
+  }
+
   .hidden { display: none !important; }
+
   @media (max-width: 600px) {
     .main { padding: 16px; }
     .header { padding: 12px 16px; }
@@ -293,9 +357,8 @@
 
 <div class="header">
   <div class="header-left">
-    <svg class="header-logo" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="28" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="28" font-weight="800" fill="#4E8D99">moxie</text>
-    </svg>
+    <img class="header-logo" src="https://storage.googleapis.com/simplify-imgs/companies/682bcd01-4f0a-4e42-ab61-f3ffef9ff6d5/logo.png" alt="Moxie" onerror="this.style.display='none'">
+    <span class="header-title">Moxie Dashboard</span>
   </div>
   <div class="header-right">
     <button class="btn btn-secondary" onclick="openCategoryModal()">⚙️ Categories</button>
@@ -337,7 +400,7 @@
       <div class="icon-preview">
         <div class="icon-preview-box">
           <img id="iconPreviewImg" src="" alt="" style="display:none;">
-          <span id="iconPreviewEmoji" style="font-size:28px;">🔗</span>
+          <span id="iconPreviewEmoji" style="font-size:28px;"></span>
         </div>
         <span style="font-size:12px;color:#888;">Icon preview</span>
       </div>
@@ -360,7 +423,6 @@
       <button class="btn btn-primary" onclick="addCategory()">Add</button>
     </div>
     <div class="modal-actions">
-      <button class="btn btn-secondary" onclick="resetToDefaults()" style="margin-right:auto;background:#fff3cd;color:#856404;border:1px solid #ffc107;">↺ Reset All</button>
       <button class="btn btn-primary" onclick="closeCategoryModal()">Done</button>
     </div>
   </div>
@@ -369,147 +431,114 @@
 <script>
 // ===================== DEFAULT DATA =====================
 const DEFAULT_CATEGORIES = [
-  { id: 'communication', name: 'Communication', emoji: '📬' },
-  { id: 'project', name: 'Project Management', emoji: '📋' },
-  { id: 'finance', name: 'Finance', emoji: '💰' },
-  { id: 'sales', name: 'Sales & CRM', emoji: '🛒' },
-  { id: 'operations', name: 'Operations', emoji: '🔧' },
-  { id: 'ai', name: 'AI Tools', emoji: '🤖' },
-  { id: 'supplies', name: 'Supplies', emoji: '💊' }
+  { id: 'communication', name: 'Communication',      emoji: '📬' },
+  { id: 'project',       name: 'Project Management', emoji: '📋' },
+  { id: 'finance',       name: 'Finance',            emoji: '💰' },
+  { id: 'sales',         name: 'Sales & CRM',        emoji: '🛒' },
+  { id: 'operations',    name: 'Operations',         emoji: '🔧' },
+  { id: 'ai',            name: 'AI Tools',           emoji: '🤖' },
+  { id: 'supplies',      name: 'Supplies',           emoji: '💊' }
 ];
 
 const DEFAULT_APPS = [
   // Communication
-  { id: 'gmail', name: 'Gmail', url: 'https://mail.google.com', category: 'communication',
-    icon: 'https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico' },
-  { id: 'meet', name: 'Google Meet', url: 'https://meet.google.com', category: 'communication',
-    icon: 'https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png' },
-  { id: 'slack', name: 'Slack', url: 'https://slack.com', category: 'communication',
-    icon: 'https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png' },
-  { id: 'loom', name: 'Loom', url: 'https://www.loom.com', category: 'communication',
-    icon: 'https://cdn.loom.com/assets/img/og/loom-facebook-og.png' },
-  { id: 'fathom', name: 'Fathom', url: 'https://fathom.video/home', category: 'communication',
-    icon: 'https://fathom.video/favicon.ico' },
-  { id: 'calendar', name: 'Google Calendar', url: 'https://calendar.google.com', category: 'communication',
-    icon: 'https://calendar.google.com/googlecalendar/images/favicon_v2018_256.png' },
+  { id: 'gmail',    name: 'Gmail',          url: 'https://mail.google.com',                   category: 'communication', icon: 'https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_512dp.png' },
+  { id: 'meet',     name: 'Google Meet',    url: 'https://meet.google.com',                   category: 'communication', icon: 'https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png' },
+  { id: 'slack',    name: 'Slack',          url: 'https://slack.com',                         category: 'communication', icon: 'https://a.slack-edge.com/80588/marketing/img/meta/slack_hash_128.png' },
+  { id: 'loom',     name: 'Loom',           url: 'https://www.loom.com',                      category: 'communication', icon: 'https://e7.pngegg.com/pngimages/472/111/png-clipart-loom-new-logo-tech-companies.png' },
+  { id: 'fathom',   name: 'Fathom',         url: 'https://fathom.video/home',                 category: 'communication', icon: 'https://fathom.video/favicon.ico' },
+  { id: 'calendar', name: 'Google Calendar',url: 'https://calendar.google.com',               category: 'communication', icon: 'https://calendar.google.com/googlecalendar/images/favicon_v2018_256.png' },
 
   // Project Management
-  { id: 'notion', name: 'Notion', url: 'https://www.notion.so/moxie-docs/6060ef49fea04dc3a1dc0a32d0564233', category: 'project',
-    icon: 'https://www.notion.so/images/favicon.ico' },
-  { id: 'arrows', name: 'Arrows', url: 'https://success.joinmoxie.com/home', category: 'project',
-    icon: 'https://assets-global.website-files.com/614e2d59ec4e8e52620b8dde/6150dcd8bbcfd7e9e234d24d_favicon-arrows.png' },
-  { id: 'asana', name: 'Asana', url: 'https://app.asana.com/1/1203386861136560/home', category: 'project',
-    icon: 'https://luna1.co/7df302.png' },
-  { id: 'gcal', name: 'Google Calendar', url: 'https://calendar.google.com', category: 'project',
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg' },
-  { id: 'gsheets', name: 'Google Sheets', url: 'https://sheets.google.com', category: 'project',
-    icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png' },
-  { id: 'clickup', name: 'ClickUp', url: 'https://app.clickup.com/', category: 'project',
-    icon: 'https://clickup.com/landing/favicons/favicon-32x32.png' },
+  { id: 'notion',   name: 'Notion',         url: 'https://www.notion.so/moxie-docs/6060ef49fea04dc3a1dc0a32d0564233', category: 'project', icon: 'https://www.notion.so/images/favicon.ico' },
+  { id: 'arrows',   name: 'Arrows',         url: 'https://success.joinmoxie.com/home',        category: 'project', icon: 'https://images.vexels.com/media/users/3/142820/isolated/preview/0803cae4e4c162f1f0ac7c29aeb30738-spinning-multicolor-arrows-logo.png' },
+  { id: 'asana',    name: 'Asana',          url: 'https://app.asana.com/1/1203386861136560/home', category: 'project', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwEodKlQHNi3FEyWj5ODtQapWRqv12Fqlk4g&s' },
+  { id: 'gcal',     name: 'Google Calendar',url: 'https://calendar.google.com',               category: 'project', icon: 'https://calendar.google.com/googlecalendar/images/favicon_v2018_256.png' },
+  { id: 'gsheets',  name: 'Google Sheets',  url: 'https://sheets.google.com',                 category: 'project', icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png' },
+  { id: 'clickup',  name: 'ClickUp',        url: 'https://app.clickup.com/',                  category: 'project', icon: 'https://clickup.com/landing/favicons/favicon-32x32.png' },
 
   // Finance
-  { id: 'ramp', name: 'Ramp', url: 'https://app.ramp.com/sign-in', category: 'finance',
-    icon: 'https://ramp.com/favicon.ico' },
-  { id: 'stripe', name: 'Stripe', url: 'https://dashboard.stripe.com/register?account_invite=uis_sSEYJeeK7OA10mzCAF69eIyxWICgGRPI', category: 'finance',
-    icon: 'https://stripe.com/favicon.ico' },
-  { id: 'justworks', name: 'JustWorks', url: 'https://payroll.justworks.com/account/vouchers', category: 'finance',
-    icon: 'https://justworks.com/favicon.ico' },
+  { id: 'ramp',      name: 'Ramp',      url: 'https://app.ramp.com/sign-in',                                                                                                          category: 'finance', icon: 'https://ramp.com/favicon.ico' },
+  { id: 'stripe',    name: 'Stripe',    url: 'https://dashboard.stripe.com/login',                                                                                                    category: 'finance', icon: 'https://stripe.com/favicon.ico' },
+  { id: 'justworks', name: 'JustWorks', url: 'https://payroll.justworks.com/account/vouchers',                                                                                        category: 'finance', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTbSxy3pj32KURGi5e_6HEdG_3HeSfaQRPuA&s' },
 
   // Sales & CRM
-  { id: 'hubspot', name: 'HubSpot', url: 'https://app.hubspot.com/login/?loginRedirectUrl=https%3A%2F%2Fapp.hubspot.com%2Fcontacts%2F22420370%2Fobjects%2F0-1%2Fviews%2Fall%2Flist&loginPortalId=22420370', category: 'sales',
-    icon: 'https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png' },
-  { id: 'shopify', name: 'Shopify', url: 'https://admin.shopify.com/store/moxie-9681', category: 'sales',
-    icon: 'https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_logo_black-d53b0c7d2a875d5dcb26af1b1d3f2e32c7c5bea68b31b8ae35cdb58a8da0ba43.png' },
+  { id: 'hubspot', name: 'HubSpot', url: 'https://app.hubspot.com/login/?loginRedirectUrl=https%3A%2F%2Fapp.hubspot.com%2Fcontacts%2F22420370%2Fobjects%2F0-1%2Fviews%2Fall%2Flist&loginPortalId=22420370', category: 'sales', icon: 'https://www.hubspot.com/favicon.ico' },
+  { id: 'shopify', name: 'Shopify',  url: 'https://admin.shopify.com/store/moxie-9681',                                                                                              category: 'sales', icon: 'https://cdn.shopify.com/shopifycloud/shopify/assets/favicon-7535e1b.ico' },
 
   // Operations
-  { id: 'omni', name: 'Omni', url: 'https://moxie.omniapp.co', category: 'operations',
-    icon: 'https://omniapp.co/favicon.ico' },
-  { id: 'glean', name: 'Glean', url: 'https://app.glean.com', category: 'operations',
-    icon: 'https://app.glean.com/favicon.ico' },
-  { id: 'password', name: '1Password', url: 'https://my.1password.com', category: 'operations',
-    icon: 'https://1password.com/img/logo-v1.svg' },
-  { id: 'dropbox', name: 'Dropbox Sign', url: 'https://app.hellosign.com/account/logIn', category: 'operations',
-    icon: 'https://app.hellosign.com/favicon.ico' },
-  { id: 'zapier', name: 'Zapier', url: 'https://zapier.com', category: 'operations',
-    icon: 'https://cdn.zapier.com/zapier/images/favicon.ico' },
-  { id: 'github', name: 'GitHub', url: 'https://github.com', category: 'operations',
-    icon: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' },
-  { id: 'gsheets_ops', name: 'Google Sheets', url: 'https://sheets.google.com', category: 'operations',
-    icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png' },
-  { id: 'moxieadmin', name: 'Moxie Admin', url: 'https://api.prod.internal.joinmoxie.com/admin/login/?next=/admin/', category: 'operations',
-    icon: 'https://joinmoxie.com/favicon.ico' },
-  { id: 'moxieapp', name: 'Moxie App', url: 'https://app.joinmoxie.com/', category: 'operations',
-    icon: 'https://app.joinmoxie.com/assets/moxie-logo.svg' },
+  { id: 'omni',       name: 'Omni',               url: 'https://moxie.omniapp.co',                                                                                                        category: 'operations', icon: 'https://omniapp.co/favicon.ico' },
+  { id: 'glean',      name: 'Glean',              url: 'https://app.glean.com',                                                                                                           category: 'operations', icon: 'https://app.glean.com/favicon.ico' },
+  { id: 'password',   name: '1Password',          url: 'https://my.1password.com',                                                                                                        category: 'operations', icon: 'https://1password.com/favicon.ico' },
+  { id: 'dropbox',    name: 'Dropbox Sign',       url: 'https://app.hellosign.com/account/logIn',                                                                                         category: 'operations', icon: 'https://app.hellosign.com/favicon.ico' },
+  { id: 'zapier',     name: 'Zapier',             url: 'https://zapier.com',                                                                                                              category: 'operations', icon: 'https://zapier.com/favicon.ico' },
+  { id: 'github',     name: 'GitHub',             url: 'https://github.com',                                                                                                              category: 'operations', icon: 'https://github.com/favicon.ico' },
+  { id: 'moxieadmin', name: 'Moxie Admin',        url: 'https://api.prod.internal.joinmoxie.com/admin/login/',                                                                            category: 'operations', icon: 'https://storage.googleapis.com/simplify-imgs/companies/682bcd01-4f0a-4e42-ab61-f3ffef9ff6d5/logo.png' },
+  { id: 'moxieapp',   name: 'Moxie App',          url: 'https://app.joinmoxie.com/',                                                                                                      category: 'operations', icon: 'https://storage.googleapis.com/simplify-imgs/companies/682bcd01-4f0a-4e42-ab61-f3ffef9ff6d5/logo.png' },
+  { id: 'wbrrpt',     name: 'WBR Reporting',      url: 'https://docs.google.com/spreadsheets/d/1POeaDXKcETvpy9DPN7GSWUztlp6P3USS2cOkA4oEyeE/edit?gid=1144010606#gid=1144010606',        category: 'operations', icon: 'https://previews.123rf.com/images/rubelhossain/rubelhossain2111/rubelhossain211104822/177707066-wbr-letter-initial-logo-design-vector-illustration.jpg' },
+  { id: 'gtmrpt',     name: 'GTM Reporting',      url: 'https://docs.google.com/spreadsheets/u/1/d/1FoMfitLCBZlUCOOgXK3e3GSfET2r7BsryEdcaMKw4Rc/edit?gid=1252324728#gid=1252324728',   category: 'operations', icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png' },
+  { id: 'mdhq',       name: 'MD HQ',              url: 'https://www.notion.so/moxie-docs/NEW-MD-HQ-19fe63b2b0a380858183f0f69fc29672',                                                    category: 'operations', icon: 'https://thumbs.dreamstime.com/b/vector-graphic-emblem-hexagon-initials-letter-md-logo-design-template-vector-graphic-initials-letter-md-logo-design-template-204618863.jpg' },
+  { id: 'moxiepc',    name: 'Moxie PC Ownership', url: 'https://www.notion.so/moxie-docs/Moxie-PC-Overview-PC-Owner-Roles-4e240fa3b3744c689b3fa58315ce7299',                             category: 'operations', icon: 'https://www.notion.so/images/favicon.ico' },
+  { id: 'moxiestate', name: 'Moxie State Overview',url: 'https://www.notion.so/moxie-docs/88a04edd15f54a30b7eee6b71871258b?v=d3f9f1837e764d2c8f9740e7bc45b5da',                         category: 'operations', icon: 'https://icon2.cleanpng.com/20180505/clq/avss2hcw6.webp' },
+  { id: 'compliance', name: 'Compliance Breakdown',url: 'https://file.notion.so/f/f/691ad6c1-489f-4e57-a0e3-e2da905006db/7209dcc9-d2b2-49e8-b68f-6625cb9655d9/Updated_with_payroll__Moxie_MSO___MSA_Bank_Account_Explainer_(3)_(1).pdf?table=block&id=311e63b2-b0a3-80e3-9299-e5cfff4c8566&spaceId=691ad6c1-489f-4e57-a0e3-e2da905006db&expirationTimestamp=1772582400000&signature=02TcWlcLT1o2gLqRd6EwPXF7TqkY5MMWMONVbOTwk94', category: 'operations', icon: 'https://cdn-icons-png.flaticon.com/512/11443/11443795.png' },
 
   // AI Tools
-  { id: 'chatgpt', name: 'ChatGPT', url: 'https://chatgpt.com', category: 'ai',
-    icon: 'https://cdn.oaistatic.com/assets/favicon-o20kmmos.svg' },
-  { id: 'notebooklm', name: 'NotebookLM', url: 'https://notebooklm.google.com', category: 'ai',
-    icon: 'https://www.gstatic.com/notebooklm/notebooklm_favicon_v2.ico' },
+  { id: 'chatgpt',    name: 'ChatGPT',    url: 'https://chatgpt.com',                          category: 'ai', icon: 'https://cdn.oaistatic.com/_next/static/media/favicon-32x32.be48395e.png' },
+  { id: 'notebooklm', name: 'NotebookLM', url: 'https://notebooklm.google.com',                category: 'ai', icon: 'https://www.gstatic.com/notebooklm/notebooklm_favicon_v2.ico' },
 
   // Supplies
-  { id: 'pharmapromos', name: 'Pharma Promos', url: 'https://www.notion.so/moxie-docs/27ae63b2b0a3803b89cceeedba52132b?v=27ae63b2b0a380f3a719000c273997d8', category: 'supplies',
-    icon: 'https://www.notion.so/images/favicon.ico' },
-  { id: 'pharmapricing', name: 'Pharma Pricing', url: 'https://docs.google.com/spreadsheets/d/1kHcpXh-aWWCGGCXlU51RaEsjrHVr2o4jaKypo8GerXw/edit?gid=227519511#gid=227519511', category: 'supplies',
-    icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png' },
-  { id: 'laserprices', name: 'Laser & Device Prices', url: 'https://www.notion.so/moxie-docs/Laser-and-Energy-Device-Look-Book-224e63b2b0a380dd9177d14fd9b2244e', category: 'supplies',
-    icon: 'https://www.notion.so/images/favicon.ico' }
+  { id: 'pharmapromos',  name: 'Pharma Promos',          url: 'https://www.notion.so/moxie-docs/27ae63b2b0a3803b89cceeedba52132b',                                                              category: 'supplies', icon: 'https://thumbs.dreamstime.com/b/red-button-promo-vector-icon-94068670.jpg' },
+  { id: 'pharmapricing', name: 'Pharma Pricing',          url: 'https://docs.google.com/spreadsheets/d/1kHcpXh-aWWCGGCXlU51RaEsjrHVr2o4jaKypo8GerXw/edit',                                    category: 'supplies', icon: 'https://cdn-icons-png.flaticon.com/512/891/891267.png' },
+  { id: 'laserprices',   name: 'Laser and Device Prices', url: 'https://www.notion.so/moxie-docs/Laser-and-Energy-Device-Look-Book-224e63b2b0a380dd9177d14fd9b2244e',                          category: 'supplies', icon: 'https://cdn-icons-png.flaticon.com/512/2965/2965879.png' }
 ];
 
-// ===================== STATE =====================
-// Use a single storage key. State includes categories, apps, deletedAppIds, deletedCatIds
+// ===================== STORAGE KEY =====================
 const STORAGE_KEY = 'moxieDashboard_v5';
-let state = { categories: [], apps: [], deletedAppIds: [], deletedCatIds: [] };
+
+// ===================== STATE =====================
+// state.apps and state.categories are the single source of truth.
+// state.deletedIds tracks IDs the user has explicitly deleted (so defaults don't re-appear).
+let state = { categories: [], apps: [], deletedIds: [] };
 let editingAppId = null;
 let iconMode = 'auto';
 let uploadedIconData = null;
 let dragSrcId = null;
 
 // ===================== STORAGE =====================
-function getDefaultState() {
-  return {
-    categories: JSON.parse(JSON.stringify(DEFAULT_CATEGORIES)),
-    apps: JSON.parse(JSON.stringify(DEFAULT_APPS)),
-    deletedAppIds: [],
-    deletedCatIds: []
-  };
-}
-
 function loadState() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
-      const parsed = JSON.parse(saved);
-      state = {
-        categories: parsed.categories || [],
-        apps: parsed.apps || [],
-        deletedAppIds: parsed.deletedAppIds || [],
-        deletedCatIds: parsed.deletedCatIds || []
-      };
+      state = JSON.parse(saved);
+      if (!state.deletedIds) state.deletedIds = [];
 
-      // Add any new default categories that aren't deleted and don't exist yet
+      // Add any new default categories not already present and not deleted
       DEFAULT_CATEGORIES.forEach(dc => {
-        const alreadyDeleted = state.deletedCatIds.includes(dc.id);
-        const alreadyExists = state.categories.find(c => c.id === dc.id);
-        if (!alreadyDeleted && !alreadyExists) {
-          state.categories.push(JSON.parse(JSON.stringify(dc)));
+        if (!state.categories.find(c => c.id === dc.id) && !state.deletedIds.includes(dc.id)) {
+          state.categories.push(dc);
         }
       });
 
-      // Add any new default apps that aren't deleted and don't exist yet
+      // Add any new default apps not already present and not deleted
       DEFAULT_APPS.forEach(da => {
-        const alreadyDeleted = state.deletedAppIds.includes(da.id);
-        const alreadyExists = state.apps.find(a => a.id === da.id);
-        if (!alreadyDeleted && !alreadyExists) {
-          state.apps.push(JSON.parse(JSON.stringify(da)));
+        if (!state.apps.find(a => a.id === da.id) && !state.deletedIds.includes(da.id)) {
+          state.apps.push(da);
         }
       });
     } else {
-      state = getDefaultState();
+      // First time load — use all defaults
+      state = {
+        categories: JSON.parse(JSON.stringify(DEFAULT_CATEGORIES)),
+        apps:       JSON.parse(JSON.stringify(DEFAULT_APPS)),
+        deletedIds: []
+      };
     }
   } catch(e) {
-    console.warn('Load error:', e);
-    state = getDefaultState();
+    state = {
+      categories: JSON.parse(JSON.stringify(DEFAULT_CATEGORIES)),
+      apps:       JSON.parse(JSON.stringify(DEFAULT_APPS)),
+      deletedIds: []
+    };
   }
   saveState();
 }
@@ -520,15 +549,6 @@ function saveState() {
   } catch(e) {
     console.warn('Could not save to localStorage:', e);
   }
-}
-
-function resetToDefaults() {
-  if (!confirm('Reset everything to defaults? All custom apps and categories will be lost.')) return;
-  localStorage.removeItem(STORAGE_KEY);
-  state = getDefaultState();
-  saveState();
-  closeCategoryModal();
-  render();
 }
 
 // ===================== RENDER =====================
@@ -548,18 +568,18 @@ function render() {
       <div class="category-header">
         <div class="category-title">
           <span>${cat.emoji || ''}</span>
-          <span>${escapeHtml(cat.name)}</span>
+          <span>${cat.name}</span>
         </div>
       </div>
       <div class="apps-grid"
            id="grid-${cat.id}"
            ondragover="onDragOver(event)"
-           ondrop="onDrop(event, '${cat.id}')"
+           ondrop="onDrop(event,'${cat.id}')"
            ondragleave="onDragLeave(event)">
       </div>
     `;
-
     main.appendChild(section);
+
     const grid = section.querySelector(`#grid-${cat.id}`);
     apps.forEach(app => grid.appendChild(createAppCard(app)));
   });
@@ -573,10 +593,7 @@ function render() {
       <div class="category-header">
         <div class="category-title"><span>📎 Uncategorized</span></div>
       </div>
-      <div class="apps-grid" id="grid-uncategorized"
-           ondragover="onDragOver(event)"
-           ondrop="onDrop(event, 'uncategorized')"
-           ondragleave="onDragLeave(event)"></div>
+      <div class="apps-grid" id="grid-uncategorized"></div>
     `;
     main.appendChild(section);
     const grid = section.querySelector('#grid-uncategorized');
@@ -595,7 +612,7 @@ function createAppCard(app) {
 
   card.addEventListener('dragstart', (e) => {
     dragSrcId = app.id;
-    setTimeout(() => card.classList.add('dragging'), 0);
+    card.classList.add('dragging');
     e.dataTransfer.effectAllowed = 'move';
   });
   card.addEventListener('dragend', () => card.classList.remove('dragging'));
@@ -604,13 +621,12 @@ function createAppCard(app) {
 
   card.innerHTML = `
     <div class="app-card-actions">
-      <button class="app-action-btn app-edit-btn" title="Edit" onclick="openEditModal('${escapeHtml(app.id)}', event)">✏️</button>
-      <button class="app-action-btn app-delete-btn" title="Delete" onclick="deleteApp('${escapeHtml(app.id)}', event)">×</button>
+      <button class="app-action-btn app-edit-btn"   title="Edit"   onclick="openEditModal('${app.id}',event)">✏️</button>
+      <button class="app-action-btn app-delete-btn" title="Delete" onclick="deleteApp('${app.id}',event)">×</button>
     </div>
     <div class="app-icon-wrapper">${iconHtml}</div>
     <div class="app-name">${escapeHtml(app.name)}</div>
   `;
-
   return card;
 }
 
@@ -619,32 +635,29 @@ function getIconHtml(app) {
     return `<span class="app-icon-emoji">${getDefaultEmoji(app.name)}</span>`;
   }
   return `<img src="${escapeHtml(app.icon)}" alt="${escapeHtml(app.name)}"
-    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
     <span class="app-icon-emoji" style="display:none;">${getDefaultEmoji(app.name)}</span>`;
 }
 
 function getDefaultEmoji(name) {
   const n = (name || '').toLowerCase();
   if (n.includes('gmail') || n.includes('mail')) return '📧';
-  if (n.includes('meet') || n.includes('zoom')) return '📹';
-  if (n.includes('slack')) return '💬';
+  if (n.includes('meet') || n.includes('zoom'))  return '📹';
+  if (n.includes('slack'))                        return '💬';
   if (n.includes('sheet') || n.includes('excel')) return '📊';
-  if (n.includes('notion')) return '📝';
-  if (n.includes('calendar')) return '📅';
-  if (n.includes('stripe') || n.includes('ramp')) return '💳';
-  if (n.includes('justworks')) return '👥';
-  if (n.includes('shopify')) return '🛍️';
-  if (n.includes('github')) return '🐙';
-  if (n.includes('zapier')) return '⚡';
-  if (n.includes('password')) return '🔑';
+  if (n.includes('notion'))                       return '📝';
+  if (n.includes('calendar'))                     return '📅';
+  if (n.includes('stripe') || n.includes('ramp') || n.includes('finance')) return '💳';
+  if (n.includes('shopify'))                      return '🛍️';
+  if (n.includes('github'))                       return '🐙';
+  if (n.includes('zapier'))                       return '⚡';
+  if (n.includes('password'))                     return '🔑';
   if (n.includes('chat') || n.includes('gpt') || n.includes('ai')) return '🤖';
   if (n.includes('asana') || n.includes('clickup')) return '✅';
-  if (n.includes('loom')) return '🎥';
-  if (n.includes('hubspot')) return '🎯';
-  if (n.includes('glean')) return '🔍';
-  if (n.includes('pharma') || n.includes('laser') || n.includes('supply') || n.includes('supplies')) return '💊';
-  if (n.includes('notebook')) return '📓';
-  if (n.includes('fathom')) return '📊';
+  if (n.includes('loom'))                         return '🎥';
+  if (n.includes('hubspot'))                      return '🎯';
+  if (n.includes('glean'))                        return '🔍';
+  if (n.includes('pharma') || n.includes('laser') || n.includes('supplies')) return '💊';
   return '🔗';
 }
 
@@ -658,23 +671,13 @@ function onDragOver(e) {
   e.currentTarget.classList.add('drag-over');
   e.dataTransfer.dropEffect = 'move';
 }
-
-function onDragLeave(e) {
-  if (!e.currentTarget.contains(e.relatedTarget)) {
-    e.currentTarget.classList.remove('drag-over');
-  }
-}
-
+function onDragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
 function onDrop(e, categoryId) {
   e.preventDefault();
   e.currentTarget.classList.remove('drag-over');
   if (dragSrcId) {
     const app = state.apps.find(a => a.id === dragSrcId);
-    if (app) {
-      app.category = categoryId;
-      saveState();
-      render();
-    }
+    if (app) { app.category = categoryId; saveState(); render(); }
     dragSrcId = null;
   }
 }
@@ -695,15 +698,14 @@ function openAddModal() {
 }
 
 function openEditModal(appId, e) {
-  e.preventDefault();
-  e.stopPropagation();
+  e.preventDefault(); e.stopPropagation();
   const app = state.apps.find(a => a.id === appId);
   if (!app) return;
   editingAppId = appId;
   uploadedIconData = null;
   document.getElementById('appModalTitle').textContent = 'Edit App';
   document.getElementById('appName').value = app.name;
-  document.getElementById('appUrl').value = app.url;
+  document.getElementById('appUrl').value  = app.url;
   populateCategorySelect(app.category);
 
   if (app.icon && app.icon.startsWith('data:')) {
@@ -721,13 +723,10 @@ function openEditModal(appId, e) {
     setIconMode('auto');
     updateIconPreview(getAutoIcon(app.url));
   }
-
   document.getElementById('appModal').classList.remove('hidden');
 }
 
-function closeAppModal() {
-  document.getElementById('appModal').classList.add('hidden');
-}
+function closeAppModal() { document.getElementById('appModal').classList.add('hidden'); }
 
 function populateCategorySelect(selectedId) {
   const sel = document.getElementById('appCategory');
@@ -758,10 +757,8 @@ function setIconMode(mode) {
 
 function getAutoIcon(url) {
   if (!url) return '';
-  try {
-    const u = new URL(url);
-    return `https://www.google.com/s2/favicons?domain=${u.hostname}&sz=64`;
-  } catch(e) { return ''; }
+  try { return `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=64`; }
+  catch(e) { return ''; }
 }
 
 function handleIconUpload(e) {
@@ -781,22 +778,17 @@ function handleIconUpload(e) {
 document.getElementById('appIconUrl').addEventListener('input', function() {
   if (iconMode === 'url') updateIconPreview(this.value);
 });
-
 document.getElementById('appUrl').addEventListener('input', function() {
   if (iconMode === 'auto') updateIconPreview(getAutoIcon(this.value));
 });
 
 function updateIconPreview(src) {
-  const img = document.getElementById('iconPreviewImg');
+  const img   = document.getElementById('iconPreviewImg');
   const emoji = document.getElementById('iconPreviewEmoji');
   if (src) {
     img.src = src;
     img.style.display = 'block';
     emoji.style.display = 'none';
-    img.onerror = function() {
-      img.style.display = 'none';
-      emoji.style.display = 'block';
-    };
   } else {
     img.style.display = 'none';
     emoji.style.display = 'block';
@@ -805,12 +797,11 @@ function updateIconPreview(src) {
 }
 
 function saveApp() {
-  const name = document.getElementById('appName').value.trim();
-  const url = document.getElementById('appUrl').value.trim();
+  const name     = document.getElementById('appName').value.trim();
+  const url      = document.getElementById('appUrl').value.trim();
   const category = document.getElementById('appCategory').value;
-
   if (!name) { alert('Please enter an app name.'); return; }
-  if (!url) { alert('Please enter a URL.'); return; }
+  if (!url)  { alert('Please enter a URL.'); return; }
 
   let icon = '';
   if (iconMode === 'upload' && uploadedIconData) {
@@ -818,43 +809,26 @@ function saveApp() {
   } else if (iconMode === 'url') {
     icon = document.getElementById('appIconUrl').value.trim();
   } else {
-    try {
-      const hostname = new URL(url).hostname;
-      icon = `https://www.google.com/s2/favicons?domain=${hostname}&sz=64`;
-    } catch(e) { icon = ''; }
+    try { icon = `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=64`; } catch(e) {}
   }
 
   if (editingAppId) {
     const app = state.apps.find(a => a.id === editingAppId);
-    if (app) {
-      app.name = name;
-      app.url = url;
-      app.category = category;
-      app.icon = icon;
-    }
+    if (app) { app.name = name; app.url = url; app.category = category; app.icon = icon; }
   } else {
-    const newId = 'app_' + Date.now();
-    state.apps.push({ id: newId, name, url, category, icon });
+    state.apps.push({ id: 'app_' + Date.now(), name, url, category, icon });
   }
-
-  saveState();
-  render();
-  closeAppModal();
+  saveState(); render(); closeAppModal();
 }
 
 // ===================== DELETE APP =====================
 function deleteApp(appId, e) {
-  e.preventDefault();
-  e.stopPropagation();
+  e.preventDefault(); e.stopPropagation();
   if (!confirm('Delete this app?')) return;
-
-  // Track deletion so it doesn't come back on refresh
-  if (!state.deletedAppIds.includes(appId)) {
-    state.deletedAppIds.push(appId);
-  }
   state.apps = state.apps.filter(a => a.id !== appId);
-  saveState();
-  render();
+  // Track deletion so default doesn't come back on reload
+  if (!state.deletedIds.includes(appId)) state.deletedIds.push(appId);
+  saveState(); render();
 }
 
 // ===================== CATEGORY MODAL =====================
@@ -862,7 +836,6 @@ function openCategoryModal() {
   renderCatList();
   document.getElementById('categoryModal').classList.remove('hidden');
 }
-
 function closeCategoryModal() {
   document.getElementById('categoryModal').classList.add('hidden');
   render();
@@ -880,39 +853,34 @@ function renderCatList() {
         <span class="cat-item-name">${escapeHtml(cat.name)}</span>
       </div>
       <button class="app-action-btn app-delete-btn"
-        style="width:auto;padding:4px 10px;border-radius:6px;height:auto;"
-        onclick="deleteCategory('${escapeHtml(cat.id)}')">Remove</button>
+              style="width:auto;padding:4px 10px;border-radius:6px;"
+              onclick="deleteCategory('${cat.id}')">Remove</button>
     `;
     list.appendChild(item);
   });
 }
 
 function addCategory() {
-  const name = document.getElementById('newCatName').value.trim();
+  const name  = document.getElementById('newCatName').value.trim();
   const emoji = document.getElementById('newCatEmoji').value.trim() || '📁';
   if (!name) return;
   const id = 'cat_' + Date.now();
   state.categories.push({ id, name, emoji });
-  document.getElementById('newCatName').value = '';
+  document.getElementById('newCatName').value  = '';
   document.getElementById('newCatEmoji').value = '';
-  saveState();
-  renderCatList();
+  saveState(); renderCatList();
 }
 
 function deleteCategory(catId) {
   const count = state.apps.filter(a => a.category === catId).length;
   if (count > 0 && !confirm(`This category has ${count} app(s). Remove category anyway? Apps will appear as uncategorized.`)) return;
-
-  // Track deleted category ID so it doesn't come back
-  if (!state.deletedCatIds.includes(catId)) {
-    state.deletedCatIds.push(catId);
-  }
   state.categories = state.categories.filter(c => c.id !== catId);
-  saveState();
-  renderCatList();
+  // Track so default doesn't re-appear
+  if (!state.deletedIds.includes(catId)) state.deletedIds.push(catId);
+  saveState(); renderCatList();
 }
 
-// ===================== CLOSE MODALS ON OVERLAY CLICK =====================
+// ===================== CLOSE ON OVERLAY CLICK =====================
 document.getElementById('appModal').addEventListener('click', function(e) {
   if (e.target === this) closeAppModal();
 });
