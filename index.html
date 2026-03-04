@@ -6,938 +6,592 @@
 <title>Moxie Dashboard</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f9fa; color: #333; }
   
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: #f8f9fa;
-    color: #333;
-    min-height: 100vh;
-  }
-
-  /* HEADER */
-  .header {
+  header {
     background: white;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 0 24px;
+    padding: 16px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
+    border-bottom: 2px solid #4E8D99;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
   }
-
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .logo-area {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .logo-circle {
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, #4E8D99, #6D445E);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 800;
-    font-size: 14px;
-    letter-spacing: -0.5px;
-  }
-
-  .logo-text {
-    font-size: 18px;
-    font-weight: 700;
-    color: #4E8D99;
-    letter-spacing: -0.3px;
-  }
-
-  .logo-sub {
-    font-size: 11px;
-    color: #888;
-    font-weight: 400;
-    margin-left: 2px;
-  }
-
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
+  
+  .logo-area { display: flex; align-items: center; gap: 12px; }
+  .logo-area img { height: 36px; }
+  .logo-area h1 { font-size: 1.4rem; color: #4E8D99; font-weight: 700; }
+  
+  .header-actions { display: flex; gap: 10px; align-items: center; }
+  
   .btn {
     padding: 8px 16px;
     border-radius: 8px;
     border: none;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 0.85rem;
     font-weight: 600;
-    transition: all 0.15s;
+    transition: all 0.2s;
+  }
+  .btn-primary { background: #4E8D99; color: white; }
+  .btn-primary:hover { background: #3a7a85; }
+  .btn-secondary { background: #6D445E; color: white; }
+  .btn-secondary:hover { background: #5a3650; }
+  .btn-danger { background: #e74c3c; color: white; }
+  .btn-danger:hover { background: #c0392b; }
+  .btn-outline { background: white; color: #4E8D99; border: 2px solid #4E8D99; }
+  .btn-outline:hover { background: #4E8D99; color: white; }
+  .btn-sm { padding: 5px 10px; font-size: 0.75rem; }
+  
+  .main { padding: 24px 32px; max-width: 1400px; margin: 0 auto; }
+  
+  .search-bar {
     display: flex;
     align-items: center;
-    gap: 6px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 10px 16px;
+    margin-bottom: 24px;
+    gap: 10px;
+    max-width: 500px;
   }
-
-  .btn-primary {
-    background: #4E8D99;
-    color: white;
+  .search-bar input {
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    flex: 1;
+    color: #333;
   }
-  .btn-primary:hover { background: #3d7280; }
-
-  .btn-secondary {
-    background: #f0f0f0;
-    color: #555;
-  }
-  .btn-secondary:hover { background: #e0e0e0; }
-
-  .btn-accent {
-    background: #6D445E;
-    color: white;
-  }
-  .btn-accent:hover { background: #5a3a4e; }
-
-  .btn-sm {
-    padding: 5px 10px;
-    font-size: 12px;
-    border-radius: 6px;
-  }
-
-  /* MAIN */
-  .main {
-    padding: 24px;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  /* CATEGORY SECTION */
-  .category-section {
-    margin-bottom: 32px;
-  }
-
+  .search-bar span { color: #999; font-size: 1.1rem; }
+  
+  .category-section { margin-bottom: 36px; }
+  
   .category-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 14px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #e8e8e8;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #EBBA95;
   }
-
+  
   .category-title {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 16px;
+    gap: 10px;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: #333;
+    color: #4E8D99;
   }
-
-  .category-icon {
-    font-size: 18px;
-  }
-
-  .category-count {
-    background: #f0f0f0;
-    color: #888;
-    border-radius: 10px;
-    padding: 1px 8px;
-    font-size: 11px;
-    font-weight: 600;
-  }
-
-  /* APP GRID */
-  .app-grid {
+  
+  .category-actions { display: flex; gap: 6px; }
+  
+  .apps-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 12px;
-    min-height: 80px;
+    gap: 16px;
   }
-
-  .app-grid.drag-over {
-    background: #f0f8ff;
-    border-radius: 12px;
-    border: 2px dashed #4E8D99;
-  }
-
-  /* APP CARD */
+  
   .app-card {
     background: white;
     border-radius: 12px;
-    border: 1px solid #e8e8e8;
-    padding: 16px 12px 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+    padding: 16px 12px;
+    text-align: center;
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.2s;
+    border: 2px solid transparent;
     position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     text-decoration: none;
-    color: inherit;
-    user-select: none;
-  }
-
-  .app-card:hover {
-    box-shadow: 0 4px 16px rgba(78,141,153,0.15);
-    border-color: #4E8D99;
-    transform: translateY(-1px);
-  }
-
-  .app-card.dragging {
-    opacity: 0.4;
-    transform: scale(0.95);
-  }
-
-  .app-card-actions {
-    position: absolute;
-    top: 6px;
-    right: 6px;
-    display: none;
-    gap: 3px;
-  }
-
-  .app-card:hover .app-card-actions {
-    display: flex;
-  }
-
-  .card-action-btn {
-    width: 22px;
-    height: 22px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-size: 11px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.1s;
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-  }
-
-  .card-action-btn:hover { transform: scale(1.1); }
-  .edit-btn:hover { background: #4E8D99; color: white; }
-  .delete-btn:hover { background: #e74c3c; color: white; }
-
-  .drag-handle {
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    color: #ccc;
-    font-size: 10px;
-    cursor: grab;
-    padding: 2px;
-    display: none;
-  }
-
-  .app-card:hover .drag-handle {
     display: block;
+    color: #333;
   }
-
-  .drag-handle:active { cursor: grabbing; }
-
-  .app-icon-wrap {
+  .app-card:hover {
+    border-color: #4E8D99;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(78,141,153,0.2);
+  }
+  
+  .app-icon {
     width: 52px;
     height: 52px;
     border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f5f5f5;
-    flex-shrink: 0;
-  }
-
-  .app-icon-wrap img {
-    width: 100%;
-    height: 100%;
     object-fit: contain;
-    border-radius: 8px;
+    margin: 0 auto 10px;
+    display: block;
   }
-
+  
   .app-icon-fallback {
     width: 52px;
     height: 52px;
     border-radius: 12px;
+    background: linear-gradient(135deg, #4E8D99, #6D445E);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-size: 1.4rem;
     font-weight: 700;
     color: white;
-    flex-shrink: 0;
+    margin: 0 auto 10px;
   }
-
+  
   .app-name {
-    font-size: 12px;
+    font-size: 0.78rem;
     font-weight: 600;
-    text-align: center;
-    color: #333;
+    color: #444;
     line-height: 1.3;
-    max-width: 110px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    word-break: break-word;
   }
-
-  /* MODAL */
+  
+  .card-menu-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ccc;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 2px 4px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .app-card:hover .card-menu-btn { opacity: 1; color: #999; }
+  .card-menu-btn:hover { color: #4E8D99 !important; background: #f0f0f0; }
+  
+  .card-dropdown {
+    position: absolute;
+    top: 28px;
+    right: 6px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    z-index: 200;
+    min-width: 130px;
+    overflow: hidden;
+    display: none;
+  }
+  .card-dropdown.open { display: block; }
+  .card-dropdown button {
+    display: block;
+    width: 100%;
+    padding: 9px 14px;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.82rem;
+    color: #444;
+    transition: background 0.15s;
+  }
+  .card-dropdown button:hover { background: #f5f5f5; }
+  .card-dropdown button.danger { color: #e74c3c; }
+  .card-dropdown button.danger:hover { background: #fff5f5; }
+  
+  /* Modal */
   .modal-overlay {
+    display: none;
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.5);
     z-index: 1000;
-    display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(2px);
-    padding: 20px;
   }
-
+  .modal-overlay.open { display: flex; }
   .modal {
     background: white;
     border-radius: 16px;
-    width: 100%;
+    padding: 32px;
+    width: 90%;
     max-width: 480px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    overflow: hidden;
-  }
-
-  .modal-header {
-    padding: 20px 24px 16px;
-    border-bottom: 1px solid #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .modal-title {
-    font-size: 17px;
-    font-weight: 700;
-    color: #333;
-  }
-
-  .modal-close {
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    border: none;
-    background: #f0f0f0;
-    cursor: pointer;
-    font-size: 16px;
-    color: #555;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .modal-close:hover { background: #e0e0e0; }
-
-  .modal-body {
-    padding: 20px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    max-height: 70vh;
+    max-height: 90vh;
     overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .form-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #555;
-  }
-
-  .form-input, .form-select {
-    padding: 10px 12px;
-    border: 1.5px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 14px;
-    transition: border-color 0.15s;
-    outline: none;
-    background: white;
+  .modal h2 { font-size: 1.3rem; color: #4E8D99; margin-bottom: 20px; font-weight: 700; }
+  
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #555; margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea {
     width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    color: #333;
+    background: white;
   }
-
-  .form-input:focus, .form-select:focus {
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     border-color: #4E8D99;
   }
-
-  /* ICON PREVIEW */
+  
   .icon-preview-area {
     display: flex;
     align-items: center;
     gap: 12px;
-  }
-
-  .icon-preview-box {
-    width: 52px;
-    height: 52px;
-    border-radius: 12px;
-    border: 2px dashed #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f9f9f9;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  .icon-preview-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .icon-input-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .icon-options {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-
-  .icon-option-btn {
-    padding: 5px 10px;
-    border-radius: 6px;
-    border: 1.5px solid #e0e0e0;
-    background: white;
-    cursor: pointer;
-    font-size: 11px;
-    font-weight: 600;
-    color: #555;
-    transition: all 0.1s;
-  }
-
-  .icon-option-btn.active,
-  .icon-option-btn:hover {
-    border-color: #4E8D99;
-    color: #4E8D99;
-    background: #f0f8f9;
-  }
-
-  .icon-source-area {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .file-upload-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 12px;
-    border: 1.5px dashed #4E8D99;
+    margin-top: 8px;
+    padding: 12px;
+    background: #f8f9fa;
     border-radius: 8px;
-    background: #f0f8f9;
-    color: #4E8D99;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .file-upload-btn:hover { background: #e0f0f2; }
-  
-  #fileInput { display: none; }
-
-  .modal-footer {
-    padding: 16px 24px 20px;
-    border-top: 1px solid #f0f0f0;
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
-  }
-
-  /* CATEGORY MODAL */
-  .cat-modal {
-    max-width: 400px;
-  }
-
-  /* EMPTY STATE */
-  .empty-drop-zone {
-    background: #fafafa;
     border: 2px dashed #e0e0e0;
-    border-radius: 12px;
-    padding: 24px;
+  }
+  .icon-preview-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    object-fit: contain;
+    border: 1px solid #e0e0e0;
+    background: white;
+  }
+  .icon-preview-label { font-size: 0.8rem; color: #888; }
+  
+  .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px; }
+  
+  .empty-state {
     text-align: center;
-    color: #bbb;
-    font-size: 13px;
-    min-height: 80px;
+    padding: 40px;
+    color: #aaa;
+    font-size: 0.9rem;
+  }
+  
+  .drag-over { background: #e8f5f7 !important; border: 2px dashed #4E8D99 !important; }
+  
+  .add-category-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: white;
+    border: 2px dashed #EBBA95;
+    border-radius: 10px;
+    color: #6D445E;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    transition: all 0.2s;
   }
-
-  /* TOAST */
+  .add-category-btn:hover { background: #fdf5ef; border-color: #6D445E; }
+  
+  .no-results { text-align: center; padding: 60px; color: #999; }
+  
   .toast {
     position: fixed;
     bottom: 24px;
     right: 24px;
-    background: #333;
+    background: #4E8D99;
     color: white;
-    padding: 12px 18px;
+    padding: 12px 20px;
     border-radius: 10px;
-    font-size: 13px;
+    font-size: 0.88rem;
     font-weight: 600;
     z-index: 9999;
-    animation: slideUp 0.3s ease;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  }
-
-  .toast.success { background: #4E8D99; }
-  .toast.error { background: #e74c3c; }
-
-  @keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-
-  /* DRAG PLACEHOLDER */
-  .drag-placeholder {
-    background: #e8f5f7;
-    border: 2px dashed #4E8D99;
-    border-radius: 12px;
-    min-height: 100px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s;
     pointer-events: none;
   }
-
-  /* COLOR SWATCH */
-  .color-letter {
-    font-size: 20px;
-    font-weight: 700;
-    color: white;
+  .toast.show { opacity: 1; transform: translateY(0); }
+  
+  .drag-handle {
+    cursor: grab;
+    color: #ccc;
+    font-size: 0.8rem;
+    margin-right: 4px;
   }
-
-  .hint {
-    font-size: 11px;
-    color: #aaa;
-    margin-top: 2px;
+  
+  @media (max-width: 600px) {
+    header { padding: 12px 16px; }
+    .main { padding: 16px; }
+    .apps-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; }
+    .header-actions .btn span { display: none; }
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="header-left">
-    <div class="logo-area">
-      <div class="logo-circle">M</div>
-      <div>
-        <span class="logo-text">Moxie</span>
-        <span class="logo-sub">Dashboard</span>
-      </div>
-    </div>
+<header>
+  <div class="logo-area">
+    <img src="data:image/jpeg;base64,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" alt="Moxie Logo">
+    <h1>Moxie Dashboard</h1>
   </div>
-  <div class="header-right">
-    <button class="btn btn-secondary" onclick="addCategoryModal()">＋ Category</button>
-    <button class="btn btn-primary" onclick="openAddModal()">＋ Add App</button>
+  <div class="header-actions">
+    <button class="btn btn-outline" onclick="exportData()">⬆ Export</button>
+    <button class="btn btn-secondary" onclick="importData()">⬇ Import</button>
+    <button class="btn btn-primary" onclick="openAddModal()">+ Add App</button>
   </div>
+</header>
+
+<div class="main">
+  <div class="search-bar">
+    <span>🔍</span>
+    <input type="text" id="searchInput" placeholder="Search apps..." oninput="renderDashboard()">
+  </div>
+
+  <button class="add-category-btn" onclick="openAddCategoryModal()">
+    + Add Category
+  </button>
+
+  <div id="dashboard"></div>
 </div>
 
-<!-- MAIN -->
-<div class="main" id="mainContent"></div>
-
-<!-- ADD/EDIT APP MODAL -->
-<div class="modal-overlay" id="appModal" style="display:none" onclick="handleOverlayClick(event,'appModal')">
-  <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-header">
-      <span class="modal-title" id="modalTitle">Add App</span>
-      <button class="modal-close" onclick="closeModal('appModal')">✕</button>
+<!-- Add/Edit App Modal -->
+<div class="modal-overlay" id="appModal">
+  <div class="modal">
+    <h2 id="modalTitle">Add App</h2>
+    <div class="form-group">
+      <label>App Name *</label>
+      <input type="text" id="appName" placeholder="e.g. Slack">
     </div>
-    <div class="modal-body">
-      <input type="hidden" id="editAppId">
-      
-      <div class="form-group">
-        <label class="form-label">App Name *</label>
-        <input class="form-input" id="appName" placeholder="e.g. Slack" />
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">URL *</label>
-        <input class="form-input" id="appUrl" placeholder="https://..." />
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Category</label>
-        <select class="form-select" id="appCategory"></select>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Icon / Logo</label>
-        <div class="icon-preview-area">
-          <div class="icon-preview-box" id="iconPreviewBox">
-            <span style="color:#ccc;font-size:22px">🖼</span>
-          </div>
-          <div class="icon-input-group">
-            <div class="icon-options">
-              <button class="icon-option-btn active" id="optUrl" onclick="switchIconMode('url')">URL</button>
-              <button class="icon-option-btn" id="optUpload" onclick="switchIconMode('upload')">Upload Image</button>
-              <button class="icon-option-btn" id="optAuto" onclick="switchIconMode('auto')">Auto-detect</button>
-            </div>
-            <div class="icon-source-area" id="iconSourceArea">
-              <input class="form-input" id="iconUrl" placeholder="https://site.com/favicon.ico" oninput="previewIconFromUrl()" />
-              <span class="hint">Paste a direct image URL</span>
-            </div>
-          </div>
-        </div>
-        <input type="file" id="fileInput" accept="image/*" onchange="handleFileUpload(event)" />
+    <div class="form-group">
+      <label>URL *</label>
+      <input type="text" id="appUrl" placeholder="https://...">
+    </div>
+    <div class="form-group">
+      <label>Category *</label>
+      <select id="appCategory"></select>
+    </div>
+    <div class="form-group">
+      <label>Icon Image</label>
+      <input type="file" id="appIconFile" accept="image/*" onchange="handleIconUpload(event)" style="margin-bottom:8px;">
+      <input type="text" id="appIconUrl" placeholder="Or paste image URL / data:image..." oninput="previewIcon()">
+      <div class="icon-preview-area" id="iconPreviewArea" style="display:none;">
+        <img id="iconPreviewImg" class="icon-preview-img" src="" alt="Preview">
+        <span class="icon-preview-label">Icon preview</span>
       </div>
     </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('appModal')">Cancel</button>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeAppModal()">Cancel</button>
       <button class="btn btn-primary" id="saveAppBtn" onclick="saveApp()">Save App</button>
     </div>
   </div>
 </div>
 
-<!-- ADD CATEGORY MODAL -->
-<div class="modal-overlay" id="catModal" style="display:none" onclick="handleOverlayClick(event,'catModal')">
-  <div class="modal cat-modal" onclick="event.stopPropagation()">
-    <div class="modal-header">
-      <span class="modal-title">Add Category</span>
-      <button class="modal-close" onclick="closeModal('catModal')">✕</button>
+<!-- Add/Edit Category Modal -->
+<div class="modal-overlay" id="categoryModal">
+  <div class="modal">
+    <h2 id="catModalTitle">Add Category</h2>
+    <div class="form-group">
+      <label>Category Name *</label>
+      <input type="text" id="catName" placeholder="e.g. Finance">
     </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label class="form-label">Category Name *</label>
-        <input class="form-input" id="catName" placeholder="e.g. Design Tools" />
-      </div>
-      <div class="form-group">
-        <label class="form-label">Emoji Icon</label>
-        <input class="form-input" id="catEmoji" placeholder="e.g. 🎨" maxlength="4" style="font-size:20px" />
-      </div>
+    <div class="form-group">
+      <label>Emoji Icon</label>
+      <input type="text" id="catEmoji" placeholder="e.g. 💰">
     </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('catModal')">Cancel</button>
-      <button class="btn btn-primary" onclick="saveCategory()">Add Category</button>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeCategoryModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveCategory()">Save Category</button>
     </div>
   </div>
 </div>
 
+<!-- Import input (hidden) -->
+<input type="file" id="importFile" accept=".json" style="display:none;" onchange="handleImport(event)">
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
 <script>
-// ============================================================
-// STORAGE KEY
-// ============================================================
-const STORAGE_KEY = 'moxieDashboardV2';
-
-// ============================================================
-// DEFAULT DATA
-// ============================================================
-const DEFAULT_CATEGORIES = [
-  { id: 'communication', name: 'Communication', icon: '📬' },
-  { id: 'project', name: 'Project Management', icon: '📋' },
-  { id: 'finance', name: 'Finance', icon: '💰' },
-  { id: 'sales', name: 'Sales & CRM', icon: '🛒' },
-  { id: 'operations', name: 'Operations', icon: '🔧' },
-  { id: 'ai', name: 'AI Tools', icon: '🤖' }
-];
-
-const DEFAULT_APPS = [
-  { id: 'gmail', name: 'Gmail', url: 'https://mail.google.com', icon: 'https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_512dp.png', category: 'communication' },
-  { id: 'gmeet', name: 'Google Meet', url: 'https://meet.google.com', icon: 'https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png', category: 'communication' },
-  { id: 'slack', name: 'Slack', url: 'https://slack.com', icon: 'https://a.slack-edge.com/80588/marketing/img/meta/slack_hash_128.png', category: 'communication' },
-  { id: 'loom', name: 'Loom', url: 'https://www.loom.com', icon: 'https://cdn.loom.com/assets/img/og/loom-facebook-og.png', category: 'communication' },
-  { id: 'fathom', name: 'Fathom', url: 'https://fathom.video/home', icon: 'https://fathom.video/favicon.ico', category: 'communication' },
-  { id: 'gcal', name: 'Google Calendar', url: 'https://calendar.google.com', icon: 'https://calendar.google.com/googlecalendar/images/favicon_v2018_256.png', category: 'communication' },
-  { id: 'notion', name: 'Notion', url: 'https://www.notion.so/moxie-docs/6060ef49fea04dc3a1dc0a32d0564233', icon: 'https://www.notion.so/images/favicon.ico', category: 'project' },
-  { id: 'asana', name: 'Asana', url: 'https://app.asana.com/1/1203386861136560/home', icon: 'https://app.asana.com/favicon.ico', category: 'project' },
-  { id: 'arrows', name: 'Arrows', url: 'https://success.joinmoxie.com/home', icon: 'https://assets-global.website-files.com/614e2d59ec4e8e52620b8dde/6150dcd8bbcfd7e9e234d24d_favicon-arrows.png', category: 'project' },
-  { id: 'gsheets', name: 'Google Sheets', url: 'https://sheets.google.com', icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png', category: 'project' },
-  { id: 'ramp', name: 'Ramp', url: 'https://app.ramp.com/sign-in', icon: 'https://ramp.com/favicon.ico', category: 'finance' },
-  { id: 'stripe', name: 'Stripe', url: 'https://dashboard.stripe.com/', icon: 'https://stripe.com/favicon.ico', category: 'finance' },
-  { id: 'justworks', name: 'JustWorks', url: 'https://payroll.justworks.com/account/vouchers', icon: 'https://justworks.com/favicon.ico', category: 'finance' },
-  { id: 'hubspot', name: 'HubSpot', url: 'https://app.hubspot.com/login/?loginPortalId=22420370', icon: 'https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png', category: 'sales' },
-  { id: 'shopify', name: 'Shopify', url: 'https://admin.shopify.com/store/moxie-9681', icon: 'https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_logo_black-d53b0c7d2a875d5dcb26af1b1d3f2e32c7c5bea68b31b8ae35cdb58a8da0ba43.png', category: 'sales' },
-  { id: 'omni', name: 'Omni', url: 'https://moxie.omniapp.co', icon: 'https://moxie.omniapp.co/favicon.ico', category: 'operations' },
-  { id: 'glean', name: 'Glean', url: 'https://app.glean.com', icon: 'https://app.glean.com/favicon.ico', category: 'operations' },
-  { id: '1password', name: '1Password', url: 'https://my.1password.com', icon: 'https://1password.com/img/logo-v1.svg', category: 'operations' },
-  { id: 'dropbox', name: 'Dropbox Sign', url: 'https://app.hellosign.com/account/logIn', icon: 'https://app.hellosign.com/favicon.ico', category: 'operations' },
-  { id: 'zapier', name: 'Zapier', url: 'https://zapier.com', icon: 'https://cdn.zapier.com/zapier/images/favicon.ico', category: 'operations' },
-  { id: 'github', name: 'GitHub', url: 'https://github.com', icon: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png', category: 'operations' },
-  { id: 'moxieadmin', name: 'Moxie Admin', url: 'https://api.prod.internal.joinmoxie.com/admin/login/', icon: 'https://joinmoxie.com/favicon.ico', category: 'operations' },
-  { id: 'chatgpt', name: 'ChatGPT', url: 'https://chatgpt.com', icon: 'https://cdn.oaistatic.com/_next/static/media/favicon-32x32.be48395e.png', category: 'ai' }
-];
-
-// ============================================================
-// ICON MODE
-// ============================================================
-let currentIconMode = 'url';
-let currentIconData = '';
-let dragSrcId = null;
-
-function switchIconMode(mode) {
-  currentIconMode = mode;
-  ['url','upload','auto'].forEach(m => {
-    document.getElementById('opt' + m.charAt(0).toUpperCase() + m.slice(1))
-      .classList.toggle('active', m === mode);
-  });
-  
-  const area = document.getElementById('iconSourceArea');
-  if (mode === 'url') {
-    area.innerHTML = `
-      <input class="form-input" id="iconUrl" placeholder="https://site.com/favicon.ico" oninput="previewIconFromUrl()" value="${currentIconData.startsWith('http') ? currentIconData : ''}" />
-      <span class="hint">Paste a direct image URL</span>`;
-  } else if (mode === 'upload') {
-    area.innerHTML = `
-      <label class="file-upload-btn" for="fileInput">📁 Choose Image File</label>
-      <span class="hint">PNG, JPG, SVG, ICO — saved as base64</span>`;
-  } else {
-    const urlVal = document.getElementById('appUrl')?.value || '';
-    area.innerHTML = `
-      <button class="btn btn-secondary btn-sm" onclick="autoDetectIcon()" style="width:100%">🔍 Detect from URL</button>
-      <span class="hint">Will try to fetch favicon from the app's domain</span>`;
-  }
-}
-
-function previewIconFromUrl() {
-  const val = document.getElementById('iconUrl')?.value || '';
-  currentIconData = val;
-  updateIconPreview(val);
-}
-
-function autoDetectIcon() {
-  const url = document.getElementById('appUrl')?.value || '';
-  if (!url) { showToast('Enter a URL first', 'error'); return; }
-  try {
-    const domain = new URL(url).origin;
-    const favicon = `${domain}/favicon.ico`;
-    currentIconData = favicon;
-    updateIconPreview(favicon);
-    showToast('Favicon detected!', 'success');
-  } catch(e) {
-    showToast('Could not detect icon', 'error');
-  }
-}
-
-function handleFileUpload(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(ev) {
-    currentIconData = ev.target.result;
-    updateIconPreview(currentIconData);
-    showToast('Image uploaded!', 'success');
-  };
-  reader.readAsDataURL(file);
-  e.target.value = '';
-}
-
-function updateIconPreview(src) {
-  const box = document.getElementById('iconPreviewBox');
-  if (!box) return;
-  if (src) {
-    box.innerHTML = `<img src="${src}" onerror="this.style.display='none'" />`;
-  } else {
-    box.innerHTML = `<span style="color:#ccc;font-size:22px">🖼</span>`;
-  }
-}
-
 // ============================================================
 // DATA MANAGEMENT
 // ============================================================
-function loadData() {
-  // Try new key first
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (raw) {
-    try { return JSON.parse(raw); } catch(e) {}
-  }
 
-  // MIGRATE from old keys
-  let categories = [...DEFAULT_CATEGORIES];
-  let apps = [...DEFAULT_APPS];
-  let migrated = false;
+const STORAGE_KEY = 'moxieDashboard';
 
-  // Try moxie_categories + moxie_apps (most recent old format)
-  const oldCats = localStorage.getItem('moxie_categories');
-  const oldApps = localStorage.getItem('moxie_apps');
-  if (oldApps) {
-    try {
-      const parsed = JSON.parse(oldApps);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        // Merge: keep defaults, add any custom ones
-        const defaultIds = new Set(DEFAULT_APPS.map(a => a.id));
-        const customApps = parsed.filter(a => !defaultIds.has(a.id) && a.id && a.id.startsWith('app_'));
-        apps = [...DEFAULT_APPS, ...customApps];
-        migrated = true;
-      }
-    } catch(e) {}
-  }
-  if (oldCats) {
-    try {
-      const parsed = JSON.parse(oldCats);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        const defaultIds = new Set(DEFAULT_CATEGORIES.map(c => c.id));
-        const customCats = parsed.filter(c => !defaultIds.has(c.id));
-        categories = [...DEFAULT_CATEGORIES, ...customCats];
-        migrated = true;
-      }
-    } catch(e) {}
-  }
-
-  // Also check moxieDashboard key
-  const oldDash = localStorage.getItem('moxieDashboard');
-  if (oldDash) {
-    try {
-      const parsed = JSON.parse(oldDash);
-      if (parsed.apps && Array.isArray(parsed.apps)) {
-        const defaultIds = new Set(DEFAULT_APPS.map(a => a.id));
-        const customApps2 = parsed.apps.filter(a => !defaultIds.has(a.id) && a.id && a.id.startsWith('app_'));
-        // Merge without duplicates
-        const existingCustomIds = new Set(apps.filter(a=>a.id.startsWith('app_')).map(a=>a.id));
-        const newCustom = customApps2.filter(a => !existingCustomIds.has(a.id));
-        apps = [...apps, ...newCustom];
-        migrated = true;
-      }
-      if (parsed.categories && Array.isArray(parsed.categories)) {
-        const defaultIds = new Set(DEFAULT_CATEGORIES.map(c => c.id));
-        const existingCustomIds = new Set(categories.filter(c=>c.id.startsWith('cat_')).map(c=>c.id));
-        const newCustomCats = parsed.categories.filter(c => !defaultIds.has(c.id) && !existingCustomIds.has(c.id));
-        categories = [...categories, ...newCustomCats];
-        migrated = true;
-      }
-    } catch(e) {}
-  }
-
-  if (migrated) {
-    console.log('✅ Migrated data from old storage keys. Custom apps found:', apps.filter(a=>a.id.startsWith('app_')).length);
-  }
-
-  const data = { categories, apps };
-  saveData(data);
-  return data;
+function getData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return getDefaultData();
 }
 
 function saveData(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
-function getData() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return loadData();
-  try { return JSON.parse(raw); } catch(e) { return loadData(); }
+function getDefaultData() {
+  return {
+    categories: [
+      { id: 'communication', name: 'Communication', emoji: '📬' },
+      { id: 'project', name: 'Project Management', emoji: '📋' },
+      { id: 'finance', name: 'Finance', emoji: '💰' },
+      { id: 'sales', name: 'Sales & CRM', emoji: '🛒' },
+      { id: 'operations', name: 'Operations', emoji: '🔧' },
+      { id: 'ai', name: 'AI Tools', emoji: '🤖' }
+    ],
+    apps: [
+      { id: 'gmail', name: 'Gmail', url: 'https://mail.google.com', icon: 'https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_512dp.png', category: 'communication' },
+      { id: 'meet', name: 'Google Meet', url: 'https://meet.google.com', icon: 'https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png', category: 'communication' },
+      { id: 'slack', name: 'Slack', url: 'https://slack.com', icon: 'https://a.slack-edge.com/80588/marketing/img/meta/slack_hash_128.png', category: 'communication' },
+      { id: 'loom', name: 'Loom', url: 'https://www.loom.com', icon: 'https://cdn.loom.com/assets/img/og/loom-facebook-og.png', category: 'communication' },
+      { id: 'fathom', name: 'Fathom', url: 'https://fathom.video/home', icon: 'https://fathom.video/favicon.ico', category: 'communication' },
+      { id: 'gcal', name: 'Google Calendar', url: 'https://calendar.google.com', icon: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg', category: 'communication' },
+      { id: 'notion', name: 'Notion', url: 'https://www.notion.so/moxie-docs/6060ef49fea04dc3a1dc0a32d0564233', icon: 'https://www.notion.so/images/favicon.ico', category: 'project' },
+      { id: 'arrows', name: 'Arrows', url: 'https://success.joinmoxie.com/home', icon: 'https://assets-global.website-files.com/614e2d59ec4e8e52620b8dde/6150dcd8bbcfd7e9e234d24d_favicon-arrows.png', category: 'project' },
+      { id: 'asana', name: 'Asana', url: 'https://app.asana.com/1/1203386861136560/home', icon: 'https://luna1.co/7df982.png', category: 'project' },
+      { id: 'gsheets', name: 'Google Sheets', url: 'https://sheets.google.com', icon: 'https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_512dp.png', category: 'project' },
+      { id: 'ramp', name: 'Ramp', url: 'https://app.ramp.com/sign-in', icon: 'https://ramp.com/favicon.ico', category: 'finance' },
+      { id: 'stripe', name: 'Stripe', url: 'https://dashboard.stripe.com', icon: 'https://stripe.com/favicon.ico', category: 'finance' },
+      { id: 'justworks', name: 'JustWorks', url: 'https://payroll.justworks.com/account/vouchers', icon: 'https://justworks.com/favicon.ico', category: 'finance' },
+      { id: 'hubspot', name: 'HubSpot', url: 'https://app.hubspot.com/login', icon: 'https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png', category: 'sales' },
+      { id: 'shopify', name: 'Shopify', url: 'https://admin.shopify.com/store/moxie-9681', icon: 'https://cdn.shopify.com/favicon.ico', category: 'sales' },
+      { id: 'omni', name: 'Omni', url: 'https://moxie.omniapp.co', icon: 'https://moxie.omniapp.co/favicon.ico', category: 'operations' },
+      { id: 'glean', name: 'Glean', url: 'https://app.glean.com', icon: 'https://app.glean.com/favicon.ico', category: 'operations' },
+      { id: '1password', name: '1Password', url: 'https://my.1password.com', icon: 'https://1password.com/favicon.ico', category: 'operations' },
+      { id: 'dropbox', name: 'Dropbox Sign', url: 'https://app.hellosign.com/account/logIn', icon: 'https://app.hellosign.com/favicon.ico', category: 'operations' },
+      { id: 'zapier', name: 'Zapier', url: 'https://zapier.com', icon: 'https://cdn.zapier.com/zapier/images/favicon.ico', category: 'operations' },
+      { id: 'github', name: 'GitHub', url: 'https://github.com', icon: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png', category: 'operations' },
+      { id: 'moxieadmin', name: 'Moxie Admin', url: 'https://api.prod.internal.joinmoxie.com/admin/login/', icon: 'https://joinmoxie.com/favicon.ico', category: 'operations' },
+      { id: 'chatgpt', name: 'ChatGPT', url: 'https://chatgpt.com', icon: 'https://cdn.oaistatic.com/_next/static/media/favicon-32x32.be48395e.png', category: 'ai' }
+    ]
+  };
+}
+
+// ============================================================
+// MIGRATION - load from old keys if new key is empty
+// ============================================================
+function migrateOldData() {
+  const existing = localStorage.getItem(STORAGE_KEY);
+  if (existing) return; // already have new format
+
+  // Try to merge from old keys
+  let apps = [];
+  let categories = [];
+
+  const oldKeys = ['moxie_apps', 'moxie_categories', 'moxieDashboardApps', 'moxieApps'];
+  oldKeys.forEach(k => {
+    try {
+      const raw = localStorage.getItem(k);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          parsed.forEach(item => {
+            if (item.url && item.name) apps.push(item);
+            else if ((item.id || item.name) && !item.url) categories.push(item);
+          });
+        }
+      }
+    } catch(e) {}
+  });
+
+  if (apps.length > 0 || categories.length > 0) {
+    const def = getDefaultData();
+    if (categories.length === 0) categories = def.categories;
+    if (apps.length === 0) apps = def.apps;
+    saveData({ categories, apps });
+    showToast('✅ Migrated your saved apps!');
+  }
 }
 
 // ============================================================
 // RENDER
 // ============================================================
-function render() {
+
+let editingAppId = null;
+let editingCatId = null;
+let openDropdownId = null;
+let dragSrcId = null;
+
+function renderDashboard() {
   const data = getData();
-  const main = document.getElementById('mainContent');
-  main.innerHTML = '';
+  const query = (document.getElementById('searchInput')?.value || '').toLowerCase();
+  const container = document.getElementById('dashboard');
+  container.innerHTML = '';
+
+  // Populate category select
+  const catSelect = document.getElementById('appCategory');
+  if (catSelect) {
+    catSelect.innerHTML = data.categories.map(c =>
+      `<option value="${c.id}">${c.emoji || ''} ${c.name}</option>`
+    ).join('');
+  }
+
+  let hasAny = false;
 
   data.categories.forEach(cat => {
-    const catApps = data.apps.filter(a => a.category === cat.id);
-    
+    const apps = data.apps.filter(a =>
+      a.category === cat.id &&
+      (!query || a.name.toLowerCase().includes(query))
+    );
+
     const section = document.createElement('div');
     section.className = 'category-section';
-    section.dataset.categoryId = cat.id;
+    section.setAttribute('data-cat-id', cat.id);
+    section.setAttribute('draggable', 'false');
 
     section.innerHTML = `
       <div class="category-header">
         <div class="category-title">
-          <span class="category-icon">${cat.icon || cat.emoji || '📁'}</span>
+          <span>${cat.emoji || '📁'}</span>
           <span>${cat.name}</span>
-          <span class="category-count">${catApps.length}</span>
+          <span style="font-size:0.75rem;color:#999;font-weight:400;">(${apps.length})</span>
         </div>
-        <div style="display:flex;gap:6px">
-          <button class="btn btn-secondary btn-sm" onclick="openAddModal('${cat.id}')">＋ Add</button>
-          ${!DEFAULT_CATEGORIES.find(d=>d.id===cat.id) ? `<button class="btn btn-secondary btn-sm" onclick="deleteCategory('${cat.id}')">🗑</button>` : ''}
+        <div class="category-actions">
+          <button class="btn btn-sm btn-outline" onclick="openEditCategoryModal('${cat.id}')">✏️ Edit</button>
+          <button class="btn btn-sm btn-danger" onclick="deleteCategory('${cat.id}')">🗑</button>
         </div>
       </div>
-      <div class="app-grid" id="grid-${cat.id}" 
-        ondragover="handleDragOver(event)" 
-        ondrop="handleDrop(event,'${cat.id}')"
-        ondragleave="handleDragLeave(event)">
-        ${catApps.length === 0 ? '<div class="empty-drop-zone">Drop apps here</div>' : ''}
+      <div class="apps-grid" id="grid-${cat.id}" ondragover="onDragOver(event,'${cat.id}')" ondrop="onDrop(event,'${cat.id}')" ondragleave="onDragLeave(event,'${cat.id}')">
+        ${apps.length === 0 ? '<div class="empty-state">No apps yet — click + Add App</div>' : ''}
       </div>
     `;
 
-    main.appendChild(section);
-
-    const grid = document.getElementById(`grid-${cat.id}`);
-    catApps.forEach(app => {
+    const grid = section.querySelector('.apps-grid');
+    apps.forEach(app => {
       grid.appendChild(createAppCard(app));
     });
+
+    container.appendChild(section);
+    if (apps.length > 0) hasAny = true;
   });
 
-  // Uncategorized
-  const allCatIds = new Set(data.categories.map(c => c.id));
-  const uncategorized = data.apps.filter(a => !allCatIds.has(a.category));
-  if (uncategorized.length > 0) {
-    const section = document.createElement('div');
-    section.className = 'category-section';
-    section.innerHTML = `
-      <div class="category-header">
-        <div class="category-title"><span class="category-icon">📂</span><span>Uncategorized</span><span class="category-count">${uncategorized.length}</span></div>
-      </div>
-      <div class="app-grid" id="grid-uncategorized"></div>
-    `;
-    main.appendChild(section);
-    const grid = document.getElementById('grid-uncategorized');
-    uncategorized.forEach(app => grid.appendChild(createAppCard(app)));
+  if (query && !hasAny) {
+    container.innerHTML = `<div class="no-results">🔍 No apps found for "<strong>${query}</strong>"</div>`;
   }
 }
 
 function createAppCard(app) {
-  const card = document.createElement('a');
+  const card = document.createElement('div');
   card.className = 'app-card';
-  card.href = app.url;
-  card.target = '_blank';
-  card.rel = 'noopener noreferrer';
-  card.dataset.appId = app.id;
-  card.draggable = true;
+  card.setAttribute('draggable', 'true');
+  card.setAttribute('data-app-id', app.id);
+  card.setAttribute('data-app-url', app.url);
 
-  card.addEventListener('dragstart', handleDragStart);
-  card.addEventListener('dragend', handleDragEnd);
+  card.ondragstart = (e) => onDragStart(e, app.id);
+  card.ondragend = onDragEnd;
 
-  const colors = ['#4E8D99','#6D445E','#EBBA95','#5b8c5a','#7b68ee','#ff7f50','#20b2aa','#da70d6'];
-  const colorIndex = app.name.charCodeAt(0) % colors.length;
-  const bgColor = colors[colorIndex];
-  const letter = app.name.charAt(0).toUpperCase();
+  // Main click — open URL (but not if clicking menu)
+  card.onclick = (e) => {
+    if (e.target.closest('.card-menu-btn') || e.target.closest('.card-dropdown')) return;
+    window.open(app.url, '_blank');
+  };
 
-  let iconHtml;
-  if (app.icon) {
-    iconHtml = `
-      <div class="app-icon-wrap">
-        <img src="${app.icon}" alt="${app.name}" 
-          onerror="this.parentElement.outerHTML='<div class=\\'app-icon-fallback\\' style=\\'background:${bgColor}\\'><span class=\\'color-letter\\'>${letter}</span></div>'" />
-      </div>`;
-  } else {
-    iconHtml = `<div class="app-icon-fallback" style="background:${bgColor}"><span class="color-letter">${letter}</span></div>`;
-  }
+  const iconHtml = app.icon
+    ? `<img class="app-icon" src="${app.icon}" alt="${app.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+       <div class="app-icon-fallback" style="display:none;">${app.name.charAt(0).toUpperCase()}</div>`
+    : `<div class="app-icon-fallback">${app.name.charAt(0).toUpperCase()}</div>`;
 
   card.innerHTML = `
-    <div class="drag-handle" draggable="false">⠿⠿</div>
-    <div class="app-card-actions">
-      <button class="card-action-btn edit-btn" title="Edit" onclick="event.preventDefault();event.stopPropagation();openEditModal('${app.id}')">✏️</button>
-      <button class="card-action-btn delete-btn" title="Delete" onclick="event.preventDefault();event.stopPropagation();deleteApp('${app.id}')">🗑</button>
-    </div>
     ${iconHtml}
-    <span class="app-name">${app.name}</span>
+    <div class="app-name">${app.name}</div>
+    <button class="card-menu-btn" onclick="toggleDropdown(event,'${app.id}')">⋯</button>
+    <div class="card-dropdown" id="drop-${app.id}">
+      <button onclick="openEditAppModal('${app.id}')">✏️ Edit</button>
+      <button onclick="openMoveModal('${app.id}')">📂 Move</button>
+      <button class="danger" onclick="deleteApp('${app.id}')">🗑 Delete</button>
+    </div>
   `;
 
   return card;
@@ -946,249 +600,392 @@ function createAppCard(app) {
 // ============================================================
 // DRAG AND DROP
 // ============================================================
-function handleDragStart(e) {
-  dragSrcId = e.currentTarget.dataset.appId;
-  e.currentTarget.classList.add('dragging');
+
+function onDragStart(e, appId) {
+  dragSrcId = appId;
   e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/plain', dragSrcId);
+  e.dataTransfer.setData('text/plain', appId);
 }
 
-function handleDragEnd(e) {
-  e.currentTarget.classList.remove('dragging');
-  document.querySelectorAll('.app-grid').forEach(g => g.classList.remove('drag-over'));
+function onDragEnd(e) {
+  dragSrcId = null;
+  document.querySelectorAll('.apps-grid').forEach(g => g.classList.remove('drag-over'));
 }
 
-function handleDragOver(e) {
+function onDragOver(e, catId) {
   e.preventDefault();
   e.dataTransfer.dropEffect = 'move';
-  const grid = e.currentTarget;
-  document.querySelectorAll('.app-grid').forEach(g => g.classList.remove('drag-over'));
-  grid.classList.add('drag-over');
+  document.getElementById(`grid-${catId}`)?.classList.add('drag-over');
 }
 
-function handleDragLeave(e) {
-  if (!e.currentTarget.contains(e.relatedTarget)) {
-    e.currentTarget.classList.remove('drag-over');
-  }
+function onDragLeave(e, catId) {
+  document.getElementById(`grid-${catId}`)?.classList.remove('drag-over');
 }
 
-function handleDrop(e, categoryId) {
+function onDrop(e, catId) {
   e.preventDefault();
-  e.currentTarget.classList.remove('drag-over');
-  
+  document.getElementById(`grid-${catId}`)?.classList.remove('drag-over');
   const appId = e.dataTransfer.getData('text/plain') || dragSrcId;
   if (!appId) return;
-
   const data = getData();
   const app = data.apps.find(a => a.id === appId);
-  if (!app) return;
-
-  if (app.category === categoryId) return;
-
-  app.category = categoryId;
-  saveData(data);
-  render();
-  showToast(`Moved to ${data.categories.find(c=>c.id===categoryId)?.name || categoryId}`, 'success');
+  if (app) {
+    app.category = catId;
+    saveData(data);
+    renderDashboard();
+    showToast(`Moved to ${data.categories.find(c => c.id === catId)?.name || catId}`);
+  }
 }
 
 // ============================================================
-// MODAL HELPERS
+// DROPDOWN MENU
 // ============================================================
-function handleOverlayClick(e, modalId) {
-  if (e.target.classList.contains('modal-overlay')) closeModal(modalId);
+
+function toggleDropdown(e, appId) {
+  e.stopPropagation();
+  const drop = document.getElementById(`drop-${appId}`);
+  if (!drop) return;
+  const isOpen = drop.classList.contains('open');
+  closeAllDropdowns();
+  if (!isOpen) {
+    drop.classList.add('open');
+    openDropdownId = appId;
+  }
 }
 
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
+function closeAllDropdowns() {
+  document.querySelectorAll('.card-dropdown.open').forEach(d => d.classList.remove('open'));
+  openDropdownId = null;
 }
 
+document.addEventListener('click', closeAllDropdowns);
+
 // ============================================================
-// ADD APP MODAL
+// APP MODAL
 // ============================================================
-function openAddModal(presetCategory) {
-  document.getElementById('editAppId').value = '';
+
+function openAddModal(categoryId) {
+  editingAppId = null;
   document.getElementById('modalTitle').textContent = 'Add App';
-  document.getElementById('saveAppBtn').textContent = 'Save App';
   document.getElementById('appName').value = '';
   document.getElementById('appUrl').value = '';
-  currentIconData = '';
-  switchIconMode('url');
-  updateIconPreview('');
-  populateCategorySelect(presetCategory || '');
-  document.getElementById('appModal').style.display = 'flex';
-  setTimeout(() => document.getElementById('appName').focus(), 100);
-}
+  document.getElementById('appIconUrl').value = '';
+  document.getElementById('iconPreviewArea').style.display = 'none';
+  document.getElementById('saveAppBtn').textContent = 'Save App';
 
-function openEditModal(appId) {
-  const data = getData();
-  const app = data.apps.find(a => a.id === appId);
-  if (!app) return;
-
-  document.getElementById('editAppId').value = appId;
-  document.getElementById('modalTitle').textContent = 'Edit App';
-  document.getElementById('saveAppBtn').textContent = 'Update App';
-  document.getElementById('appName').value = app.name;
-  document.getElementById('appUrl').value = app.url;
-  currentIconData = app.icon || '';
-  
-  populateCategorySelect(app.category || '');
-  
-  if (currentIconData && currentIconData.startsWith('data:')) {
-    switchIconMode('upload');
-    updateIconPreview(currentIconData);
-  } else if (currentIconData) {
-    switchIconMode('url');
-    updateIconPreview(currentIconData);
-    setTimeout(() => {
-      const input = document.getElementById('iconUrl');
-      if (input) input.value = currentIconData;
-    }, 50);
-  } else {
-    switchIconMode('url');
-    updateIconPreview('');
-  }
-
-  document.getElementById('appModal').style.display = 'flex';
-}
-
-function populateCategorySelect(selectedId) {
+  // Populate categories
   const data = getData();
   const sel = document.getElementById('appCategory');
   sel.innerHTML = data.categories.map(c =>
-    `<option value="${c.id}" ${c.id === selectedId ? 'selected' : ''}>${c.icon || c.emoji || ''} ${c.name}</option>`
+    `<option value="${c.id}" ${c.id === categoryId ? 'selected' : ''}>${c.emoji || ''} ${c.name}</option>`
   ).join('');
+
+  document.getElementById('appModal').classList.add('open');
+  setTimeout(() => document.getElementById('appName').focus(), 100);
+}
+
+function openEditAppModal(appId) {
+  closeAllDropdowns();
+  const data = getData();
+  const app = data.apps.find(a => a.id === appId);
+  if (!app) return;
+
+  editingAppId = appId;
+  document.getElementById('modalTitle').textContent = 'Edit App';
+  document.getElementById('appName').value = app.name;
+  document.getElementById('appUrl').value = app.url;
+  document.getElementById('appIconUrl').value = app.icon || '';
+  document.getElementById('saveAppBtn').textContent = 'Update App';
+
+  // Preview icon
+  if (app.icon) {
+    document.getElementById('iconPreviewImg').src = app.icon;
+    document.getElementById('iconPreviewArea').style.display = 'flex';
+  } else {
+    document.getElementById('iconPreviewArea').style.display = 'none';
+  }
+
+  // Populate categories
+  const sel = document.getElementById('appCategory');
+  sel.innerHTML = data.categories.map(c =>
+    `<option value="${c.id}" ${c.id === app.category ? 'selected' : ''}>${c.emoji || ''} ${c.name}</option>`
+  ).join('');
+
+  document.getElementById('appModal').classList.add('open');
+}
+
+function closeAppModal() {
+  document.getElementById('appModal').classList.remove('open');
+  editingAppId = null;
 }
 
 function saveApp() {
-  const editId = document.getElementById('editAppId').value;
   const name = document.getElementById('appName').value.trim();
   const url = document.getElementById('appUrl').value.trim();
   const category = document.getElementById('appCategory').value;
+  const iconUrl = document.getElementById('appIconUrl').value.trim();
 
-  if (!name) { showToast('Please enter an app name', 'error'); return; }
-  if (!url) { showToast('Please enter a URL', 'error'); return; }
+  if (!name) { showToast('⚠️ Please enter an app name', true); return; }
+  if (!url) { showToast('⚠️ Please enter a URL', true); return; }
 
-  // Get icon
-  let icon = currentIconData;
-  if (currentIconMode === 'url') {
-    const urlInput = document.getElementById('iconUrl');
-    if (urlInput) icon = urlInput.value.trim() || icon;
-  }
-  if (!icon && url) {
-    try { icon = `${new URL(url).origin}/favicon.ico`; } catch(e) {}
+  let fullUrl = url;
+  if (fullUrl && !fullUrl.startsWith('http') && !fullUrl.startsWith('data:')) {
+    fullUrl = 'https://' + fullUrl;
   }
 
   const data = getData();
 
-  if (editId) {
-    // Edit existing
-    const app = data.apps.find(a => a.id === editId);
+  if (editingAppId) {
+    const app = data.apps.find(a => a.id === editingAppId);
     if (app) {
       app.name = name;
-      app.url = url;
+      app.url = fullUrl;
       app.category = category;
-      app.icon = icon;
-      saveData(data);
-      showToast(`Updated ${name}!`, 'success');
+      if (iconUrl) app.icon = iconUrl;
     }
+    showToast('✅ App updated!');
   } else {
-    // Add new
     const newApp = {
       id: 'app_' + Date.now(),
-      name, url, icon, category
+      name,
+      url: fullUrl,
+      category,
+      icon: iconUrl || ''
     };
     data.apps.push(newApp);
-    saveData(data);
-    showToast(`Added ${name}!`, 'success');
+    showToast('✅ App added!');
   }
 
-  closeModal('appModal');
-  render();
+  saveData(data);
+  closeAppModal();
+  renderDashboard();
 }
 
 // ============================================================
-// DELETE
+// ICON UPLOAD
 // ============================================================
-function deleteApp(appId) {
-  if (!confirm('Remove this app from your dashboard?')) return;
-  const data = getData();
-  data.apps = data.apps.filter(a => a.id !== appId);
-  saveData(data);
-  render();
-  showToast('App removed', 'success');
+
+function handleIconUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  if (file.size > 2 * 1024 * 1024) {
+    showToast('⚠️ Image too large. Max 2MB.', true);
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const dataUrl = e.target.result;
+    document.getElementById('appIconUrl').value = dataUrl;
+    document.getElementById('iconPreviewImg').src = dataUrl;
+    document.getElementById('iconPreviewArea').style.display = 'flex';
+  };
+  reader.readAsDataURL(file);
 }
 
-function deleteCategory(catId) {
-  const data = getData();
-  const cat = data.categories.find(c => c.id === catId);
-  const appsInCat = data.apps.filter(a => a.category === catId);
-  
-  const msg = appsInCat.length > 0 
-    ? `Delete "${cat?.name}" category? The ${appsInCat.length} app(s) in it will become uncategorized.`
-    : `Delete "${cat?.name}" category?`;
-  
-  if (!confirm(msg)) return;
-  
-  data.categories = data.categories.filter(c => c.id !== catId);
-  saveData(data);
-  render();
-  showToast('Category deleted', 'success');
+function previewIcon() {
+  const url = document.getElementById('appIconUrl').value.trim();
+  if (url) {
+    document.getElementById('iconPreviewImg').src = url;
+    document.getElementById('iconPreviewArea').style.display = 'flex';
+  } else {
+    document.getElementById('iconPreviewArea').style.display = 'none';
+  }
 }
 
 // ============================================================
 // CATEGORY MODAL
 // ============================================================
-function addCategoryModal() {
+
+function openAddCategoryModal() {
+  editingCatId = null;
+  document.getElementById('catModalTitle').textContent = 'Add Category';
   document.getElementById('catName').value = '';
   document.getElementById('catEmoji').value = '';
-  document.getElementById('catModal').style.display = 'flex';
+  document.getElementById('categoryModal').classList.add('open');
   setTimeout(() => document.getElementById('catName').focus(), 100);
+}
+
+function openEditCategoryModal(catId) {
+  const data = getData();
+  const cat = data.categories.find(c => c.id === catId);
+  if (!cat) return;
+  editingCatId = catId;
+  document.getElementById('catModalTitle').textContent = 'Edit Category';
+  document.getElementById('catName').value = cat.name;
+  document.getElementById('catEmoji').value = cat.emoji || '';
+  document.getElementById('categoryModal').classList.add('open');
+}
+
+function closeCategoryModal() {
+  document.getElementById('categoryModal').classList.remove('open');
+  editingCatId = null;
 }
 
 function saveCategory() {
   const name = document.getElementById('catName').value.trim();
-  const emoji = document.getElementById('catEmoji').value.trim() || '📁';
-  if (!name) { showToast('Please enter a category name', 'error'); return; }
-  
+  const emoji = document.getElementById('catEmoji').value.trim();
+  if (!name) { showToast('⚠️ Please enter a category name', true); return; }
+
   const data = getData();
-  data.categories.push({ id: 'cat_' + Date.now(), name, icon: emoji });
+
+  if (editingCatId) {
+    const cat = data.categories.find(c => c.id === editingCatId);
+    if (cat) { cat.name = name; cat.emoji = emoji; }
+    showToast('✅ Category updated!');
+  } else {
+    data.categories.push({
+      id: 'cat_' + Date.now(),
+      name,
+      emoji: emoji || '📁'
+    });
+    showToast('✅ Category added!');
+  }
+
   saveData(data);
-  closeModal('catModal');
-  render();
-  showToast(`Category "${name}" added!`, 'success');
+  closeCategoryModal();
+  renderDashboard();
+}
+
+// ============================================================
+// DELETE
+// ============================================================
+
+function deleteApp(appId) {
+  closeAllDropdowns();
+  if (!confirm('Delete this app?')) return;
+  const data = getData();
+  data.apps = data.apps.filter(a => a.id !== appId);
+  saveData(data);
+  renderDashboard();
+  showToast('🗑 App deleted');
+}
+
+function deleteCategory(catId) {
+  const data = getData();
+  const appsInCat = data.apps.filter(a => a.category === catId);
+  if (appsInCat.length > 0) {
+    if (!confirm(`This category has ${appsInCat.length} app(s). Delete category and all its apps?`)) return;
+    data.apps = data.apps.filter(a => a.category !== catId);
+  } else {
+    if (!confirm('Delete this category?')) return;
+  }
+  data.categories = data.categories.filter(c => c.id !== catId);
+  saveData(data);
+  renderDashboard();
+  showToast('🗑 Category deleted');
+}
+
+// ============================================================
+// MOVE APP (quick helper via drag or button)
+// ============================================================
+
+function openMoveModal(appId) {
+  closeAllDropdowns();
+  const data = getData();
+  const app = data.apps.find(a => a.id === appId);
+  if (!app) return;
+
+  const options = data.categories
+    .filter(c => c.id !== app.category)
+    .map(c => `<option value="${c.id}">${c.emoji || ''} ${c.name}</option>`)
+    .join('');
+
+  if (!options) { showToast('No other categories to move to'); return; }
+
+  const target = prompt(
+    'Enter category name to move to:\n' +
+    data.categories.filter(c => c.id !== app.category).map(c => `• ${c.name}`).join('\n')
+  );
+
+  if (!target) return;
+  const cat = data.categories.find(c => c.name.toLowerCase() === target.toLowerCase().trim());
+  if (!cat) { showToast('⚠️ Category not found', true); return; }
+
+  app.category = cat.id;
+  saveData(data);
+  renderDashboard();
+  showToast(`Moved to ${cat.name}`);
+}
+
+// ============================================================
+// EXPORT / IMPORT
+// ============================================================
+
+function exportData() {
+  const data = getData();
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'moxie-dashboard-backup.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('✅ Exported successfully!');
+}
+
+function importData() {
+  document.getElementById('importFile').click();
+}
+
+function handleImport(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!data.categories || !data.apps) throw new Error('Invalid format');
+      if (!confirm(`Import ${data.apps.length} apps and ${data.categories.length} categories? This will replace your current dashboard.`)) return;
+      saveData(data);
+      renderDashboard();
+      showToast('✅ Dashboard imported!');
+    } catch(err) {
+      showToast('⚠️ Invalid file format', true);
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
 }
 
 // ============================================================
 // TOAST
 // ============================================================
-function showToast(msg, type = '') {
-  const t = document.createElement('div');
-  t.className = `toast ${type}`;
+
+let toastTimer;
+function showToast(msg, isError) {
+  const t = document.getElementById('toast');
   t.textContent = msg;
-  document.body.appendChild(t);
-  setTimeout(() => t.remove(), 3000);
+  t.style.background = isError ? '#e74c3c' : '#4E8D99';
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
 }
 
 // ============================================================
-// KEYBOARD
+// KEYBOARD SHORTCUTS
 // ============================================================
-document.addEventListener('keydown', e => {
+
+document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    closeModal('appModal');
-    closeModal('catModal');
+    closeAppModal();
+    closeCategoryModal();
+    closeAllDropdowns();
   }
-  if ((e.key === 'Enter') && document.getElementById('appModal').style.display !== 'none') {
-    const active = document.activeElement;
-    if (active && active.tagName !== 'BUTTON') saveApp();
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('searchInput')?.focus();
   }
 });
 
 // ============================================================
 // INIT
 // ============================================================
-loadData(); // triggers migration
-render();
-console.log('✅ Moxie Dashboard loaded. Apps:', getData().apps.length, '| Categories:', getData().categories.length);
+
+migrateOldData();
+renderDashboard();
 </script>
 </body>
 </html>
