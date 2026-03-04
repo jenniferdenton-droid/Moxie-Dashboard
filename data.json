@@ -1,0 +1,36 @@
+{
+  "categories": [
+    {"id":"communication","name":"Communication","icon":"📬"},
+    {"id":"project","name":"Project Management","icon":"📋"},
+    {"id":"finance","name":"Finance","icon":"💰"},
+    {"id":"sales","name":"Sales & CRM","icon":"🛒"},
+    {"id":"operations","name":"Operations","icon":"🔧"},
+    {"id":"ai","name":"AI Tools","icon":"🤖"}
+  ],
+  "apps": [
+    {"id":"gmail","name":"Gmail","url":"https://mail.google.com","icon":"https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico","category":"communication"},
+    {"id":"gmeet","name":"Google Meet","url":"https://meet.google.com","icon":"https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png","category":"communication"},
+    {"id":"slack","name":"Slack","url":"https://slack.com","icon":"https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png","category":"communication"},
+    {"id":"loom","name":"Loom","url":"https://www.loom.com","icon":"https://cdn.loom.com/assets/img/og/loom-facebook-og.png","category":"communication"},
+    {"id":"fathom","name":"Fathom","url":"https://fathom.video/home","icon":"https://fathom.video/favicon.ico","category":"communication"},
+    {"id":"calendar","name":"Google Calendar","url":"https://calendar.google.com","icon":"https://calendar.google.com/googlecalendar/images/favicon_v2018_256.png","category":"communication"},
+    {"id":"notion","name":"Notion","url":"https://www.notion.so/moxie-docs/6060ef49fea04dc3a1dc0a32d0564233","icon":"https://www.notion.so/images/favicon.ico","category":"project"},
+    {"id":"arrows","name":"Arrows","url":"https://success.joinmoxie.com/home","icon":"https://assets-global.website-files.com/614e2d59ec4e8e52620b8dde/6150dcd8bbcfd7e9e234d24d_favicon-arrows.png","category":"project"},
+    {"id":"asana","name":"Asana","url":"https://app.asana.com/1/1203386861136560/home","icon":"https://asana.com/favicon.ico","category":"project"},
+    {"id":"ramp","name":"Ramp","url":"https://app.ramp.com/sign-in","icon":"https://ramp.com/favicon.ico","category":"finance"},
+    {"id":"stripe","name":"Stripe","url":"https://dashboard.stripe.com","icon":"https://stripe.com/favicon.ico","category":"finance"},
+    {"id":"justworks","name":"JustWorks","url":"https://payroll.justworks.com/account/vouchers","icon":"https://justworks.com/favicon.ico","category":"finance"},
+    {"id":"hubspot","name":"HubSpot","url":"https://app.hubspot.com/login","icon":"https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png","category":"sales"},
+    {"id":"shopify","name":"Shopify","url":"https://admin.shopify.com/store/moxie-9681","icon":"https://cdn.shopify.com/shopifycloud/shopify/assets/favicon-2x.png","category":"sales"},
+    {"id":"omni","name":"Omni","url":"https://moxie.omniapp.co","icon":"https://omniapp.co/favicon.ico","category":"operations"},
+    {"id":"glean","name":"Glean","url":"https://app.glean.com","icon":"https://www.glean.com/favicon.ico","category":"operations"},
+    {"id":"1password","name":"1Password","url":"https://my.1password.com","icon":"https://1password.com/img/logo-v1.svg","category":"operations"},
+    {"id":"dropbox","name":"Dropbox Sign","url":"https://app.hellosign.com/account/logIn","icon":"https://app.hellosign.com/favicon.ico","category":"operations"},
+    {"id":"zapier","name":"Zapier","url":"https://zapier.com","icon":"https://cdn.zapier.com/zapier/images/favicon.ico","category":"operations"},
+    {"id":"googlesheets","name":"Google Sheets","url":"https://sheets.google.com","icon":"https://www.gstatic.com/images/branding/product/1x/sheets_2020q4_48dp.png","category":"operations"},
+    {"id":"github","name":"GitHub","url":"https://github.com","icon":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png","category":"operations"},
+    {"id":"moxieadmin","name":"Moxie Admin","url":"https://api.prod.internal.joinmoxie.com/admin/login/","icon":"https://joinmoxie.com/favicon.ico","category":"operations"},
+    {"id":"chatgpt","name":"ChatGPT","url":"https://chatgpt.com","icon":"https://cdn.oaistatic.com/_next/static/media/favicon-32x32.be48395e.png","category":"ai"}
+  ]
+}
+
