@@ -380,11 +380,16 @@
   }
 
   /* ICON PREVIEW */
-  .icon-preview-area {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .icon-preview {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+.icon-preview a,
+.icon-preview span.icon-link-indicator {
+  display: none !important;
+}
+
 
   .icon-preview-box {
     width: 52px;
@@ -486,7 +491,7 @@
     text-align: center;
     color: #bbb;
     font-size: 13px;
-    min-height: 80px;
+    min-height: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
